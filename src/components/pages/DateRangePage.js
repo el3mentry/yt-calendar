@@ -34,9 +34,11 @@ export default function DateRangePage({ setPage }) {
         months={2}
         direction="horizontal"
         editableDateInputs="true"
-        dateDisplayFormat="dd-MMM-yyyy"
+        dateDisplayFormat="dd/MM/yyyy"
         preventSnapRefocus={true}
         calendarFocus="backwards"
+        startDatePlaceholder="dd/MM/yyyy"
+        endDatePlaceholder="dd/MM/yyyy"
       />
       <br />
       <Button onClick={() => setPage(CALENDARPAGE)} variant="outlined">
