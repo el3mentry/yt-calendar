@@ -1,20 +1,14 @@
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css"; // theme css file
-import { DateRangePicker, DateRange } from "react-date-range";
-import { useState } from "react";
-import { CALENDARPAGE } from "../../variables";
+import { CALENDARPAGE, HOMEPAGE } from "../../variables";
 import { Button } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
+import dayjs from "dayjs";
+import { useState } from "react";
 
 export default function DateRangePage({ setPage }) {
-  const [selectionRange, setSelectionRange] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
-    key: "selection",
-  });
-
-  function handleSelect(ranges) {
-    setSelectionRange(ranges.selection);
-  }
+  const [endDate, setEndDate] = useState(dayjs());
+  const [startDate, setStartDate] = useState(dayjs().add(-1, "month"));
 
   return (
     <div
@@ -26,24 +20,40 @@ export default function DateRangePage({ setPage }) {
         height: "100vh",
       }}
     >
-      <DateRange
-        ranges={[selectionRange]}
-        onChange={handleSelect}
-        maxDate={new Date()}
-        minDate={new Date("2006-01-01")}
-        months={2}
-        direction="horizontal"
-        editableDateInputs="true"
-        dateDisplayFormat="dd/MM/yyyy"
-        preventSnapRefocus={true}
-        calendarFocus="backwards"
-        startDatePlaceholder="dd/MM/yyyy"
-        endDatePlaceholder="dd/MM/yyyy"
-      />
-      <br />
-      <Button onClick={() => setPage(CALENDARPAGE)} variant="outlined">
-        View Calendar
-      </Button>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DateCalendar
+            views={["year", "month", "day"]}
+            disableFuture={true}
+            minDate={dayjs("2006-01-01")}
+            maxDate={dayjs()}
+            onChange={(value) => setStartDate(value)}
+          />
+        </LocalizationProvider>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DateCalendar
+            views={["year", "month", "day"]}
+            value={endDate}
+            disableFuture={true}
+            minDate={dayjs("2006-01-01")}
+            maxDate={dayjs(new Date())}
+            onChange={(value) => setEndDate(value)}
+          />
+        </LocalizationProvider>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <Button
+          sx={{ mr: "1rem" }}
+          onClick={() => setPage(HOMEPAGE)}
+          variant="outlined"
+        >
+          Back
+        </Button>
+        <Button onClick={() => setPage(CALENDARPAGE)} variant="contained">
+          View YT Calendar
+        </Button>
+      </div>
     </div>
   );
 }
