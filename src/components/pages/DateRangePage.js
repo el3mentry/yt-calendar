@@ -1,5 +1,5 @@
 import { CALENDARPAGE, HOMEPAGE } from "../../variables";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function DateRangePage({ setPage }) {
   const [endDate, setEndDate] = useState(dayjs());
-  const [startDate, setStartDate] = useState(dayjs().add(-1, "month"));
+  const [startDate, setStartDate] = useState(dayjs());
 
   return (
     <div
@@ -20,6 +20,24 @@ export default function DateRangePage({ setPage }) {
         height: "100vh",
       }}
     >
+      <div style={{ display: "flex", flexDirection: "row", margin: "1rem 0" }}>
+        <TextField
+          id="outlined-basic"
+          label="Start"
+          variant="outlined"
+          InputProps={{ readOnly: true }}
+          value={startDate.format("DD MMM YYYY")}
+        />
+        <p style={{ marginLeft: "2rem", marginRight: "2rem" }}>to</p>
+        <TextField
+          id="outlined-basic"
+          label="End"
+          variant="outlined"
+          InputProps={{ readOnly: true }}
+          value={endDate.format("DD MMM YYYY")}
+        />
+      </div>
+
       <div style={{ display: "flex", flexDirection: "row" }}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateCalendar
@@ -51,7 +69,7 @@ export default function DateRangePage({ setPage }) {
           Back
         </Button>
         <Button onClick={() => setPage(CALENDARPAGE)} variant="contained">
-          View YT Calendar
+          Proceed
         </Button>
       </div>
     </div>
