@@ -56,61 +56,55 @@ export default function DateRangePage({ setPage }) {
         </Snackbar>
       </Grid>
 
-      <div style={{ display: "flex" }}>
-        <TextField
-          id="outlined-basic"
-          label="Start"
-          variant="outlined"
-          InputProps={{ readOnly: true }}
-          focused={false}
-          value={startDate ? startDate.format("Do MMMM, YYYY") : "-"}
-        />
-        <p
-          style={{
-            marginLeft: "2.5rem",
-            marginRight: "2.5rem",
-            marginBottom: "2rem",
-          }}
-        >
-          to
-        </p>
-        <TextField
-          id="outlined-basic"
-          label="End"
-          variant="outlined"
-          InputProps={{ readOnly: true }}
-          focused={false}
-          value={endDate ? endDate.format("Do MMMM, YYYY") : "-"}
-        />
-      </div>
-
       <div style={{ display: "flex", flexDirection: "row" }}>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateCalendar
-            views={["year", "month", "day"]}
-            disableFuture={true}
-            value={startDate}
-            minDate={dayjs("2006-01-01")}
-            maxDate={dayjs()}
-            disableHighlightToday={true}
-            onChange={(value) => {
-              setStartDate(value);
-            }}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <TextField
+            id="outlined-basic"
+            label="Start"
+            variant="outlined"
+            InputProps={{ readOnly: true }}
+            focused={false}
+            value={startDate ? startDate.format("Do MMMM, YYYY") : "-"}
+            sx={{width: 3/4}}
           />
-        </LocalizationProvider>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateCalendar
-            views={["year", "month", "day"]}
-            disableFuture={true}
-            value={endDate}
-            disableHighlightToday={true}
-            minDate={dayjs("2006-01-01")}
-            maxDate={dayjs(new Date())}
-            onChange={(value) => {
-              setEndDate(value);
-            }}
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateCalendar
+              views={["year", "month", "day"]}
+              disableFuture={true}
+              value={startDate}
+              minDate={dayjs("2006-01-01")}
+              maxDate={dayjs()}
+              disableHighlightToday={true}
+              onChange={(value) => {
+                setStartDate(value);
+              }}
+            />
+          </LocalizationProvider>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <TextField
+            id="outlined-basic"
+            label="End"
+            variant="outlined"
+            InputProps={{ readOnly: true }}
+            focused={false}
+            value={endDate ? endDate.format("Do MMMM, YYYY") : "-"}
+            sx={{width: 3/4}}
           />
-        </LocalizationProvider>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateCalendar
+              views={["year", "month", "day"]}
+              disableFuture={true}
+              value={endDate}
+              disableHighlightToday={true}
+              minDate={dayjs("2006-01-01")}
+              maxDate={dayjs(new Date())}
+              onChange={(value) => {
+                setEndDate(value);
+              }}
+            />
+          </LocalizationProvider>
+        </div>
       </div>
       <div
         style={{ display: "flex", flexDirection: "row", marginTop: "1.5rem" }}
