@@ -11,8 +11,8 @@ import { useState } from "react";
 import advancedFormat from "dayjs/plugin/advancedFormat.js";
 
 export default function DateRangePage({ setPage }) {
-  const [endDate, setEndDate] = useState();
-  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState(null);
   const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
 
   const handleClose = (event, reason) => {
@@ -23,8 +23,8 @@ export default function DateRangePage({ setPage }) {
   };
 
   function clearDateRange() {
-    setEndDate("");
-    setStartDate("");
+    setEndDate(null);
+    setStartDate(null);
   }
 
   dayjs.extend(advancedFormat);
@@ -89,6 +89,7 @@ export default function DateRangePage({ setPage }) {
           <DateCalendar
             views={["year", "month", "day"]}
             disableFuture={true}
+            value={startDate}
             minDate={dayjs("2006-01-01")}
             maxDate={dayjs()}
             disableHighlightToday={true}
@@ -101,6 +102,7 @@ export default function DateRangePage({ setPage }) {
           <DateCalendar
             views={["year", "month", "day"]}
             disableFuture={true}
+            value={endDate}
             disableHighlightToday={true}
             minDate={dayjs("2006-01-01")}
             maxDate={dayjs(new Date())}
