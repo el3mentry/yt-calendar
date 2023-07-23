@@ -14,20 +14,21 @@ export default function DateRangePage({ setPage }) {
   const [endDate, setEndDate] = useState(null);
   const [startDate, setStartDate] = useState(null);
   const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
+  const [isDateNull, setIsDateNull] = useState(false);
+  dayjs.extend(advancedFormat);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
     setIsSnackbarVisible(false);
+    setIsDateNull(false);
   };
 
   function clearDateRange() {
     setEndDate(null);
     setStartDate(null);
   }
-
-  dayjs.extend(advancedFormat);
 
   return (
     <div
@@ -56,8 +57,31 @@ export default function DateRangePage({ setPage }) {
         </Snackbar>
       </Grid>
 
+      <Grid item xs={6} textAlign="right">
+        <Snackbar
+          open={isDateNull}
+          autoHideDuration={3000}
+          onClose={handleClose}
+        >
+          <Alert
+            onClose={handleClose}
+            variant="filled"
+            severity="error"
+            sx={{ width: "100%" }}
+          >
+            End Date & Start Date cannot be empty.
+          </Alert>
+        </Snackbar>
+      </Grid>
+
       <div style={{ display: "flex", flexDirection: "row" }}>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <TextField
             id="outlined-basic"
             label="Start"
@@ -65,7 +89,7 @@ export default function DateRangePage({ setPage }) {
             InputProps={{ readOnly: true }}
             focused={false}
             value={startDate ? startDate.format("Do MMMM, YYYY") : "-"}
-            sx={{width: 3/4}}
+            sx={{ width: 3 / 4 }}
           />
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateCalendar
@@ -81,7 +105,13 @@ export default function DateRangePage({ setPage }) {
             />
           </LocalizationProvider>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <TextField
             id="outlined-basic"
             label="End"
@@ -89,7 +119,7 @@ export default function DateRangePage({ setPage }) {
             InputProps={{ readOnly: true }}
             focused={false}
             value={endDate ? endDate.format("Do MMMM, YYYY") : "-"}
-            sx={{width: 3/4}}
+            sx={{ width: 3 / 4 }}
           />
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateCalendar
@@ -125,7 +155,8 @@ export default function DateRangePage({ setPage }) {
         </Button>
         <Button
           onClick={() => {
-            if (startDate.isBefore(endDate) || startDate.isSame(endDate))
+            if ((startDate && endDate) === null) setIsDateNull(true);
+            else if (startDate.isBefore(endDate) || startDate.isSame(endDate))
               setPage(CALENDARPAGE);
             else setIsSnackbarVisible(true);
           }}
