@@ -1,5 +1,5 @@
-import { HOMEPAGE } from "../../variables";
+import YearlyCalendar from "../component/YearlyCalendar";
 
-export default function CalendarPage({setPage}) {
-  return <div onClick={() => setPage(HOMEPAGE)}>This is calendar...</div>;
+export default function CalendarPage({ setPage }) {
+  return <YearlyCalendar year={2012} />;
 }
