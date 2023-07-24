@@ -2,8 +2,6 @@ import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 
-const dateFormat = "M-D-YYYY";
-
 export const daysOfTheWeek = [
   'M', 'T', 'W', 'T', 'F', 'S', 'S'
 ];
@@ -38,84 +36,4 @@ export const getMonthName = (month) => {
   };
 
   return months[month];
-};
-
-export const formatBookingsData = ({ bookings, year }) => {
-  if (!Array.isArray(bookings) || bookings.length < 1) return [];
-
-  const arr = [];
-
-  bookings.forEach((booking) => {
-    const from = booking?.from;
-    const to = booking?.to;
-    const middayCheckout = booking?.middayCheckout;
-
-    const validStartDate = dayjs(from).year() === Number(year);
-    const validEndDate = dayjs(to).year() === Number(year);
-
-    if (!validStartDate && !validEndDate) return null;
-
-    const nxtBooking = {
-      from: dayjs(from).format(dateFormat),
-      to: dayjs(to).format(dateFormat),
-      middayCheckout,
-    };
-
-    arr.push(nxtBooking);
-  });
-
-  return arr;
-};
-
-export const getDatesInRange = ({ startDate, endDate }) => {
-  let _startDate = dayjs(startDate, "M-D-YYYY");
-  const _endDate = dayjs(endDate, "M-D-YYYY");
-
-  const dates = [];
-
-  while (!_startDate.isAfter(_endDate)) {
-    dates.push(_startDate.format(dateFormat));
-
-    _startDate = _startDate.add(1, "day");
-  }
-
-  return dates;
-};
-
-export const getAllBookedDays = ({ dates }) => {
-  if (!Array.isArray(dates) || dates.length < 1) return [];
-
-  const arr = [];
-
-  dates.forEach(({ to, from }) => {
-    const nxt = getDatesInRange({ startDate: from, endDate: to });
-
-    nxt.forEach((_date) => {
-      arr.push(_date);
-    });
-  });
-
-  return arr;
-};
-
-export const getAllHalfDays = ({ dates }) => {
-  if (!Array.isArray(dates) || dates.length < 1) return [];
-
-  const arr = [];
-
-  dates.forEach(({ to, middayCheckout }) => {
-    if (middayCheckout && typeof to === "string") {
-      arr.push(to);
-    }
-  });
-
-  return arr;
-};
-
-export const handleBookings = ({ bookings, year }) => {
-  const dates = formatBookingsData({ bookings, year });
-  const bookedDays = getAllBookedDays({ dates });
-  const halfDays = getAllHalfDays({ dates });
-
-  return { halfDays, bookedDays };
 };

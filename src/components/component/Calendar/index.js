@@ -9,6 +9,7 @@ dayjs.extend(isBetween);
 
 const Calendar = ({
   showNumberOfMonths = 12,
+  year=2012
 }) => {
   const initialMonth = 1;
   const initialPage = 1;
@@ -16,8 +17,7 @@ const Calendar = ({
   const _showNumberOfMonths = isValidMonthsOption(showNumberOfMonths)
     ? showNumberOfMonths
     : totalCalendarMonths;
-  const _year = dayjs().year();
-  const [activeYear, setActiveYear] = useState(_year);
+  const [activeYear, setActiveYear] = useState(year);
   const [monthsFrom, setMonthsFrom] = useState(initialMonth);
   const [page, setPage] = useState(initialPage);
 

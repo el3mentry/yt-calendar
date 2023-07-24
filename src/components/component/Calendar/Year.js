@@ -5,13 +5,7 @@ import { daysOfTheWeek, daysOfTheWeekOffset, getMonthName } from "./Utils";
 
 dayjs.extend(isBetween);
 
-const Year = ({
-  activeYear,
-  showNumberOfMonths = 12,
-  bookedDates = [],
-  lateCheckouts = [],
-  monthsFrom = 1,
-}) => {
+const Year = ({ activeYear, showNumberOfMonths = 12, monthsFrom = 1 }) => {
   const _year = activeYear || dayjs().year();
 
   return (
@@ -52,23 +46,9 @@ const Year = ({
 
               {daysArr.map((_, pos) => {
                 const day = pos + arrOffset;
-                const _date = `${month}-${day}-${_year}`;
-
-                const isBooked = Array.isArray(bookedDates)
-                  ? bookedDates.includes(_date)
-                  : false;
-
-                const isLateCheckout = Array.isArray(lateCheckouts)
-                  ? lateCheckouts.includes(_date)
-                  : false;
-
                 return (
-                  <div
-                    key={pos}
-                    className={`day ${isBooked ? "booked" : ""} ${
-                      isLateCheckout ? "isLateCheckout" : ""
-                    }`}
-                  >
+                  <div key={pos} className="day">
+                    {/* Inject the new Day component */}
                     <span>{day}</span>
                   </div>
                 );
