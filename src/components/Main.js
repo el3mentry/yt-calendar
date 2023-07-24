@@ -3,7 +3,6 @@ import CalendarPage from "./pages/CalendarPage";
 import HomePage from "./pages/HomePage";
 import DateRangePage from "./pages/DateRangePage";
 import { HOMEPAGE, CALENDARPAGE, DATERANGEPAGE } from "../variables";
-import YearlyCalendar from "./component/YearlyCalendar";
 
 export default function Main() {
   const [page, setPage] = useState(HOMEPAGE);
@@ -15,6 +14,5 @@ export default function Main() {
     else return "";
   }
 
-  // return <>{getPageType()}</>;
-  return <>{<CalendarPage />}</>;
+  return <>{getPageType()}</>;
 }
