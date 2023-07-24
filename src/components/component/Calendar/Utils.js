@@ -2,13 +2,9 @@ import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 
-export const daysOfTheWeek = [
-  'M', 'T', 'W', 'T', 'F', 'S', 'S'
-];
+export const daysOfTheWeek = ["M", "T", "W", "T", "F", "S", "S"];
 
-export const daysOfTheWeekOffset = [
-  '6', '5', '4', '3', '2', '0', '1'
-];
+export const daysOfTheWeekOffset = ["6", "5", "4", "3", "2", "0", "1"];
 
 export const isValidMonthsOption = (numOfMonths) => {
   if (!numOfMonths || typeof numOfMonths !== "number") return false;

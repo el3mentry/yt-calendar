@@ -7,10 +7,7 @@ import Year from "./Year";
 
 dayjs.extend(isBetween);
 
-const Calendar = ({
-  showNumberOfMonths = 12,
-  year=2012
-}) => {
+const Calendar = ({ showNumberOfMonths = 12, year = 2012 }) => {
   const initialMonth = 1;
   const initialPage = 1;
   const totalCalendarMonths = 12;
