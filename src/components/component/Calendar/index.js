@@ -4,7 +4,6 @@ import isBetween from 'dayjs/plugin/isBetween'
 import { handleBookings, isValidMonthsOption } from './Utils'
 import Controls from './Controls'
 import Year from './Year'
-import Key from './Key'
 
 dayjs.extend(isBetween)
 
@@ -157,7 +156,6 @@ const Calendar = ({
 
         <Year {...configYear} />
 
-        {shouldRender.key && <Key />}
       </div>
     </section>
   )
