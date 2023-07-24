@@ -1,164 +1,142 @@
-import React, { useEffect, useState, useCallback } from 'react'
-import dayjs from 'dayjs'
-import isBetween from 'dayjs/plugin/isBetween'
-import { handleBookings, isValidMonthsOption } from './Utils'
-import Controls from './Controls'
-import Year from './Year'
+import React, { useEffect, useState, useCallback } from "react";
+import dayjs from "dayjs";
+import isBetween from "dayjs/plugin/isBetween";
+import { isValidMonthsOption } from "./Utils";
+import Controls from "./Controls";
+import Year from "./Year";
 
-dayjs.extend(isBetween)
+dayjs.extend(isBetween);
 
 const Calendar = ({
-  bookings = [],
   showNumberOfMonths = 12,
-  showKey = true,
-  showCurrentYear = true,
-  showControls = true,
 }) => {
-  const initialMonth = 1
-  const initialPage = 1
-  const totalCalendarMonths = 12
-  const _showNumberOfMonths = isValidMonthsOption(showNumberOfMonths) ? showNumberOfMonths : totalCalendarMonths
-  const _year = dayjs().year()
-  const [activeYear, setActiveYear] = useState(_year)
-  const [bookedDates, setBookedDates] = useState([])
-  const [lateCheckouts, setLateCheckouts] = useState([])
-  const [monthsFrom, setMonthsFrom] = useState(initialMonth)
-  const [page, setPage] = useState(initialPage)
+  const initialMonth = 1;
+  const initialPage = 1;
+  const totalCalendarMonths = 12;
+  const _showNumberOfMonths = isValidMonthsOption(showNumberOfMonths)
+    ? showNumberOfMonths
+    : totalCalendarMonths;
+  const _year = dayjs().year();
+  const [activeYear, setActiveYear] = useState(_year);
+  const [monthsFrom, setMonthsFrom] = useState(initialMonth);
+  const [page, setPage] = useState(initialPage);
 
-  const totalPages = totalCalendarMonths / _showNumberOfMonths
+  const totalPages = totalCalendarMonths / _showNumberOfMonths;
 
   const resetCalendarYear = () => {
-    setMonthsFrom(initialMonth)
-    setPage(initialPage)
-  }
+    setMonthsFrom(initialMonth);
+    setPage(initialPage);
+  };
 
   const goToPage = useCallback(
     (_page) => {
-      const _monthsFrom = _page * _showNumberOfMonths - _showNumberOfMonths + 1
-      setMonthsFrom(_monthsFrom)
-      setPage(_page)
+      const _monthsFrom = _page * _showNumberOfMonths - _showNumberOfMonths + 1;
+      setMonthsFrom(_monthsFrom);
+      setPage(_page);
     },
-    [_showNumberOfMonths],
-  )
+    [_showNumberOfMonths]
+  );
 
   const findActivePage = useCallback(() => {
-    const now = dayjs()
-    const _month = now.month() + 1
-    let _page = 1
+    const now = dayjs();
+    const _month = now.month() + 1;
+    let _page = 1;
     for (let i = 1; i <= totalPages; i++) {
-      const found = _month <= i * _showNumberOfMonths
-      _page = i
-      if (found) break
+      const found = _month <= i * _showNumberOfMonths;
+      _page = i;
+      if (found) break;
     }
 
-    goToPage(_page)
-  }, [goToPage, _showNumberOfMonths, totalPages])
+    goToPage(_page);
+  }, [goToPage, _showNumberOfMonths, totalPages]);
 
   useEffect(() => {
     if (_showNumberOfMonths !== totalCalendarMonths) {
-      findActivePage()
+      findActivePage();
     }
-  }, [findActivePage, _showNumberOfMonths])
+  }, [findActivePage, _showNumberOfMonths]);
 
   const initCal = useCallback(() => {
-    const now = dayjs()
-    const _year = now.year()
-    setActiveYear(_year)
-    if (_showNumberOfMonths !== totalCalendarMonths) findActivePage()
-    else resetCalendarYear()
-  }, [findActivePage, _showNumberOfMonths])
+    const now = dayjs();
+    const _year = now.year();
+    setActiveYear(_year);
+    if (_showNumberOfMonths !== totalCalendarMonths) findActivePage();
+    else resetCalendarYear();
+  }, [findActivePage, _showNumberOfMonths]);
 
   const prev = useCallback(() => {
-    const isFirstPage = page === 1
+    const isFirstPage = page === 1;
 
     if (isFirstPage) {
-      const _previousYear = dayjs(`${activeYear}`).subtract(1, 'year').year()
-      setActiveYear(_previousYear)
+      const _previousYear = dayjs(`${activeYear}`).subtract(1, "year").year();
+      setActiveYear(_previousYear);
 
       if (_showNumberOfMonths === totalCalendarMonths) {
-        resetCalendarYear()
-        return
+        resetCalendarYear();
+        return;
       }
 
-      const nxtStartingMonth = totalCalendarMonths - _showNumberOfMonths + 1
-      const nxtPage = totalPages
+      const nxtStartingMonth = totalCalendarMonths - _showNumberOfMonths + 1;
+      const nxtPage = totalPages;
 
-      setMonthsFrom(nxtStartingMonth)
-      setPage(nxtPage)
-      return
+      setMonthsFrom(nxtStartingMonth);
+      setPage(nxtPage);
+      return;
     }
 
-    const nxtStartingMonth = monthsFrom - _showNumberOfMonths
-    const nxtPage = page - 1
-    setMonthsFrom(nxtStartingMonth)
-    setPage(nxtPage)
-  }, [page, _showNumberOfMonths, monthsFrom, totalPages, activeYear])
+    const nxtStartingMonth = monthsFrom - _showNumberOfMonths;
+    const nxtPage = page - 1;
+    setMonthsFrom(nxtStartingMonth);
+    setPage(nxtPage);
+  }, [page, _showNumberOfMonths, monthsFrom, totalPages, activeYear]);
 
   const next = useCallback(() => {
-    const isLastPage = page === totalPages
+    const isLastPage = page === totalPages;
     if (isLastPage) {
-      const _nextYear = dayjs(`${activeYear}`).add(1, 'year').year()
-      setActiveYear(_nextYear)
-      resetCalendarYear()
-      return
+      const _nextYear = dayjs(`${activeYear}`).add(1, "year").year();
+      setActiveYear(_nextYear);
+      resetCalendarYear();
+      return;
     }
 
-    const nxtStartingMonth = page * _showNumberOfMonths + 1
-    const nxtPage = page + 1
-    setMonthsFrom(nxtStartingMonth)
-    setPage(nxtPage)
-  }, [page, totalPages, _showNumberOfMonths, activeYear])
+    const nxtStartingMonth = page * _showNumberOfMonths + 1;
+    const nxtPage = page + 1;
+    setMonthsFrom(nxtStartingMonth);
+    setPage(nxtPage);
+  }, [page, totalPages, _showNumberOfMonths, activeYear]);
 
   const configControls = {
     prev,
     next,
     initCal,
-  }
-
-  useEffect(() => {
-    const { halfDays, bookedDays } = handleBookings({ bookings, year: activeYear })
-
-    setBookedDates(bookedDays)
-    setLateCheckouts(halfDays)
-  }, [bookings, activeYear])
+  };
 
   const configYear = {
     showNumberOfMonths: _showNumberOfMonths,
-    bookedDates,
-    lateCheckouts,
     activeYear,
     monthsFrom,
-  }
-
-  const shouldRender = {
-    key: showKey,
-    currentYear: showCurrentYear,
-    controls: showControls,
-  }
+  };
 
   const layoutClassName =
-    _showNumberOfMonths !== totalCalendarMonths ? (_showNumberOfMonths > 1 ? 'twoCol' : 'singleCol') : ''
+    _showNumberOfMonths !== totalCalendarMonths
+      ? _showNumberOfMonths > 1
+        ? "twoCol"
+        : "singleCol"
+      : "";
 
   return (
-    <section className={`calendar ${layoutClassName}`} data-testid='calendar'>
-      <div className='wrap'>
-        {!shouldRender.controls && !shouldRender.currentYear ? null : (
-          <div className='controlWrap'>
-            {shouldRender.currentYear && (
-              <h1 className='currentYear' data-testid='currentYear'>
-                {activeYear}
-              </h1>
-            )}
-
-            {shouldRender.controls && <Controls {...configControls} />}
-          </div>
-        )}
-
+    <section className={`calendar ${layoutClassName}`} data-testid="calendar">
+      <div className="wrap">
+        <div className="controlWrap">
+          <h1 className="currentYear" data-testid="currentYear">
+            {activeYear}
+          </h1>
+          <Controls {...configControls} />
+        </div>
         <Year {...configYear} />
-
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Calendar
+export default Calendar;
