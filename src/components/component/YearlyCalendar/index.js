@@ -7,7 +7,7 @@ import Year from "./Year";
 
 dayjs.extend(isBetween);
 
-const Calendar = ({ showNumberOfMonths = 12, year = 2012 }) => {
+const YearlyCalendar = ({ showNumberOfMonths = 12, year = 2012 }) => {
   const initialMonth = 1;
   const initialPage = 1;
   const totalCalendarMonths = 12;
@@ -125,10 +125,10 @@ const Calendar = ({ showNumberOfMonths = 12, year = 2012 }) => {
     <section className={`calendar ${layoutClassName}`} data-testid="calendar">
       <div className="wrap">
         <div className="controlWrap">
-          <h1 className="currentYear" data-testid="currentYear">
+          {/* <h1 className="currentYear" data-testid="currentYear">
             {activeYear}
-          </h1>
-          <Controls {...configControls} />
+          </h1> */}
+          {/* <Controls {...configControls} /> */}
         </div>
         <Year {...configYear} />
       </div>
@@ -136,4 +136,4 @@ const Calendar = ({ showNumberOfMonths = 12, year = 2012 }) => {
   );
 };
 
-export default Calendar;
+export default YearlyCalendar;

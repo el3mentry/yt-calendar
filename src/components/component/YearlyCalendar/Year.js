@@ -49,7 +49,7 @@ const Year = ({ activeYear, showNumberOfMonths = 12, monthsFrom = 1 }) => {
                 return (
                   <div key={pos} className="day">
                     {/* Inject the new Day component */}
-                    <span>{day}</span>
+                    {day}
                   </div>
                 );
               })}
