@@ -31,7 +31,7 @@ const Calendar = ({ showNumberOfMonths = 12, year = 2012 }) => {
       setMonthsFrom(_monthsFrom);
       setPage(_page);
     },
-    [_showNumberOfMonths]
+    [_showNumberOfMonths],
   );
 
   const findActivePage = useCallback(() => {
