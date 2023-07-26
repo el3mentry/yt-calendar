@@ -27,33 +27,37 @@ const Year = ({ activeYear, showNumberOfMonths = 12, monthsFrom = 1 }) => {
 
         return (
           <div key={pos} className="month" data-testid="month">
-            <h3 className="monthName">{monthName}</h3>
 
-            <div className="content dayOfTheWeek">
-              {daysOfTheWeek.map((dayOfTheWeek, pos) => {
-                return (
-                  <div key={pos} className="day">
-                    {dayOfTheWeek}
-                  </div>
-                );
-              })}
+            <div id="month-resizable-div">
+              <h3 className="monthName">{monthName}</h3>
+
+              <div className="content dayOfTheWeek">
+                {daysOfTheWeek.map((dayOfTheWeek, pos) => {
+                  return (
+                    <div key={pos} className="day">
+                      {dayOfTheWeek}
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="content">
+                {offsetDays.map((_, pos) => {
+                  return <div key={pos} className="day" />;
+                })}
+
+                {daysArr.map((_, pos) => {
+                  const day = pos + arrOffset;
+                  return (
+                    <div key={pos} className="day">
+                      {/* Inject the new Day component */}
+                      {day}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
-            <div className="content">
-              {offsetDays.map((_, pos) => {
-                return <div key={pos} className="day" />;
-              })}
-
-              {daysArr.map((_, pos) => {
-                const day = pos + arrOffset;
-                return (
-                  <div key={pos} className="day">
-                    {/* Inject the new Day component */}
-                    {day}
-                  </div>
-                );
-              })}
-            </div>
           </div>
         );
       })}
