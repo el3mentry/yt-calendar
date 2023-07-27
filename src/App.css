@@ -1,5 +1,5 @@
 .calendar {
-  margin: 3rem auto 20px;
+  margin: 0.3rem auto 20px;
 }
 
 .calendar .wrap {
@@ -63,6 +63,7 @@
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
   flex-basis: 25%;
+  margin-bottom: 1.8rem;
 }
 
 .singleCol .month {
@@ -100,8 +101,8 @@
   box-sizing: border-box;
   color: #3c4043;
   font-family: "Open Sans", sans-serif;
+  margin-top: 0.3rem;
 }
-/* 70757a */
 
 .dayOfTheWeek {
   color: #70757a;
@@ -109,19 +110,21 @@
 
 .dayOfTheWeek,
 .day {
-  font-size: 12px;
+  font-size: 13px;
+}
+
+#month-resizable-div {
+  height: 100%;
 }
 
 @media (max-width: 1920px) {
   #month-resizable-div {
     width: 256px;
-    height: 200px;
   }
 }
 
 @media (max-width: 1366px) {
   #month-resizable-div {
     width: 213px;
-    height: 200px;
   }
 }

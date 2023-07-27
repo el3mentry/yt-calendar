@@ -1,3 +1,3 @@
 export default function RecentSearches(){
-    return <div>search</div>;
+    return <div>recent searches</div>;
 }

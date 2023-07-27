@@ -2,6 +2,7 @@ import React from "react";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import { daysOfTheWeek, daysOfTheWeekOffset, getMonthName } from "./Utils";
+import Day from "../Day";
 
 dayjs.extend(isBetween);
 
@@ -51,7 +52,7 @@ const Year = ({ activeYear, showNumberOfMonths = 12, monthsFrom = 1 }) => {
                   return (
                     <div key={pos} className="day">
                       {/* Inject the new Day component */}
-                      {day}
+                      <Day dayValue={day} />
                     </div>
                   );
                 })}

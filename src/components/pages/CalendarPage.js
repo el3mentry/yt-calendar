@@ -1,29 +1,17 @@
 import YearlyCalendar from "../component/YearlyCalendar";
 import ChannelInfo from "../component/ChannelInfo";
 import { Grid } from "@mui/material";
-import Logo from "../component/Logo";
+import Navbar from "../component/Navbar";
 
 export default function CalendarPage({ setPage }) {
   return (
     <Grid container>
-      <Grid item container xs={2}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "100%",
-              height: "100%",
-              margin: "12%",
-            }}
-            id="left-section"
-          >
-            <Logo />
+      <Grid item container xs={12}>
+        <Navbar />
+      </Grid>
 
-            <ChannelInfo
-              channelId={"aofweijawmklfk"}
-              channelName={"alsdfjoiaewmm"}
-            />
-          </div>
+      <Grid item container xs={2}>
+        <ChannelInfo channelId={"0123456789"} channelName={"MrFeast"} />
       </Grid>
 
       <Grid container item xs={10}>
