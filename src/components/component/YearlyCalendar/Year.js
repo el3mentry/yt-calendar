@@ -28,7 +28,6 @@ const Year = ({ activeYear, showNumberOfMonths = 12, monthsFrom = 1 }) => {
 
         return (
           <div key={pos} className="month" data-testid="month">
-
             <div id="month-resizable-div">
               <h3 className="monthName">{monthName}</h3>
 
@@ -58,7 +57,6 @@ const Year = ({ activeYear, showNumberOfMonths = 12, monthsFrom = 1 }) => {
                 })}
               </div>
             </div>
-
           </div>
         );
       })}

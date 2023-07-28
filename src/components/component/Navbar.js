@@ -2,15 +2,14 @@ import Logo from "../component/Logo";
 import YearSelection from "./YearSelection";
 import RecentSearches from "./RecentSearches";
 
-export default function Navbar() {
+export default function Navbar({ currentYear, setCurrentYear }) {
   return (
     <div
       style={{
         height: "60px",
         width: "100vw",
-        backgroundColor: "lightblue",
+        backgroundColor: "white",
         display: "flex",
-        width: "100%",
         padding: "0.4rem",
       }}
     >
@@ -20,13 +19,17 @@ export default function Navbar() {
           width: "50%",
           justifyContent: "start",
           marginLeft: "5%",
+          alignItems: "center",
         }}
       >
         <div>
           <Logo />
         </div>
         <div style={{ marginLeft: "5%" }}>
-          <YearSelection />
+          <YearSelection
+            currentYear={currentYear}
+            setCurrentYear={setCurrentYear}
+          />
         </div>
       </div>
       <div
@@ -35,6 +38,7 @@ export default function Navbar() {
           width: "50%",
           justifyContent: "end",
           marginRight: "5%",
+          alignItems: "center",
         }}
       >
         <div style={{ marginRight: "5%" }}>

@@ -63,7 +63,7 @@
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
   flex-basis: 25%;
-  margin-bottom: 1.8rem;
+  min-height: 266px;
 }
 
 .singleCol .month {

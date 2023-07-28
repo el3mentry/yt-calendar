@@ -2,12 +2,15 @@ import YearlyCalendar from "../component/YearlyCalendar";
 import ChannelInfo from "../component/ChannelInfo";
 import { Grid } from "@mui/material";
 import Navbar from "../component/Navbar";
+import { useState } from "react";
+import dayjs from "dayjs";
 
 export default function CalendarPage({ setPage }) {
+  const [currentYear, setCurrentYear] = useState(dayjs().year());
   return (
     <Grid container>
       <Grid item container xs={12}>
-        <Navbar />
+        <Navbar currentYear={currentYear} setCurrentYear={setCurrentYear} />
       </Grid>
 
       <Grid item container xs={2}>
@@ -15,7 +18,7 @@ export default function CalendarPage({ setPage }) {
       </Grid>
 
       <Grid container item xs={10}>
-        <YearlyCalendar />
+        <YearlyCalendar showNumberOfMonths={12} year={currentYear} />
       </Grid>
     </Grid>
   );
