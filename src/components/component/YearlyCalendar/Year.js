@@ -13,6 +13,9 @@ const Year = ({ activeYear, showNumberOfMonths = 12, monthsFrom = 1 }) => {
     <div className="year" data-testid="year">
       {new Array(showNumberOfMonths).fill("").map((_, pos) => {
         const arrOffset = 1;
+        {
+          /* There's an issue with the monthsFrom variable. Changing it to another calendar view causes calculation mistake.*/
+        }
         const month = monthsFrom + pos;
         const date = `${_year}-${month}`;
         const monthName = getMonthName(month);
