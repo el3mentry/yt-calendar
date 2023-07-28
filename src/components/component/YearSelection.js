@@ -20,10 +20,9 @@ export default function YearSelection({ currentYear, setCurrentYear }) {
     <div>
       <Box
         sx={{
-          border: 2,
-          borderRadius: 2,
+          border: 1,
+          borderRadius: 1,
           textAlign: "center",
-          paddingLeft: 1,
           paddingRight: 1,
         }}
       >

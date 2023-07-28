@@ -1,8 +1,19 @@
 import Logo from "../component/Logo";
 import YearSelection from "./YearSelection";
 import RecentSearches from "./RecentSearches";
+import Button from "@mui/material/Button";
+import { MONTH, YEAR } from "../../variables";
 
-export default function Navbar({ currentYear, setCurrentYear }) {
+export default function Navbar({
+  currentYear,
+  setCurrentYear,
+  calendarView,
+  setCalendarView,
+}) {
+  function changeCalendarView() {
+    if (calendarView === MONTH) setCalendarView(YEAR);
+    else setCalendarView(MONTH);
+  }
   return (
     <div
       style={{
@@ -41,11 +52,17 @@ export default function Navbar({ currentYear, setCurrentYear }) {
           alignItems: "center",
         }}
       >
-        <div style={{ marginRight: "5%" }}>
+        <div style={{ marginRight: "3%" }}>
           <RecentSearches />
         </div>
         <div>
-          <button>Year</button>
+          <Button
+            variant="contained"
+            sx={{ height: 40 }}
+            onClick={changeCalendarView}
+          >
+            {calendarView === YEAR ? "Year" : "Month"}
+          </Button>
         </div>
       </div>
     </div>
