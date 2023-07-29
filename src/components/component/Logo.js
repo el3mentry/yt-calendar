@@ -1,11 +1,5 @@
+import logo from "../../assets/yt-cal.png";
+
 export default function Logo() {
-  return (
-    <div
-      style={{
-        height: "60px",
-        width: "60px",
-        backgroundColor: "red",
-      }}
-    ></div>
-  );
+  return <img src={logo} alt="yt-cal-logo" height={62} />;
 }

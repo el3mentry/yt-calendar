@@ -3,6 +3,7 @@ import YearSelection from "./YearSelection";
 import RecentSearches from "./RecentSearches";
 import Button from "@mui/material/Button";
 import { MONTH, YEAR } from "../../variables";
+import Box from "@mui/material/Box";
 
 export default function Navbar({
   currentYear,
@@ -15,36 +16,63 @@ export default function Navbar({
     else setCalendarView(MONTH);
   }
   return (
-    <div
-      style={{
+    <Box
+      id="navbar-box"
+      sx={{
         height: "60px",
         width: "100vw",
         backgroundColor: "white",
         display: "flex",
-        padding: "0.4rem",
+        p: "0.4rem",
       }}
     >
-      <div
-        style={{
+      <Box
+        id="navbar-left-section"
+        sx={{
           display: "flex",
           width: "50%",
           justifyContent: "start",
-          marginLeft: "5%",
+          ml: "5%",
           alignItems: "center",
         }}
       >
-        <div>
+        <Box id="yt-cal-logo" sx={{ mt: "6px" }}>
           <Logo />
-        </div>
-        <div style={{ marginLeft: "5%" }}>
-          <YearSelection
-            currentYear={currentYear}
-            setCurrentYear={setCurrentYear}
-          />
-        </div>
-      </div>
-      <div
-        style={{
+        </Box>
+
+        <Box
+          id="navbar-left-subsection"
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "flex-end",
+            width: "100%",
+          }}
+        >
+          <Box
+            sx={{ marginLeft: "5%", bgcolor: "grey.100", marginRight: "5%" }}
+            id="year-selection-wrapper"
+          >
+            <YearSelection
+              currentYear={currentYear}
+              setCurrentYear={setCurrentYear}
+            />
+          </Box>
+          <Box id="calendar-view-toggle-wrapper">
+            <Button
+              variant="contained"
+              sx={{ height: 39 }}
+              onClick={changeCalendarView}
+            >
+              {calendarView === YEAR ? "Year" : "Month"}
+            </Button>
+          </Box>
+        </Box>
+      </Box>
+
+      <Box
+        id="navbar-right-section"
+        sx={{
           display: "flex",
           width: "50%",
           justifyContent: "end",
@@ -52,19 +80,10 @@ export default function Navbar({
           alignItems: "center",
         }}
       >
-        <div style={{ marginRight: "3%" }}>
+        <Box sx={{ marginRight: "3%" }} id="recent-searches-wrapper">
           <RecentSearches />
-        </div>
-        <div>
-          <Button
-            variant="contained"
-            sx={{ height: 40 }}
-            onClick={changeCalendarView}
-          >
-            {calendarView === YEAR ? "Year" : "Month"}
-          </Button>
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 }
