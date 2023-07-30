@@ -1,9 +1,23 @@
 import Logo from "../component/Logo";
 import YearSelection from "./YearSelection";
 import RecentSearches from "./RecentSearches";
-import Button from "@mui/material/Button";
 import { MONTH, YEAR } from "../../variables";
 import Box from "@mui/material/Box";
+
+import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import { grey } from "@mui/material/colors";
+
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(grey[400]),
+  padding: "auto",
+  borderColor: grey[400],
+  fontFamily: '"Open Sans", "sans-serif"',
+  "&:hover": {
+    backgroundColor: grey[200],
+    borderColor: grey[500],
+  },
+}));
 
 export default function Navbar({
   currentYear,
@@ -32,7 +46,7 @@ export default function Navbar({
           display: "flex",
           width: "50%",
           justifyContent: "start",
-          ml: "5%",
+          ml: "2%",
           alignItems: "center",
         }}
       >
@@ -50,7 +64,7 @@ export default function Navbar({
           }}
         >
           <Box
-            sx={{ marginLeft: "5%", bgcolor: "grey.100", marginRight: "5%" }}
+            sx={{ marginLeft: "5%", marginRight: "5%", borderRadius: 1 }}
             id="year-selection-wrapper"
           >
             <YearSelection
@@ -59,13 +73,9 @@ export default function Navbar({
             />
           </Box>
           <Box id="calendar-view-toggle-wrapper">
-            <Button
-              variant="contained"
-              sx={{ height: 39 }}
-              onClick={changeCalendarView}
-            >
+            <ColorButton variant="outlined" onClick={changeCalendarView}>
               {calendarView === YEAR ? "Year" : "Month"}
-            </Button>
+            </ColorButton>
           </Box>
         </Box>
       </Box>

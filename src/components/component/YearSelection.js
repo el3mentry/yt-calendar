@@ -21,9 +21,13 @@ export default function YearSelection({ currentYear, setCurrentYear }) {
       <Box
         sx={{
           border: 1,
+          borderColor: "#c4c4c4",
           borderRadius: 1,
           textAlign: "center",
           paddingRight: 1,
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center"
         }}
       >
         <IconButton onClick={changeToPreviousYear}>
