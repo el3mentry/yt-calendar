@@ -15,5 +15,5 @@ export default function Main() {
   }
 
   // return <>{getPageType()}</>;
-  return <CalendarPage />
+  return <CalendarPage />;
 }

@@ -6,6 +6,7 @@ import Select from "@mui/material/Select";
 
 export default function RecentSearches() {
   const [search, setSearch] = React.useState("");
+  const [isOpen, setIsOpen] = React.useState(false)
 
   const handleChange = (event) => {
     setSearch(event.target.value);
@@ -19,7 +20,11 @@ export default function RecentSearches() {
         id="select-small"
         value={search}
         label="Search"
+        open={isOpen}
+        onOpen={() => setIsOpen(true)}
         onChange={handleChange}
+        onClose={()=> setIsOpen(false)}
+        sx={{borderRadius: '7px'}}
       >
         <MenuItem value="">
           <em>None</em>

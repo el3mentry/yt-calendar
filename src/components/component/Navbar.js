@@ -12,6 +12,8 @@ const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(grey[400]),
   padding: "auto",
   borderColor: grey[400],
+  borderRadius: '7px',
+  height: '38px',
   fontFamily: '"Open Sans", "sans-serif"',
   "&:hover": {
     backgroundColor: grey[200],
@@ -33,20 +35,24 @@ export default function Navbar({
     <Box
       id="navbar-box"
       sx={{
-        height: "60px",
+        height: "70px",
         width: "100vw",
         backgroundColor: "white",
         display: "flex",
-        p: "0.4rem",
+        position: "fixed",
+        border: 1,
+        borderTop: "none",
+        borderBottom: "line",
+        borderColor: "#c4c4c4"
       }}
     >
       <Box
         id="navbar-left-section"
         sx={{
           display: "flex",
-          width: "50%",
+          width: "30%",
           justifyContent: "start",
-          ml: "2%",
+          ml: "2vw",
           alignItems: "center",
         }}
       >
@@ -72,11 +78,6 @@ export default function Navbar({
               setCurrentYear={setCurrentYear}
             />
           </Box>
-          <Box id="calendar-view-toggle-wrapper">
-            <ColorButton variant="outlined" onClick={changeCalendarView}>
-              {calendarView === YEAR ? "Year" : "Month"}
-            </ColorButton>
-          </Box>
         </Box>
       </Box>
 
@@ -84,12 +85,18 @@ export default function Navbar({
         id="navbar-right-section"
         sx={{
           display: "flex",
-          width: "50%",
-          justifyContent: "end",
+          width: "70%",
+          flexDirection: "row",
+          justifyContent: "space-between",
           marginRight: "5%",
           alignItems: "center",
         }}
       >
+        <Box id="calendar-view-toggle-wrapper">
+          <ColorButton variant="outlined" onClick={changeCalendarView}>
+            <div style={{color: "#6d6d6d"}}>{calendarView === YEAR ? "Yearly" : "Monthly"}</div>
+          </ColorButton>
+        </Box>
         <Box sx={{ marginRight: "3%" }} id="recent-searches-wrapper">
           <RecentSearches />
         </Box>

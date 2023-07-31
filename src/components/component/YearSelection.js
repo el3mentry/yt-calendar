@@ -22,21 +22,22 @@ export default function YearSelection({ currentYear, setCurrentYear }) {
         sx={{
           border: 1,
           borderColor: "#c4c4c4",
-          borderRadius: 1,
+          borderRadius: '7px',
           textAlign: "center",
-          paddingRight: 1,
+          paddingRight: 1.3,
+          paddingLeft: 1.3,
           display: "flex",
           flexDirection: "row",
           alignItems: "center"
         }}
       >
-        <IconButton onClick={changeToPreviousYear}>
+        <IconButton onClick={changeToPreviousYear} edge={'start'}>
           <BiChevronLeft size={20} />
         </IconButton>
-        <IconButton onClick={changeToNextYear}>
+        <IconButton onClick={changeToNextYear} edge={'start'}>
           <BiChevronRight size={20} />
         </IconButton>
-        <strong>{currentYear}</strong>
+        <div style={{color: "#6d6d6d"}}>{currentYear}</div>
       </Box>
     </div>
   );

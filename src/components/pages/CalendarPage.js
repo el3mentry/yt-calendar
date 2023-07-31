@@ -20,11 +20,11 @@ export default function CalendarPage({ setPage }) {
         />
       </Grid>
 
-      <Grid item container xs={2}>
+      <Grid item container xs={2} sx={{ paddingTop: "70px" }}>
         <ChannelInfo channelId={"0123456789"} channelName={"MrFeast"} />
       </Grid>
 
-      <Grid container item xs={10}>
+      <Grid container item xs={10} sx={{ paddingTop: "85px" }}>
         <YearlyCalendar showNumberOfMonths={calendarView} year={currentYear} />
       </Grid>
     </Grid>

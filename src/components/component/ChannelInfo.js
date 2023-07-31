@@ -4,9 +4,10 @@ export default function ChannelInfo({ channelName, channelId }) {
       style={{
         display: "flex",
         flexDirection: "column",
-        width: "100%",
-        height: "70%",
-        margin: "12%",
+        width: "13%",
+        height: "60%",
+        margin: "2vw",
+        position: "fixed"
       }}
       id="left-section"
     >

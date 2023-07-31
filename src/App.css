@@ -121,10 +121,22 @@
   #month-resizable-div {
     width: 256px;
   }
+  #navbar-left-section{
+    width: 27%;
+  }
+  #navbar-right-section{
+    width: 73%;
+  }
 }
 
 @media (max-width: 1366px) {
   #month-resizable-div {
     width: 213px;
+  }
+  #navbar-left-section{
+    width: 30%;
+  }
+  #navbar-right-section{
+    width: 70%;
   }
 }
