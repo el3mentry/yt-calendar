@@ -1,38 +1,27 @@
 import * as React from "react";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
-export default function RecentSearches() {
-  const [search, setSearch] = React.useState("");
-  const [isOpen, setIsOpen] = React.useState(false)
+export default function RecentSearches({ recents }) {
+  const [search, setSearch] = React.useState("None");
+  recents = ["None", "Mr Feast" ,"Garsh" ];
 
-  const handleChange = (event) => {
-    setSearch(event.target.value);
+  const handleChange = (event, newValue) => {
+    setSearch(newValue);
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="small-label">Recents</InputLabel>
-      <Select
-        labelId="small-label"
-        id="select-small"
-        value={search}
-        label="Search"
-        open={isOpen}
-        onOpen={() => setIsOpen(true)}
-        onChange={handleChange}
-        onClose={()=> setIsOpen(false)}
-        sx={{borderRadius: '7px'}}
-      >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={10}>MrFeast</MenuItem>
-        <MenuItem value={20}>El3</MenuItem>
-        <MenuItem value={30}>Mentry</MenuItem>
-      </Select>
-    </FormControl>
+    <Autocomplete
+      disablePortal
+      id="combo-box-demo"
+      value={search}
+      options={recents}
+      onChange={handleChange}
+      onInputChange={(event, newInputValue) => {
+        setSearch(newInputValue);
+      }}
+      sx={{ width: 200 }}
+      renderInput={(params) => <TextField {...params} label="Movie" />}
+    />
   );
 }

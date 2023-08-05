@@ -19,7 +19,7 @@ export default function Day({ dayValue }) {
     <div>
       <div
         onClick={handleClick}
-        sx={{ borderRadius: "8px" }}
+        style={{ cursor: "pointer" }}
         aria-describedby={id}
       >
         {dayValue}

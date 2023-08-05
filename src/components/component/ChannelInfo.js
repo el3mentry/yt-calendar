@@ -5,6 +5,8 @@ export default function ChannelInfo({ channelName, channelId }) {
         display: "flex",
         flexDirection: "column",
         width: "13%",
+        minWidth: "13%",
+        maxWidth: "13%",
         height: "60%",
         margin: "2vw",
         position: "fixed"
