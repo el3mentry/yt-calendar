@@ -4,7 +4,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 
 export default function RecentSearches({ recents }) {
   const [search, setSearch] = React.useState("None");
-  recents = ["None", "Mr Feast" ,"Garsh" ];
+  recents = ["None", "Mr Feast", "Garsh"];
 
   const handleChange = (event, newValue) => {
     setSearch(newValue);
@@ -20,8 +20,9 @@ export default function RecentSearches({ recents }) {
       onInputChange={(event, newInputValue) => {
         setSearch(newInputValue);
       }}
+      size="small"
       sx={{ width: 200 }}
-      renderInput={(params) => <TextField {...params} label="Movie" />}
+      renderInput={(params) => <TextField {...params} label="Recents" />}
     />
   );
 }
