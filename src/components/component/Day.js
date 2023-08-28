@@ -1,6 +1,25 @@
 import * as React from "react";
 import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+
+const options = [
+  "None",
+  "Atria",
+  "Callisto",
+  "Dione",
+  "Ganymede",
+  "Hangouts Call",
+  <div>something</div>,
+  "Oberon",
+  "Phobos",
+  "Pyxis",
+  "Sedna",
+  "Titania",
+  "Triton",
+  "Umbriel",
+];
+const ITEM_HEIGHT = 48;
 
 export default function Day({ dayValue }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -34,7 +53,35 @@ export default function Day({ dayValue }) {
           horizontal: "left",
         }}
       >
-        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+        <div>
+          <Menu
+            id="long-menu"
+            MenuListProps={{
+              "aria-labelledby": "long-button",
+            }}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            slotProps={{
+              paper: {
+                style: {
+                  maxHeight: ITEM_HEIGHT * 4.5,
+                  width: "20ch",
+                },
+              },
+            }}
+          >
+            {options.map((option) => (
+              <MenuItem
+                key={option}
+                selected={option === "Pyxis"}
+                onClick={handleClose}
+              >
+                {option}
+              </MenuItem>
+            ))}
+          </Menu>
+        </div>
       </Popover>
     </div>
   );
