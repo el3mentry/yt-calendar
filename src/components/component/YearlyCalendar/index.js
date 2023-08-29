@@ -7,7 +7,7 @@ import { YEAR } from "../../../variables";
 
 dayjs.extend(isBetween);
 
-const YearlyCalendar = ({ showNumberOfMonths, year, setCurrentMonth }) => {
+const YearlyCalendar = ({ showNumberOfMonths, year }) => {
   const totalCalendarMonths = 12;
   const _showNumberOfMonths = isValidMonthsOption(showNumberOfMonths)
     ? showNumberOfMonths
@@ -17,7 +17,6 @@ const YearlyCalendar = ({ showNumberOfMonths, year, setCurrentMonth }) => {
     showNumberOfMonths: _showNumberOfMonths,
     activeYear: year,
     monthsFrom: (showNumberOfMonths === YEAR)? 1: dayjs().month() + 1,
-    setCurrentMonth
   };
 
   const layoutClassName =

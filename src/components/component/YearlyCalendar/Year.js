@@ -6,7 +6,7 @@ import Day from "../Day";
 
 dayjs.extend(isBetween);
 
-const Year = ({ activeYear, showNumberOfMonths = 12, monthsFrom = 1, setCurrentMonth }) => {
+const Year = ({ activeYear, showNumberOfMonths = 12, monthsFrom = 1 }) => {
   const _year = activeYear || dayjs().year();
 
   return (
@@ -16,7 +16,6 @@ const Year = ({ activeYear, showNumberOfMonths = 12, monthsFrom = 1, setCurrentM
         const month = monthsFrom + pos;
         const date = `${_year}-${month}`;
         const monthName = getMonthName(month);
-        setCurrentMonth(monthName);
         const totalDays = dayjs(date).daysInMonth();
         const firstDayOfWeek = dayjs(`${date}-01`).day();
 
