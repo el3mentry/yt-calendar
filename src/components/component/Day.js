@@ -2,22 +2,12 @@ import * as React from "react";
 import Popover from "@mui/material/Popover";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Media from "./Media";
 
 const options = [
-  "None",
-  "Atria",
-  "Callisto",
-  "Dione",
-  "Ganymede",
-  "Hangouts Call",
-  <div>something</div>,
-  "Oberon",
-  "Phobos",
-  "Pyxis",
-  "Sedna",
-  "Titania",
-  "Triton",
-  "Umbriel",
+  <Media thumbnail={"https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"} key={"1"} title={'this is title'} />,
+  <Media thumbnail={"https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"} key={"2"} title={'this is title'} />,
+  <Media thumbnail={"https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"} key={"3"} title={'this is titlethis is titlethis is titlethis is titlethis is title'} />
 ];
 const ITEM_HEIGHT = 48;
 
@@ -74,7 +64,6 @@ export default function Day({ dayValue }) {
             {options.map((option) => (
               <MenuItem
                 key={option}
-                selected={option === "Pyxis"}
                 onClick={handleClose}
               >
                 {option}
