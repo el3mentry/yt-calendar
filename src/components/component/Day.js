@@ -63,7 +63,7 @@ export default function Day({ dayValue }) {
           >
             {options.map((option) => (
               <MenuItem
-                key={option}
+                key={option.key}
                 onClick={handleClose}
               >
                 {option}
