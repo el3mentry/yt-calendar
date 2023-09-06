@@ -10,7 +10,8 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 dayjs.extend(isBetween);
 
-const YearlyCalendar = ({ showNumberOfMonths, year }) => {
+const YearlyCalendar = ({ showNumberOfMonths, date }) => {
+  const year = date.year();
   const totalCalendarMonths = 12;
   const _showNumberOfMonths = isValidMonthsOption(showNumberOfMonths)
     ? showNumberOfMonths
@@ -37,6 +38,7 @@ const YearlyCalendar = ({ showNumberOfMonths, year }) => {
           <Year {...configYear} />
         ) : (
           <Calendar
+            date={date}
             localizer={localizer}
             startAccessor="start"
             endAccessor="end"

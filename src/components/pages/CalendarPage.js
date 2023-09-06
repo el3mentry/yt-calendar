@@ -7,16 +7,17 @@ import dayjs from "dayjs";
 import { YEAR } from "../../variables";
 
 export default function CalendarPage({ setPage }) {
-  const [currentYear, setCurrentYear] = useState(dayjs().year());
+  // const [currentYear, setCurrentYear] = useState(dayjs().year());
   const [calendarView, setCalendarView] = useState(YEAR);
+  const [date, setDate] = useState(dayjs());
   return (
     <Grid container>
       <Grid item container xs={12}>
         <Navbar
-          currentYear={currentYear}
-          setCurrentYear={setCurrentYear}
           calendarView={calendarView}
           setCalendarView={setCalendarView}
+          date={date}
+          setDate={setDate}
         />
       </Grid>
 
@@ -25,7 +26,7 @@ export default function CalendarPage({ setPage }) {
       </Grid>
 
       <Grid container item xs={10} sx={{ paddingTop: "85px" }}>
-        <YearlyCalendar showNumberOfMonths={calendarView} year={currentYear} />
+        <YearlyCalendar showNumberOfMonths={calendarView} date={date}/>
       </Grid>
     </Grid>
   );

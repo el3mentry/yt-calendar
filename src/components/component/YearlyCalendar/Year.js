@@ -6,18 +6,18 @@ import Day from "../Day";
 
 dayjs.extend(isBetween);
 
-const Year = ({ activeYear, showNumberOfMonths = 12, monthsFrom = 1 }) => {
-  const _year = activeYear || dayjs().year();
+const Year = ({ activeYear, date, showNumberOfMonths = 12, monthsFrom = 1 }) => {
 
   return (
     <div className="year" data-testid="year">
       {new Array(showNumberOfMonths).fill("").map((_, pos) => {
         const arrOffset = 1;
         const month = monthsFrom + pos;
-        const date = `${_year}-${month}`;
+        const _year = activeYear || date.year();
+        const strippedDate = `${_year}-${month}`;
         const monthName = getMonthName(month);
-        const totalDays = dayjs(date).daysInMonth();
-        const firstDayOfWeek = dayjs(`${date}-01`).day();
+        const totalDays = dayjs(strippedDate).daysInMonth();
+        const firstDayOfWeek = dayjs(`${strippedDate}-01`).day();
 
         const offsetDays =
           firstDayOfWeek !== 0
