@@ -26,7 +26,11 @@ export default function CalendarPage({ setPage }) {
       </Grid>
 
       <Grid container item xs={10} sx={{ paddingTop: "85px" }}>
-        <YearlyCalendar showNumberOfMonths={calendarView} date={date}/>
+        <YearlyCalendar
+          showNumberOfMonths={calendarView}
+          date={date}
+          setDate={setDate}
+        />
       </Grid>
     </Grid>
   );
