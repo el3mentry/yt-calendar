@@ -4,7 +4,7 @@ import isBetween from "dayjs/plugin/isBetween";
 import { isValidMonthsOption } from "./Utils";
 import Year from "./Year";
 import { YEAR } from "../../../variables";
-import { Calendar, momentLocalizer } from "react-big-calendar";
+import { Calendar, momentLocalizer, Views } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -42,6 +42,7 @@ const YearlyCalendar = ({ showNumberOfMonths, year }) => {
             endAccessor="end"
             style={{ height: "80vh", width: "80vw" }}
             toolbar={false}
+            views={[Views.MONTH]}
           />
         )}
       </div>

@@ -147,6 +147,8 @@
 
 .rbc-date-cell {
   text-align: center !important;
+  padding-right: 0 !important;
+  padding-top: 5px;
 }
 
 .rbc-header {
