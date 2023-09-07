@@ -7,7 +7,6 @@ import Day from "../Day";
 dayjs.extend(isBetween);
 
 const Year = ({ activeYear, date, showNumberOfMonths = 12, monthsFrom = 1 }) => {
-
   return (
     <div className="year" data-testid="year">
       {new Array(showNumberOfMonths).fill("").map((_, pos) => {

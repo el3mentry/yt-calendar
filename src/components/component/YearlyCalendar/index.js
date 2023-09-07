@@ -4,9 +4,7 @@ import isBetween from "dayjs/plugin/isBetween";
 import { isValidMonthsOption } from "./Utils";
 import Year from "./Year";
 import { YEAR } from "../../../variables";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
+import Month from "./Month";
 
 dayjs.extend(isBetween);
 
@@ -16,12 +14,11 @@ const YearlyCalendar = ({ showNumberOfMonths, date, setDate }) => {
   const _showNumberOfMonths = isValidMonthsOption(showNumberOfMonths)
     ? showNumberOfMonths
     : totalCalendarMonths;
-  const localizer = momentLocalizer(moment);
 
   const configYear = {
     showNumberOfMonths: _showNumberOfMonths,
     activeYear: year,
-    monthsFrom: showNumberOfMonths === YEAR ? 1 : dayjs().month() + 1,
+    monthsFrom: showNumberOfMonths === YEAR ? 1 : date.month() + 1,
   };
 
   const layoutClassName =
@@ -37,16 +34,7 @@ const YearlyCalendar = ({ showNumberOfMonths, date, setDate }) => {
         {showNumberOfMonths === YEAR ? (
           <Year {...configYear} />
         ) : (
-          <Calendar
-            date={date.toString()}
-            localizer={localizer}
-            startAccessor="start"
-            endAccessor="end"
-            style={{ height: "80vh", width: "80vw" }}
-            toolbar={false}
-            onNavigate={() => {}}
-            views={{ month: true, agenda: false }}
-          />
+          <Month date={date} />
         )}
       </div>
     </section>

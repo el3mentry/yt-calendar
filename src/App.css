@@ -117,14 +117,49 @@
   max-width: 256px;
 }
 
+.my-calendar {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-calendar-header {
+  display: flex;
+}
+
+.my-calendar-header-cell {
+  flex: 1;
+  text-align: center;
+  background-color: #4caf50;
+  color: white;
+}
+
+.my-calendar-row {
+  display: flex;
+}
+
+.my-calendar-cell {
+  flex: 1;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.my-calendar-row:nth-child(even) .my-calendar-cell {
+  background-color: #f2f2f2;
+}
+
+.my-calendar-cell:hover {
+  background-color: #ddd;
+}
+
 @media (max-width: 1920px) {
   #month-resizable-div {
     width: 256px;
   }
-  #navbar-left-section{
+  #navbar-left-section {
     width: 27%;
   }
-  #navbar-right-section{
+  #navbar-right-section {
     width: 73%;
   }
 }
@@ -133,29 +168,10 @@
   #month-resizable-div {
     width: 213px;
   }
-  #navbar-left-section{
+  #navbar-left-section {
     width: 30%;
   }
-  #navbar-right-section{
+  #navbar-right-section {
     width: 70%;
   }
-}
-
-.rbc-day-bg.rbc-off-range-bg {
-  background-color: white;
-}
-
-.rbc-date-cell {
-  text-align: center !important;
-  padding-right: 0 !important;
-  padding-top: 5px;
-}
-
-.rbc-header {
-  border-bottom: none !important;
-  padding-top: 7px !important;
-}
-
-.rbc-header > span {
-  font-weight: normal;
 }
