@@ -1,37 +1,30 @@
 import YearlyCalendar from "../component/YearlyCalendar";
-import ChannelInfo from "../component/ChannelInfo";
-import { Grid } from "@mui/material";
 import Navbar from "../component/Navbar";
 import { useState } from "react";
 import dayjs from "dayjs";
 import { YEAR } from "../../variables";
 
 export default function CalendarPage({ setPage }) {
-  // const [currentYear, setCurrentYear] = useState(dayjs().year());
   const [calendarView, setCalendarView] = useState(YEAR);
   const [date, setDate] = useState(dayjs());
   return (
-    <Grid container>
-      <Grid item container xs={12}>
+    <div className="flex flex-col height-full width-full">
+      <div style={{ height: "70px" }}>
         <Navbar
           calendarView={calendarView}
           setCalendarView={setCalendarView}
           date={date}
           setDate={setDate}
         />
-      </Grid>
+      </div>
 
-      <Grid item container xs={2} sx={{ paddingTop: "70px" }}>
-        <ChannelInfo channelId={"0123456789"} channelName={"MrFeast"} />
-      </Grid>
-
-      <Grid container item xs={10} sx={{ paddingTop: "85px" }}>
+      <div className="width-full flex" style={{ flexGrow: 1 }}>
         <YearlyCalendar
           showNumberOfMonths={calendarView}
           date={date}
           setDate={setDate}
         />
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 }

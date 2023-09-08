@@ -11,7 +11,7 @@ const options = [
 ];
 const ITEM_HEIGHT = 48;
 
-export default function Day({ dayValue }) {
+export default function Day({ dayValue, className }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -25,7 +25,7 @@ export default function Day({ dayValue }) {
   const open = Boolean(anchorEl);
   const id = open ? "uploads-popover" : undefined;
   return (
-    <div>
+    <div className={className}>
       <div
         onClick={handleClick}
         style={{ cursor: "pointer" }}

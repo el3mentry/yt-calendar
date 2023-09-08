@@ -29,8 +29,8 @@ const YearlyCalendar = ({ showNumberOfMonths, date, setDate }) => {
       : "";
 
   return (
-    <section className={`calendar ${layoutClassName}`} data-testid="calendar">
-      <div className="wrap">
+    <section className={`calendar ${layoutClassName} width-full flex`} style={{ flexGrow: 1 }} data-testid="calendar">
+      <div className="wrap flex width-full" style={{ flexGrow: 1 }}>
         {showNumberOfMonths === YEAR ? (
           <Year {...configYear} />
         ) : (

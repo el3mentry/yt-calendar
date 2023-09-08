@@ -1,5 +1,7 @@
 import React from "react";
 import moment from "moment";
+import Day from "../Day";
+import Media from "../Media";
 
 const Month = ({ date }) => {
   const year = date.year();
@@ -28,21 +30,23 @@ const Month = ({ date }) => {
   const calendarGrid = generateCalendarGrid();
 
   return (
-    <div>
-      <div className="my-calendar">
-        <div className="my-calendar-header">
+    <div className="flex width-full">
+      <div className="month-calendar">
+        <div className="month-calendar-header">
           {moment.weekdaysShort().map((day) => (
-            <div key={day} className="my-calendar-header-cell">
+            <div key={day} className="month-calendar-header-cell">
               {day}
             </div>
           ))}
         </div>
         {calendarGrid.map((week, index) => (
-          <div key={index} className="my-calendar-row">
+          <div key={index} className="month-calendar-row">
             {week.map((day) => (
-              <div key={day.format("YYYY-MM-DD")} className="my-calendar-cell">
-                {day.format("D")}
-              </div>
+              // <div key={day.format("YYYY-MM-DD")} className="month-calendar-cell">
+              //   {day.format("D")}
+              // </div>
+              <Day key={day.format("YYYY-MM-DD")} dayValue={day.format("D")} className={"month-calendar-cell"} />
+
             ))}
           </div>
         ))}
