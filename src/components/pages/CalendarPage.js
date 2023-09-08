@@ -9,7 +9,7 @@ export default function CalendarPage({ setPage }) {
   const [date, setDate] = useState(dayjs());
   return (
     <div className="flex flex-col height-full width-full">
-      <div style={{ height: "70px" }}>
+      <div style={{ height: "70px", position: "fixed" }}>
         <Navbar
           calendarView={calendarView}
           setCalendarView={setCalendarView}
@@ -18,7 +18,7 @@ export default function CalendarPage({ setPage }) {
         />
       </div>
 
-      <div className="width-full flex" style={{ flexGrow: 1 }}>
+      <div className="width-full flex" style={{ flexGrow: 1, marginTop: "80px" }}>
         <YearlyCalendar
           showNumberOfMonths={calendarView}
           date={date}

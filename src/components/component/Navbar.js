@@ -40,7 +40,6 @@ export default function Navbar({
         width: "100vw",
         backgroundColor: "white",
         display: "flex",
-        position: "fixed",
         border: 1,
         borderTop: "none",
         borderBottom: "line",
