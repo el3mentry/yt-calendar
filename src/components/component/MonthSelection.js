@@ -33,13 +33,14 @@ export default function MonthSelection({ date, setDate }) {
         sx={{
           border: 1,
           borderColor: "#c4c4c4",
-          borderRadius: "7px",
+          borderRadius: "4px",
           textAlign: "center",
           paddingRight: 1.3,
           paddingLeft: 1.3,
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
+          height: "40px"
         }}
       >
         <IconButton onClick={changeToPreviousMonth} edge={"start"}>

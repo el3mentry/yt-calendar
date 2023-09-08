@@ -29,13 +29,14 @@ export default function YearSelection({
         sx={{
           border: 1,
           borderColor: "#c4c4c4",
-          borderRadius: "7px",
+          borderRadius: "4px",
           textAlign: "center",
           paddingRight: 1.3,
           paddingLeft: 1.3,
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
+          height: "40px"
         }}
       >
         <IconButton onClick={changeToPreviousYear} edge={"start"}>

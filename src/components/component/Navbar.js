@@ -13,8 +13,8 @@ const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(grey[400]),
   padding: "auto",
   borderColor: grey[400],
-  borderRadius: "7px",
-  height: "38px",
+  borderRadius: "4px",
+  height: "41px",
   fontFamily: '"Open Sans", "sans-serif"',
   "&:hover": {
     backgroundColor: grey[200],
@@ -59,33 +59,6 @@ export default function Navbar({
         <Box id="yt-cal-logo" sx={{ mt: "6px" }}>
           <Logo />
         </Box>
-
-        <Box
-          id="navbar-left-subsection"
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            width: "100%",
-          }}
-        >
-          <Box
-            sx={{ marginLeft: "5%", marginRight: "5%", borderRadius: 1 }}
-            id="year-selection-wrapper"
-          >
-            {calendarView === MONTH ? (
-              <MonthSelection
-                date={date}
-                setDate={setDate}
-              />
-            ) : (
-              <YearSelection
-                date={date}
-                setDate={setDate}
-              />
-            )}
-          </Box>
-        </Box>
       </Box>
 
       <Box
@@ -94,12 +67,28 @@ export default function Navbar({
           display: "flex",
           width: "70%",
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "flex-end",
           marginRight: "5%",
           alignItems: "center",
         }}
       >
-        <Box id="calendar-view-toggle-wrapper">
+        <Box
+          sx={{ marginLeft: "5%", marginRight: "2%", borderRadius: 1 }}
+          id="year-selection-wrapper"
+        >
+          {calendarView === MONTH ? (
+            <MonthSelection
+              date={date}
+              setDate={setDate}
+            />
+          ) : (
+            <YearSelection
+              date={date}
+              setDate={setDate}
+            />
+          )}
+        </Box>
+        <Box id="calendar-view-toggle-wrapper" sx={{ marginRight: "5%" }}>
           <ColorButton variant="outlined" onClick={changeCalendarView}>
             <div style={{ color: "#6d6d6d" }}>
               {calendarView === YEAR ? "Yearly" : "Monthly"}
@@ -109,6 +98,7 @@ export default function Navbar({
         <Box sx={{ marginRight: "3%" }} id="recent-searches-wrapper">
           <RecentSearches />
         </Box>
+
       </Box>
     </Box>
   );

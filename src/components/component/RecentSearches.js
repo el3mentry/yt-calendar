@@ -21,7 +21,7 @@ export default function RecentSearches({ recents }) {
         setSearch(newInputValue);
       }}
       size="small"
-      sx={{ width: 200 }}
+      sx={{ width: 150 }}
       renderInput={(params) => <TextField {...params} label="Recents" />}
     />
   );
