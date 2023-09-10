@@ -56,7 +56,7 @@
   /* padding: 0 10px 0 10px;
   margin: 0 20px 0 20px; */
   box-sizing: border-box;
-  flex-basis: 25%;
+  flex-basis: 20.5%;
   min-height: 266px;
 }
 
@@ -160,24 +160,24 @@
   #month-resizable-div {
     width: 256px;
   }
-  #navbar-left-section {
+  /* #navbar-left-section {
     width: 7%;
   }
   #navbar-right-section {
     width: 93%;
-  }
+  } */
 }
 
 @media (max-width: 1366px) {
   #month-resizable-div {
     width: 213px;
   }
-  #navbar-left-section {
+  /* #navbar-left-section {
     width: 10%;
   }
   #navbar-right-section {
     width: 90%;
-  }
+  } */
 }
 
 .flex {

@@ -26,7 +26,8 @@ export default function Navbar({
   calendarView,
   setCalendarView,
   date,
-  setDate
+  setDate,
+  channelName = "ChannelErBisalBoroNaamChannelErBisalBoroNaam",
 }) {
   function changeCalendarView() {
     if (calendarView === MONTH) setCalendarView(YEAR);
@@ -50,14 +51,57 @@ export default function Navbar({
         id="navbar-left-section"
         sx={{
           display: "flex",
-          width: "10%",
-          justifyContent: "space-between",
-          ml: "2vw",
+          width: "33.333%",
+          justifyContent: "flex-start",
           alignItems: "center",
         }}
       >
-        <Box id="yt-cal-logo" sx={{ mt: "6px" }}>
+        <Box id="yt-cal-logo" sx={{ mt: "6px", ml: "2vw" }}>
           <Logo />
+        </Box>
+      </Box>
+
+      <Box
+        id="navbar-middle-section"
+        sx={{
+          display: "flex",
+          width: "33.3333%",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            height: "40px",
+            border: 1,
+            borderColor: "#c4c4c4",
+            borderRadius: "4px",
+            padding: "0 5px 0 5px",
+            width: "12rem",
+          }}
+        >
+          <Box
+            id="channel-logo"
+            sx={{
+              height: "30px",
+              width: "30px",
+              borderRadius: "50%",
+              backgroundColor: "red",
+            }}
+          ></Box>
+          <Box
+            id="channel-title"
+            sx={{ marginLeft: "-24px", display: "flex", flexGrow: 1 }}
+          >
+            <Box title={channelName} sx={{ flexGrow: 1, textAlign: "center" }}>
+              {channelName.length > 18
+                ? channelName.substring(0, 15) + "..."
+                : channelName}
+            </Box>
+          </Box>
         </Box>
       </Box>
 
@@ -65,48 +109,30 @@ export default function Navbar({
         id="navbar-right-section"
         sx={{
           display: "flex",
-          width: "90%",
+          width: "33.3333%",
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "flex-end",
           marginRight: "2vw",
           alignItems: "center",
         }}
       >
-        <Box sx={{
-          display: "flex", alignItems: "center", marginLeft: "15%", border: 1, height: "40px",
-          border: 1,
-          borderColor: "#c4c4c4",
-          borderRadius: "4px",
-          padding: "0 5px 0 5px"
-        }}>
-          <Box id="channel-logo" sx={{ height: "30px", width: "30px", borderRadius: "50%", backgroundColor: "red" }}>
-          </Box>
-          <Box id="channel-title" sx={{ marginLeft: "10px", display: "inline" }}>
-            "Mr Feast"
-          </Box>
-        </Box>
-
-        <Box sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-end",
-          marginRight: "1vw",
-          alignItems: "center"
-        }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "flex-end",
+            marginRight: "1vw",
+            alignItems: "center",
+          }}
+        >
           <Box
-            sx={{ marginRight: "1vw", borderRadius: 1 }}
+            sx={{ marginRight: "0.6rem", borderRadius: 1 }}
             id="year-selection-wrapper"
           >
             {calendarView === MONTH ? (
-              <MonthSelection
-                date={date}
-                setDate={setDate}
-              />
+              <MonthSelection date={date} setDate={setDate} />
             ) : (
-              <YearSelection
-                date={date}
-                setDate={setDate}
-              />
+              <YearSelection date={date} setDate={setDate} />
             )}
           </Box>
           <Box id="calendar-view-toggle-wrapper" sx={{ marginRight: "4vw" }}>
