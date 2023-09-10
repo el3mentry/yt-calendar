@@ -14,7 +14,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
   padding: "auto",
   borderColor: grey[400],
   borderRadius: "4px",
-  height: "41px",
+  height: "42px",
   fontFamily: '"Open Sans", "sans-serif"',
   "&:hover": {
     backgroundColor: grey[200],
@@ -50,8 +50,8 @@ export default function Navbar({
         id="navbar-left-section"
         sx={{
           display: "flex",
-          width: "30%",
-          justifyContent: "start",
+          width: "10%",
+          justifyContent: "space-between",
           ml: "2vw",
           alignItems: "center",
         }}
@@ -65,40 +65,61 @@ export default function Navbar({
         id="navbar-right-section"
         sx={{
           display: "flex",
-          width: "70%",
+          width: "90%",
           flexDirection: "row",
-          justifyContent: "flex-end",
-          marginRight: "5%",
+          justifyContent: "space-between",
+          marginRight: "2vw",
           alignItems: "center",
         }}
       >
-        <Box
-          sx={{ marginLeft: "5%", marginRight: "2%", borderRadius: 1 }}
-          id="year-selection-wrapper"
-        >
-          {calendarView === MONTH ? (
-            <MonthSelection
-              date={date}
-              setDate={setDate}
-            />
-          ) : (
-            <YearSelection
-              date={date}
-              setDate={setDate}
-            />
-          )}
-        </Box>
-        <Box id="calendar-view-toggle-wrapper" sx={{ marginRight: "5%" }}>
-          <ColorButton variant="outlined" onClick={changeCalendarView}>
-            <div style={{ color: "#6d6d6d" }}>
-              {calendarView === YEAR ? "Yearly" : "Monthly"}
-            </div>
-          </ColorButton>
-        </Box>
-        <Box sx={{ marginRight: "3%" }} id="recent-searches-wrapper">
-          <RecentSearches />
+        <Box sx={{
+          display: "flex", alignItems: "center", marginLeft: "15%", border: 1, height: "40px",
+          border: 1,
+          borderColor: "#c4c4c4",
+          borderRadius: "4px",
+          padding: "0 5px 0 5px"
+        }}>
+          <Box id="channel-logo" sx={{ height: "30px", width: "30px", borderRadius: "50%", backgroundColor: "red" }}>
+          </Box>
+          <Box id="channel-title" sx={{ marginLeft: "10px", display: "inline" }}>
+            "Mr Feast"
+          </Box>
         </Box>
 
+        <Box sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          marginRight: "1vw",
+          alignItems: "center"
+        }}>
+          <Box
+            sx={{ marginRight: "1vw", borderRadius: 1 }}
+            id="year-selection-wrapper"
+          >
+            {calendarView === MONTH ? (
+              <MonthSelection
+                date={date}
+                setDate={setDate}
+              />
+            ) : (
+              <YearSelection
+                date={date}
+                setDate={setDate}
+              />
+            )}
+          </Box>
+          <Box id="calendar-view-toggle-wrapper" sx={{ marginRight: "4vw" }}>
+            <ColorButton variant="outlined" onClick={changeCalendarView}>
+              <div style={{ color: "#6d6d6d" }}>
+                {calendarView === YEAR ? "Yearly" : "Monthly"}
+              </div>
+            </ColorButton>
+          </Box>
+          <Box sx={{ marginRight: "3%" }} id="recent-searches-wrapper">
+            <RecentSearches />
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
