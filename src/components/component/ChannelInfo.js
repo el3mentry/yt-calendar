@@ -9,7 +9,7 @@ export default function ChannelInfo({ channelName, channelId }) {
         maxWidth: "13%",
         height: "60%",
         margin: "2vw",
-        position: "fixed"
+        position: "fixed",
       }}
       id="left-section"
     >
@@ -26,7 +26,8 @@ export default function ChannelInfo({ channelName, channelId }) {
           borderRadius: "20px",
         }}
       >
-        <div id="channel-pfp"
+        <div
+          id="channel-pfp"
           style={{
             borderRadius: "50%",
             backgroundColor: "red",

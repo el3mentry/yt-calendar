@@ -45,8 +45,11 @@ const Month = ({ date }) => {
               // <div key={day.format("YYYY-MM-DD")} className="month-calendar-cell">
               //   {day.format("D")}
               // </div>
-              <Day key={day.format("YYYY-MM-DD")} dayValue={day.format("D")} className={"month-calendar-cell"} />
-
+              <Day
+                key={day.format("YYYY-MM-DD")}
+                dayValue={day.format("D")}
+                className={"month-calendar-cell"}
+              />
             ))}
           </div>
         ))}

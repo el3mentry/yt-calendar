@@ -18,7 +18,10 @@ export default function CalendarPage({ setPage }) {
         />
       </div>
 
-      <div className="width-full flex" style={{ flexGrow: 1, marginTop: "70px" }}>
+      <div
+        className="width-full flex"
+        style={{ flexGrow: 1, marginTop: "70px" }}
+      >
         <YearlyCalendar
           showNumberOfMonths={calendarView}
           date={date}

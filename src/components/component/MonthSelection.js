@@ -40,7 +40,7 @@ export default function MonthSelection({ date, setDate }) {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          height: "40px"
+          height: "40px",
         }}
       >
         <IconButton onClick={changeToPreviousMonth} edge={"start"}>

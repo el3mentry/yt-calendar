@@ -3,23 +3,16 @@ import { IconButton } from "@mui/material";
 import Box from "@mui/material/Box";
 import dayjs from "dayjs";
 
-export default function YearSelection({
-  date,
-  setDate,
-}) {
+export default function YearSelection({ date, setDate }) {
   function changeToPreviousYear() {
     setDate((prev) => {
-      return prev.year() === 2006
-        ? prev
-        : prev.subtract(1, "y");
+      return prev.year() === 2006 ? prev : prev.subtract(1, "y");
     });
   }
 
   function changeToNextYear() {
     setDate((prev) => {
-      return prev.year() === dayjs().year()
-        ? prev
-        : prev.add(1, "y");
+      return prev.year() === dayjs().year() ? prev : prev.add(1, "y");
     });
   }
 
@@ -36,7 +29,7 @@ export default function YearSelection({
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          height: "40px"
+          height: "40px",
         }}
       >
         <IconButton onClick={changeToPreviousYear} edge={"start"}>

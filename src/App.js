@@ -16,10 +16,10 @@ function App() {
       },
       active: () => {
         setIsLoading(false);
-      }
+      },
     });
   }, []);
-  return (isLoading? <CircularProgress />: <Main />);
+  return isLoading ? <CircularProgress /> : <Main />;
 }
 
 export default App;

@@ -92,10 +92,7 @@ export default function Navbar({
               backgroundColor: "red",
             }}
           ></Box>
-          <Box
-            id="channel-title"
-            sx={{ display: "flex", flexGrow: 1 }}
-          >
+          <Box id="channel-title" sx={{ display: "flex", flexGrow: 1 }}>
             <Box title={channelName} sx={{ flexGrow: 1, textAlign: "center" }}>
               {channelName.length > 18
                 ? channelName.substring(0, 15) + "..."

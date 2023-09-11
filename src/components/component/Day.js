@@ -5,9 +5,27 @@ import MenuItem from "@mui/material/MenuItem";
 import Media from "./Media";
 
 const options = [
-  <Media thumbnail={"https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"} key={"1"} title={'this is title'} />,
-  <Media thumbnail={"https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"} key={"2"} title={'this is title'} />,
-  <Media thumbnail={"https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"} key={"3"} title={'this is titlethis is titlethis is titlethis is titlethis is title'} />
+  <Media
+    thumbnail={
+      "https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"
+    }
+    key={"1"}
+    title={"this is title"}
+  />,
+  <Media
+    thumbnail={
+      "https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"
+    }
+    key={"2"}
+    title={"this is title"}
+  />,
+  <Media
+    thumbnail={
+      "https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"
+    }
+    key={"3"}
+    title={"this is titlethis is titlethis is titlethis is titlethis is title"}
+  />,
 ];
 const ITEM_HEIGHT = 48;
 
@@ -62,10 +80,7 @@ export default function Day({ dayValue, className }) {
             }}
           >
             {options.map((option) => (
-              <MenuItem
-                key={option.key}
-                onClick={handleClose}
-              >
+              <MenuItem key={option.key} onClick={handleClose}>
                 {option}
               </MenuItem>
             ))}
