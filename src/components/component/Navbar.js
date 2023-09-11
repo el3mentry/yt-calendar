@@ -135,7 +135,7 @@ export default function Navbar({
             }}
           >
             {startDate !== null && endDate !== null
-              ? startDate.format("Do MMM, 'YY") +
+              ? startDate.format("Do MMM 'YY") +
                 " - " +
                 endDate.format("Do MMM 'YY")
               : "Do MMM' YY - Do MMM' YY"}
