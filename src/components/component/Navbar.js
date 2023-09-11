@@ -27,7 +27,7 @@ export default function Navbar({
   setCalendarView,
   date,
   setDate,
-  channelName = "ChannelErBisalBoroNaamChannelErBisalBoroNaam",
+  channelName = "Channel",
 }) {
   function changeCalendarView() {
     if (calendarView === MONTH) setCalendarView(YEAR);
@@ -94,7 +94,7 @@ export default function Navbar({
           ></Box>
           <Box
             id="channel-title"
-            sx={{ marginLeft: "-24px", display: "flex", flexGrow: 1 }}
+            sx={{ display: "flex", flexGrow: 1 }}
           >
             <Box title={channelName} sx={{ flexGrow: 1, textAlign: "center" }}>
               {channelName.length > 18
