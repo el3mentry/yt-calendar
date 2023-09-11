@@ -59,18 +59,7 @@ export default function Navbar({
         <Box id="yt-cal-logo" sx={{ mt: "6px", ml: "2vw" }}>
           <Logo />
         </Box>
-      </Box>
 
-      <Box
-        id="navbar-middle-section"
-        sx={{
-          display: "flex",
-          width: "33.3333%",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
         <Box
           sx={{
             display: "flex",
@@ -81,6 +70,8 @@ export default function Navbar({
             borderRadius: "4px",
             padding: "0 5px 0 5px",
             width: "12rem",
+            marginLeft: "auto",
+            marginRight: "auto"
           }}
         >
           <Box
@@ -101,6 +92,17 @@ export default function Navbar({
           </Box>
         </Box>
       </Box>
+
+      <Box
+        id="navbar-middle-section"
+        sx={{
+          display: "flex",
+          width: "33.3333%",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      ></Box>
 
       <Box
         id="navbar-right-section"
