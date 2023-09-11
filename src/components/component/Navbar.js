@@ -8,6 +8,7 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { grey } from "@mui/material/colors";
 import MonthSelection from "./MonthSelection";
+import React from "react";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(grey[400]),
@@ -27,6 +28,8 @@ export default function Navbar({
   setCalendarView,
   date,
   setDate,
+  startDate = null,
+  endDate = null,
   channelName = "Channel",
 }) {
   function changeCalendarView() {
@@ -71,7 +74,7 @@ export default function Navbar({
             padding: "0 5px 0 5px",
             width: "12rem",
             marginLeft: "auto",
-            marginRight: "auto"
+            marginRight: "auto",
           }}
         >
           <Box
@@ -84,7 +87,10 @@ export default function Navbar({
             }}
           ></Box>
           <Box id="channel-title" sx={{ display: "flex", flexGrow: 1 }}>
-            <Box title={channelName} sx={{ flexGrow: 1, textAlign: "center" }}>
+            <Box
+              title={channelName}
+              sx={{ flexGrow: 1, textAlign: "center", color: "#0f0f0f" }}
+            >
               {channelName.length > 18
                 ? channelName.substring(0, 15) + "..."
                 : channelName}
@@ -102,7 +108,40 @@ export default function Navbar({
           justifyContent: "center",
           alignItems: "center",
         }}
-      ></Box>
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "40px",
+            border: 1,
+            borderColor: "#c4c4c4",
+            borderRadius: "4px",
+            padding: "0 5px 0 5px",
+            width: "14rem",
+            marginLeft: "auto",
+            marginRight: "auto",
+            color: "#6d6d6d",
+          }}
+        >
+          <p
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexGrow: 1,
+            }}
+          >
+            {startDate !== null && endDate !== null
+              ? startDate.format("Do MMM, 'YY") +
+                " - " +
+                endDate.format("Do MMM 'YY")
+              : "Do MMM' YY - Do MMM' YY"}
+          </p>
+        </Box>
+      </Box>
 
       <Box
         id="navbar-right-section"
@@ -110,8 +149,7 @@ export default function Navbar({
           display: "flex",
           width: "33.3333%",
           flexDirection: "row",
-          justifyContent: "flex-end",
-          marginRight: "2vw",
+          justifyContent: "center",
           alignItems: "center",
         }}
       >
@@ -141,7 +179,7 @@ export default function Navbar({
               </div>
             </ColorButton>
           </Box>
-          <Box sx={{ marginRight: "3%" }} id="recent-searches-wrapper">
+          <Box sx={{ marginRight: "3%", marginLeft: "4%" }} id="recent-searches-wrapper">
             <RecentSearches />
           </Box>
         </Box>
