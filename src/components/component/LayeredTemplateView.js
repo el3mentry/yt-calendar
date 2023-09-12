@@ -3,16 +3,16 @@ import layer from "../../assets/layer.gif";
 
 export default function LayeredTemplateView({ images = [] }) {
   return (
-    <div>
-      <div style={{ position: "relative" }}>
+    <div style={{ position: "relative" }}>
+      <div style={{ position: "absolute", top: "2px", left: "2px"}}>
         {images.length > 1 ? (
-          <img src={layer} height={"40"} width={"40"} alt="bouncyLayer" />
+          <img src={layer} height={"20"} width={"20"} alt="bouncyLayer" />
         ) : null}
       </div>
       <div
         style={{
-          height: "4rem",
-          width: "80px",
+          height: "20px",
+          width: "7rem",
           borderRadius: "4px",
           flexGrow: 1,
         }}
