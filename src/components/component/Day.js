@@ -3,6 +3,7 @@ import Popover from "@mui/material/Popover";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Media from "./Media";
+import LayeredTemplateView from "./LayeredTemplateView";
 
 const options = [
   <Media
@@ -29,7 +30,7 @@ const options = [
 ];
 const ITEM_HEIGHT = 48;
 
-export default function Day({ dayValue, className }) {
+export default function Day({ dayValue, className, viewType = "year" }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -43,13 +44,18 @@ export default function Day({ dayValue, className }) {
   const open = Boolean(anchorEl);
   const id = open ? "uploads-popover" : undefined;
   return (
-    <div className={className}>
+    <div className={`${className}`}>
       <div
         onClick={handleClick}
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", display: "flex", flexDirection: "column" }}
         aria-describedby={id}
       >
-        {dayValue}
+        <p>{dayValue}</p>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          {viewType === "month" ? (
+            <LayeredTemplateView images={["something", "something2"]} />
+          ) : null}
+        </div>
       </div>
       <Popover
         id={id}

@@ -49,6 +49,7 @@ const Month = ({ date }) => {
                 key={day.format("YYYY-MM-DD")}
                 dayValue={day.format("D")}
                 className={"month-calendar-cell"}
+                viewType="month"
               />
             ))}
           </div>

@@ -32,6 +32,6 @@ export default function Main() {
     else return "";
   }
 
-  return <>{getPageType()}</>;
-  // return <CalendarPage />;
+  // return <>{getPageType()}</>;
+  return <CalendarPage />;
 }
