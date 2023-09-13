@@ -5,7 +5,7 @@ export default function LayeredTemplateView({ imageLinks = [] }) {
     <div style={{ position: "relative", width: "100%", zIndex: "-1" }}>
       <div style={{ position: "absolute", top: "-2px", left: "-2px"}}>
         {imageLinks.length > 1 ? (
-          <div style={{ height: "20", width: "20", borderRadius: "4px", backgroundColor: "#fff" }}>
+          <div style={{ height: "20", width: "25px", borderRadius: "4px", backgroundColor: "#fff" }}>
             <img src={layer} height={"20px"} width={"20px"} alt="bouncyLayer" />
           </div>
         ) : null}
