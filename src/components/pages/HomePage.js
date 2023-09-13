@@ -12,7 +12,7 @@ const theme = createTheme({
   },
 });
 
-export default function HomePage({ setPage }) {
+export default function HomePage({ setPage, setChannelId }) {
   const [channnelIdFieldColor, setChannelIdFieldColor] = useState("neutral");
   return (
     <div
@@ -44,7 +44,10 @@ export default function HomePage({ setPage }) {
         />
       </ThemeProvider>
       <Button
-        onClick={() => setPage(DATERANGEPAGE)}
+        onClick={() => {
+          setChannelId(document.getElementById('channel-id-field').value);
+          setPage(DATERANGEPAGE);
+        }}
         variant="contained"
         sx={{ height: "3.4rem", ml: "1em" }}
       >
