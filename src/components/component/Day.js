@@ -53,7 +53,13 @@ export default function Day({ dayValue, className, viewType = "year" }) {
         <p>{dayValue}</p>
         <div style={{ display: "flex", justifyContent: "center" }}>
           {viewType === "month" ? (
-            <LayeredTemplateView images={["something", "something2"]} />
+            <LayeredTemplateView
+              imageLinks={[
+                "https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1",
+                "https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1",
+                "https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"
+              ]}
+            />
           ) : null}
         </div>
       </div>
