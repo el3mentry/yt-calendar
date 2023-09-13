@@ -16,8 +16,6 @@ export default function DateRangePage({
   endDate,
   setStartDate,
   setEndDate,
-  channelId,
-  setChannelId,
 }) {
   const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
   const [isDateNull, setIsDateNull] = useState(false);

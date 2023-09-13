@@ -16,8 +16,6 @@ export default function Main() {
     else if (page === DATERANGEPAGE && channelId !== "")
       return (
         <DateRangePage
-          channelId={channelId}
-          setChannelId={setChannelId}
           setPage={setPage}
           startDate={startDate}
           endDate={endDate}
@@ -29,7 +27,6 @@ export default function Main() {
       return (
         <CalendarPage
           channelId={channelId}
-          setChannelId={setChannelId}
           startDate={startDate}
           endDate={endDate}
         />
