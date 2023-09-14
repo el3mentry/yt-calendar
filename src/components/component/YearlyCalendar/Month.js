@@ -1,7 +1,6 @@
 import React from "react";
 import moment from "moment";
 import Day from "../Day";
-import Media from "../Media";
 
 const Month = ({ date }) => {
   const year = date.year();
