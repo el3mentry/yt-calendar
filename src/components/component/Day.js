@@ -55,9 +55,9 @@ export default function Day({ dayValue, className, viewType = "year" }) {
           {viewType === "month" ? (
             <LayeredTemplateView
               imageLinks={[
-                "https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1",
-                "https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1",
-                "https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"
+                "https://i.ytimg.com/vi/mVKAyw0xqxw/hqdefault.jpg",
+                "https://i.ytimg.com/vi/mVKAyw0xqxw/hqdefault.jpg",
+                "https://i.ytimg.com/vi/mVKAyw0xqxw/hqdefault.jpg",
               ]}
             />
           ) : null}

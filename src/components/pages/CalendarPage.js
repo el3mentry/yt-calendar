@@ -4,11 +4,7 @@ import { useState } from "react";
 import dayjs from "dayjs";
 import { YEAR } from "../../variables";
 
-export default function CalendarPage({
-  startDate,
-  endDate,
-  channelId,
-}) {
+export default function CalendarPage({ startDate, endDate, channelId }) {
   const [calendarView, setCalendarView] = useState(YEAR);
   const [date, setDate] = useState(dayjs());
   return (

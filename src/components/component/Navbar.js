@@ -181,7 +181,10 @@ export default function Navbar({
               </div>
             </ColorButton>
           </Box>
-          <Box sx={{ marginRight: "3%", marginLeft: "4%" }} id="recent-searches-wrapper">
+          <Box
+            sx={{ marginRight: "3%", marginLeft: "4%" }}
+            id="recent-searches-wrapper"
+          >
             <RecentSearches />
           </Box>
         </Box>

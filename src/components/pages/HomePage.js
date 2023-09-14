@@ -45,7 +45,7 @@ export default function HomePage({ setPage, setChannelId }) {
       </ThemeProvider>
       <Button
         onClick={() => {
-          setChannelId(document.getElementById('channel-id-field').value);
+          setChannelId(document.getElementById("channel-id-field").value);
           setPage(DATERANGEPAGE);
         }}
         variant="contained"
