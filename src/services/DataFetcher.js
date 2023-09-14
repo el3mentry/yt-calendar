@@ -1,4 +1,6 @@
 import EmptyResponseError from "../Errors/EmptyResponseError";
+import dotenv from "dotenv";
+dotenv.config();
 
 export default class DataFetcher {
   #channelId = "";
@@ -7,6 +9,13 @@ export default class DataFetcher {
   #endDate = null;
   #apiEndpoint = null;
 
+  /**
+   *
+   * @param {string} channelId
+   * @param {string} startDate
+   * @param {string} endDate
+   * @param {string} apiEndpoint
+   */
   constructor(channelId, startDate, endDate, apiEndpoint) {
     this.#channelId = channelId;
     this.#startDate = startDate;
@@ -29,10 +38,17 @@ export default class DataFetcher {
 
   /**
    *
-   * @param {string} baseUrl
-   * @param {string[]} queryParams
+   * @param {string} baseUrl BaseUrl
+   * @param {object} queryParams The query parameters to inject to base url.
+   * @returns {string}
    */
-  #constructRequestUrl(baseUrl, queryParams = []) {}
+  #constructRequestUrl(baseUrl, queryParams = {}) {
+    let requestUrl = new URL("/", baseUrl);
+    for (let key in queryParams) {
+      requestUrl.searchParams.set(key, queryParams[key]);
+    }
+    return requestUrl.toString();
+  }
 
   /**
    * @returns {string}
