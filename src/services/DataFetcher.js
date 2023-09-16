@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import EmptyResponseError from "../Errors/EmptyResponseError";
 import { API_ENDPOINT, DATE_SEPERATOR } from "../variables";
 
@@ -27,10 +28,35 @@ export default class DataFetcher {
     try {
       const [startDate, endDate] = this.DateRange.split(DATE_SEPERATOR);
 
-      const playlistId = this.#getPlaylistIdFromChannelId();
-      const urlToFetchFrom = this.#getUrlToFetchFrom(playlistId);
-      const apiResponse = await fetch(urlToFetchFrom);
-      this.YoutubeResponses = await apiResponse.json(); // pushes new data to the responses list.
+      const initialDate = dayjs(startDate);
+
+      while (true) {
+        // getting the last element in each iteration.
+        const currentTarget =
+          this.YoutubeResponses[this.YoutubeResponses.length - 1];
+        let nextPageToken = "";
+
+        if (currentTarget) {
+          // get the items array.
+          const items = currentTarget.items;
+
+          // get the last date for measuring difference from 50 items.
+          const earliestDate = items[items.length - 1].snippet.publishedAt;
+
+          // reassign the count variable.
+          if(dayjs(earliestDate).diff(initialDate, 'd') < 0)
+            break;
+
+          // next page token required.
+          nextPageToken = currentTarget.nextPageToken;
+        }
+
+        // reassign the youtube responses
+        const playlistId = this.#getPlaylistIdFromChannelId();
+        const urlToFetchFrom = this.#getUrlToFetchFrom(playlistId, nextPageToken);
+        const apiResponse = await fetch(urlToFetchFrom);
+        this.YoutubeResponses = await apiResponse.json(); // pushes new data to the responses list.
+      }
     } catch (error) {
       console.log(error);
     }
@@ -39,12 +65,13 @@ export default class DataFetcher {
    * @param {string} playlistId
    * @returns {string}
    */
-  #getUrlToFetchFrom(playlistId) {
+  #getUrlToFetchFrom(playlistId, nextPageToken) {
     return this.#constructRequestUrl(API_ENDPOINT, {
       key: process.env.REACT_APP_API_KEY,
       playlistId: playlistId,
       part: "snippet",
-      maxResults: 50
+      maxResults: 50,
+      pageToken: nextPageToken
     });
   }
   /**
@@ -123,8 +150,10 @@ export default class DataFetcher {
    * @throws {Error}
    */
   get DateRange() {
-    if (!this.#startDate|| !this.#endDate) {
-      throw new Error("StartDate or EndDate might be having wrong formatted values.");
+    if (!this.#startDate || !this.#endDate) {
+      throw new Error(
+        "StartDate or EndDate might be having wrong formatted values."
+      );
     }
     return this.#startDate + DATE_SEPERATOR + this.#endDate;
   }
