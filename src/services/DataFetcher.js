@@ -1,12 +1,11 @@
 import EmptyResponseError from "../Errors/EmptyResponseError";
-import { API_ENDPOINT } from "../variables";
+import { API_ENDPOINT, DATE_SEPERATOR } from "../variables";
 
 export default class DataFetcher {
   #channelId = "";
   #youtubeResponses = [];
   #startDate = null;
   #endDate = null;
-  #apiEndpoint = null;
 
   /**
    *
@@ -16,10 +15,8 @@ export default class DataFetcher {
    * @param {string} apiEndpoint
    */
   constructor(channelId, startDate, endDate) {
-    this.#channelId = channelId;
-    this.#startDate = startDate;
-    this.#endDate = endDate;
-    this.#apiEndpoint = API_ENDPOINT;
+    this.ChannelId = channelId;
+    this.DateRange = startDate.toString() + DATE_SEPERATOR + endDate.toString();
   }
 
   /**
@@ -30,20 +27,32 @@ export default class DataFetcher {
     try {
       const [startDate, endDate] = this.DateRange.split(":");
 
-      const playlistId =
-        this.ChannelId[1] === "C"
-          ? this.ChannelId.substring(0, 1) + "U" + this.ChannelId.substring(2)
-          : this.ChannelId;
-      const urlToFetchFrom = this.#constructRequestUrl(this.#apiEndpoint, {
-        key: process.env.REACT_APP_API_KEY,
-        playlistId: playlistId,
-        part: "snippet",
-      });
+      const playlistId = this.#getPlaylistIdFromChannelId();
+      const urlToFetchFrom = this.#getUrlToFetchFrom(playlistId);
       const apiResponse = await fetch(urlToFetchFrom);
       this.YoutubeResponses = await apiResponse.json();
     } catch (error) {
       console.log(error);
     }
+  }
+  /**
+   * @param {string} playlistId
+   * @returns {string}
+   */
+  #getUrlToFetchFrom(playlistId) {
+    return this.#constructRequestUrl(API_ENDPOINT, {
+      key: process.env.REACT_APP_API_KEY,
+      playlistId: playlistId,
+      part: "snippet",
+    });
+  }
+  /**
+   * @returns {string}
+   */
+  #getPlaylistIdFromChannelId() {
+    return this.ChannelId[1] === "C"
+      ? this.ChannelId.substring(0, 1) + "U" + this.ChannelId.substring(2)
+      : this.ChannelId;
   }
 
   /**
@@ -65,7 +74,7 @@ export default class DataFetcher {
    * @throws {EmptyResponseError}
    */
   get YoutubeResponses() {
-    if (this.#youtubeResponses === "") {
+    if (!this.#youtubeResponses) {
       throw new EmptyResponseError(
         "YouTube response is empty. Try executing initializeFetching() method to initialize the response body."
       );
@@ -79,7 +88,7 @@ export default class DataFetcher {
    * @param {string} value - The value to initialize the #youtubeResponses with.
    */
   set YoutubeResponses(value) {
-    if (value === "") {
+    if (!value) {
       throw new EmptyResponseError("Empty value provided.");
     }
     this.#youtubeResponses.push(value);
@@ -90,7 +99,7 @@ export default class DataFetcher {
    * @throws {Error}
    */
   get ChannelId() {
-    if (this.#channelId === "") {
+    if (!this.#channelId) {
       throw new Error("No channel id initialized with.");
     }
     return this.#channelId;
@@ -102,7 +111,7 @@ export default class DataFetcher {
    * @param {string} value - The value to initialize the channelId with.
    */
   set ChannelId(value) {
-    if (value === "") {
+    if (!value) {
       throw new Error("Empty value received for ChannelId.");
     }
     this.#channelId = value;
@@ -113,10 +122,10 @@ export default class DataFetcher {
    * @throws {Error}
    */
   get DateRange() {
-    if (this.#startDate === "" || this.#endDate === "") {
-      throw new Error("StartDate or EndDate might be empty.");
+    if (!this.#startDate|| !this.#endDate) {
+      throw new Error("StartDate or EndDate might be having wrong formatted values.");
     }
-    return this.#startDate + ":" + this.#endDate;
+    return this.#startDate + DATE_SEPERATOR + this.#endDate;
   }
 
   /**
@@ -125,11 +134,14 @@ export default class DataFetcher {
    * @throws {Error}
    */
   set DateRange(value) {
-    const [startDate, endDate] = value.split(":");
-    if (startDate && endDate) {
-      this.#startDate = startDate;
-      this.#endDate = endDate;
+    const [startDate, endDate] = value.split(DATE_SEPERATOR);
+    if (!startDate) {
+      throw new Error("startDate might be empty or undefined or null");
     }
-    throw new Error("One of the value might be empty or undefined.");
+    if (!endDate) {
+      throw new Error("endDate might be empty or undefined or null");
+    }
+    this.#startDate = startDate;
+    this.#endDate = endDate;
   }
 }
