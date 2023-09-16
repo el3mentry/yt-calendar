@@ -44,6 +44,7 @@ export default class DataFetcher {
       key: process.env.REACT_APP_API_KEY,
       playlistId: playlistId,
       part: "snippet",
+      maxResults: 50
     });
   }
   /**
