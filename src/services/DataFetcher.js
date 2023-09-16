@@ -76,7 +76,7 @@ export default class DataFetcher {
   /**
    * @returns {undefined}
    * @throws {Error}
-   * @param {string} value - The value to initialize the #youtubeResponse with.
+   * @param {string} value - The value to initialize the #youtubeResponses with.
    */
   set YoutubeResponses(value) {
     if (value === "") {
