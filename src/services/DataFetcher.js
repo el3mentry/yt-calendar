@@ -25,12 +25,12 @@ export default class DataFetcher {
    */
   async initializeFetching(playlistId) {
     try {
-      const [startDate, endDate] = this.DateRange.split(":");
+      const [startDate, endDate] = this.DateRange.split(DATE_SEPERATOR);
 
       const playlistId = this.#getPlaylistIdFromChannelId();
       const urlToFetchFrom = this.#getUrlToFetchFrom(playlistId);
       const apiResponse = await fetch(urlToFetchFrom);
-      this.YoutubeResponses = await apiResponse.json();
+      this.YoutubeResponses = await apiResponse.json(); // pushes new data to the responses list.
     } catch (error) {
       console.log(error);
     }
