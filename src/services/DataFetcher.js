@@ -21,44 +21,48 @@ export default class DataFetcher {
   }
 
   /**
-   * @returns {undefined}
+   * @returns {int}
    * @param {string} playlistId - Playlist Id to fetch leveraging the youtube api.
    */
-  async initializeFetching(playlistId) {
+  async initializeFetching() {
     try {
-      const [startDate, endDate] = this.DateRange.split(DATE_SEPERATOR);
+      const startDate = this.DateRange.split(DATE_SEPERATOR)[0];
 
       const initialDate = dayjs(startDate);
+      let lastYTResponse = {
+        nextPageToken: undefined,
+      };
 
       while (true) {
-        // getting the last element in each iteration.
-        const currentTarget =
-          this.YoutubeResponses[this.YoutubeResponses.length - 1];
-        let nextPageToken = "";
-
-        if (currentTarget) {
-          // get the items array.
-          const items = currentTarget.items;
-
-          // get the last date for measuring difference from 50 items.
-          const earliestDate = items[items.length - 1].snippet.publishedAt;
-
-          // reassign the count variable.
-          if(dayjs(earliestDate).diff(initialDate, 'd') < 0)
-            break;
-
-          // next page token required.
-          nextPageToken = currentTarget.nextPageToken;
-        }
-
-        // reassign the youtube responses
+        // fetch the details from YT.
         const playlistId = this.#getPlaylistIdFromChannelId();
-        const urlToFetchFrom = this.#getUrlToFetchFrom(playlistId, nextPageToken);
+        const urlToFetchFrom = this.#getUrlToFetchFrom(
+          playlistId,
+          lastYTResponse.nextPageToken ? lastYTResponse.nextPageToken : ""
+        );
         const apiResponse = await fetch(urlToFetchFrom);
         this.YoutubeResponses = await apiResponse.json(); // pushes new data to the responses list.
+
+        // getting the last element in each iteration.
+        lastYTResponse =
+          this.YoutubeResponses[this.YoutubeResponses.length - 1];
+
+        // section will skip for the first time.
+        const items = lastYTResponse.items; // items: [videos]
+
+        // earliest date amongst 50 items in the array. (found at the end of the array.)
+        const earliestDate = items[items.length - 1].snippet.publishedAt;
+
+        // if the earliest element is earlier than the chosen start date.
+        if (dayjs(earliestDate).diff(initialDate, "d") < 0) break;
+
+        // 'next page token' will be absent for the last page.
+        if (!lastYTResponse.nextPageToken) break;
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      return 0;
     }
   }
   /**
@@ -71,7 +75,7 @@ export default class DataFetcher {
       playlistId: playlistId,
       part: "snippet",
       maxResults: 50,
-      pageToken: nextPageToken
+      pageToken: nextPageToken,
     });
   }
   /**

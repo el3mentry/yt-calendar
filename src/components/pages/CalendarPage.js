@@ -13,7 +13,7 @@ export default function CalendarPage({ startDate, endDate, channelId }) {
   React.useEffect(() => {
     (async () => {
       const dataFetcher = new DataFetcher(channelId, startDate, endDate);
-      dataFetcher.initializeFetching();  // no await required since its not returning any promise...
+      await dataFetcher.initializeFetching();  // no await required since its not returning any promise...
       console.log(dataFetcher.YoutubeResponses);
     })();
   }, []);
