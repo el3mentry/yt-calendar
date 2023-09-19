@@ -6,17 +6,27 @@ import { YEAR } from "../../variables";
 import React from "react";
 import DataFetcher from "../../services/DataFetcher";
 import DataFormatter from "../../services/DataFormatter";
+import ChannelInfoProvider from "../../services/ChannelInfoProvider";
 
 export default function CalendarPage({ startDate, endDate, channelId }) {
   const [calendarView, setCalendarView] = useState(YEAR);
   const [date, setDate] = useState(dayjs());
+  const [channelName, setChannelName] = useState("");
+  const [channelThumbnail, setChannelThumbnail] = useState("");
 
   React.useEffect(() => {
     (async () => {
       const dataFetcher = new DataFetcher(channelId, startDate, endDate);
-      await dataFetcher.initializeFetching(); // no await required since its not returning any promise...
+      await dataFetcher.initializeFetching();
+      
       const dataFormatter = new DataFormatter(dataFetcher.YoutubeResponses);
       dataFormatter.standardizeDataFormat();
+
+      const channelInfoProvider = new ChannelInfoProvider(channelId);
+      await channelInfoProvider.fetchChannelInfo();
+
+      setChannelName(channelInfoProvider.getChannelTitle());
+      setChannelThumbnail(channelInfoProvider.getChannelThumbnail());
     })();
   }, []);
 
@@ -30,6 +40,8 @@ export default function CalendarPage({ startDate, endDate, channelId }) {
           setDate={setDate}
           startDate={startDate}
           endDate={endDate}
+          channelName={channelName}
+          channelThumbnail={channelThumbnail}
         />
       </div>
 

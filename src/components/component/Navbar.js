@@ -30,7 +30,8 @@ export default function Navbar({
   setDate,
   startDate = null,
   endDate = null,
-  channelName = "Channel",
+  channelName = "ChannelName",
+  channelThumbnail = "",
 }) {
   function changeCalendarView() {
     if (calendarView === MONTH) setCalendarView(YEAR);
@@ -85,7 +86,8 @@ export default function Navbar({
               height: "30px",
               width: "30px",
               borderRadius: "50%",
-              backgroundColor: "red",
+              backgroundImage: `url(${channelThumbnail})`,
+              backgroundSize: "contain"
             }}
           ></Box>
           <Box id="channel-title" sx={{ display: "flex", flexGrow: 1 }}>

@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import EmptyResponseError from "../Errors/EmptyResponseError";
 import { API_ENDPOINT, DATE_SEPERATOR } from "../variables";
+import UrlLib from "./UrlLib";
 
 export default class DataFetcher {
   #channelId = "";
@@ -70,7 +71,7 @@ export default class DataFetcher {
    * @returns {string}
    */
   #getUrlToFetchFrom(playlistId, nextPageToken) {
-    return this.#constructRequestUrl(API_ENDPOINT, {
+    return UrlLib.constructRequestUrl(API_ENDPOINT + "/playlistItems", {
       key: process.env.REACT_APP_API_KEY,
       playlistId: playlistId,
       part: "snippet",
@@ -85,20 +86,6 @@ export default class DataFetcher {
     return this.ChannelId[1] === "C"
       ? this.ChannelId.substring(0, 1) + "U" + this.ChannelId.substring(2)
       : this.ChannelId;
-  }
-
-  /**
-   *
-   * @param {string} baseUrl BaseUrl
-   * @param {object} queryParams The query parameters to inject to base url.
-   * @returns {string}
-   */
-  #constructRequestUrl(baseUrl, queryParams = {}) {
-    let requestUrl = new URL(baseUrl);
-    for (let key in queryParams) {
-      requestUrl.searchParams.set(key, queryParams[key]);
-    }
-    return requestUrl.toString();
   }
 
   /**

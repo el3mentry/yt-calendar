@@ -24,7 +24,6 @@ export default class DataFormatter {
         [publishedDate]: new Data(obj.thumbnails.maxres, obj.title)
       }
     });
-    console.log(this.FormattedData);
   }
 
   /**
