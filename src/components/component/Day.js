@@ -5,32 +5,14 @@ import MenuItem from "@mui/material/MenuItem";
 import Media from "./Media";
 import LayeredTemplateView from "./LayeredTemplateView";
 
-const options = [
-  <Media
-    thumbnail={
-      "https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"
-    }
-    key={"1"}
-    title={"this is title"}
-  />,
-  <Media
-    thumbnail={
-      "https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"
-    }
-    key={"2"}
-    title={"this is title"}
-  />,
-  <Media
-    thumbnail={
-      "https://th.bing.com/th/id/OIP.dI0F09CA8Oc_NYvzk2MuBAHaE8?pid=ImgDet&rs=1"
-    }
-    key={"3"}
-    title={"this is titlethis is titlethis is titlethis is titlethis is title"}
-  />,
-];
 const ITEM_HEIGHT = 48;
 
-export default function Day({ dayValue, className, viewType = "year" }) {
+export default function Day({
+  dayValue,
+  className,
+  viewType = "year",
+  options = [],
+}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -93,7 +75,11 @@ export default function Day({ dayValue, className, viewType = "year" }) {
           >
             {options.map((option) => (
               <MenuItem key={option.key} onClick={handleClose}>
-                {option}
+                <Media
+                  thumbnail={option.thumbnailSource.url}
+                  title={option.videoTitle}
+                  key={option.videoTitle}
+                />
               </MenuItem>
             ))}
           </Menu>

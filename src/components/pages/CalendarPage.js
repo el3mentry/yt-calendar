@@ -13,12 +13,13 @@ export default function CalendarPage({ startDate, endDate, channelId }) {
   const [date, setDate] = useState(dayjs());
   const [channelName, setChannelName] = useState("");
   const [channelThumbnail, setChannelThumbnail] = useState("");
+  const [formattedData, setFormattedData] = useState({});
 
   React.useEffect(() => {
     (async () => {
       const dataFetcher = new DataFetcher(channelId, startDate, endDate);
       await dataFetcher.initializeFetching();
-      
+
       const dataFormatter = new DataFormatter(dataFetcher.YoutubeResponses);
       dataFormatter.standardizeDataFormat();
 
@@ -27,6 +28,7 @@ export default function CalendarPage({ startDate, endDate, channelId }) {
 
       setChannelName(channelInfoProvider.getChannelTitle());
       setChannelThumbnail(channelInfoProvider.getChannelThumbnail());
+      setFormattedData(dataFormatter.FormattedData);
     })();
   }, []);
 
@@ -49,7 +51,11 @@ export default function CalendarPage({ startDate, endDate, channelId }) {
         className="width-full flex"
         style={{ flexGrow: 1, marginTop: "70px" }}
       >
-        <YearlyCalendar showNumberOfMonths={calendarView} date={date} />
+        <YearlyCalendar
+          showNumberOfMonths={calendarView}
+          date={date}
+          formattedData={formattedData}
+        />
       </div>
     </div>
   );
