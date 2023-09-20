@@ -78,7 +78,7 @@ export default function Day({
                 <Media
                   thumbnail={option.thumbnailSource.url}
                   title={option.videoTitle}
-                  key={option.videoTitle}
+                  key={option.key}
                 />
               </MenuItem>
             ))}
