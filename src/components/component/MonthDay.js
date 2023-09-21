@@ -7,11 +7,7 @@ import LayeredTemplateView from "./LayeredTemplateView";
 
 const ITEM_HEIGHT = 48;
 
-export default function Day({
-  dayValue,
-  className,
-  options = [],
-}) {
+export default function MonthDay({ dayValue, className, options = [] }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -32,6 +28,11 @@ export default function Day({
         aria-describedby={id}
       >
         <p>{dayValue}</p>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <LayeredTemplateView
+            imageLinks={options.map((element) => element.thumbnailSource.url)}
+          />
+        </div>
       </div>
       <Popover
         id={id}

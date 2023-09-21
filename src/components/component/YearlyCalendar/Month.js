@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import Day from "../Day";
+import MonthDay from "../MonthDay";
 import dayjs from "dayjs";
 
 const Month = ({ date, formattedData }) => {
@@ -49,11 +49,10 @@ const Month = ({ date, formattedData }) => {
               const options = formattedData[date];
               console.log(date, options);
               return (
-                <Day
+                <MonthDay
                   key={day.format("YYYY-MM-DD")}
                   dayValue={day.format("D")}
                   className={"month-calendar-cell"}
-                  viewType="month"
                   options={options}
                 />
               );
