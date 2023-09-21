@@ -36,11 +36,7 @@ export default function Day({
         <div style={{ display: "flex", justifyContent: "center" }}>
           {viewType === "month" ? (
             <LayeredTemplateView
-              imageLinks={[
-                "https://marketplace.canva.com/EAFW7JwIojo/2/0/1600w/canva-red-colorful-tips-youtube-thumbnail-FxVVsqyawqY.jpg",
-                "https://marketplace.canva.com/EAFW7JwIojo/2/0/1600w/canva-red-colorful-tips-youtube-thumbnail-FxVVsqyawqY.jpg",
-                "https://marketplace.canva.com/EAFW7JwIojo/2/0/1600w/canva-red-colorful-tips-youtube-thumbnail-FxVVsqyawqY.jpg",
-              ]}
+              imageLinks={options.map((element) => element.thumbnailSource.url)}
             />
           ) : null}
         </div>

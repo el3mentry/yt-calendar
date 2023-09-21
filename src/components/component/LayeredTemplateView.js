@@ -28,7 +28,7 @@ export default function LayeredTemplateView({ imageLinks = [] }) {
             width: "100%",
           }}
           src={imageLinks[0]}
-          alt={"List of thumbnails"}
+          alt={""}
         />
       </div>
     </div>

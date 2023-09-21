@@ -38,7 +38,7 @@ const YearlyCalendar = ({ showNumberOfMonths, date, formattedData }) => {
         {showNumberOfMonths === YEAR ? (
           <Year {...configYear} formattedData={formattedData} />
         ) : (
-          <Month date={date} />
+          <Month date={date} formattedData={formattedData} />
         )}
       </div>
     </section>

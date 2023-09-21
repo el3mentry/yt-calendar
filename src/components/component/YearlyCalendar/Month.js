@@ -1,10 +1,12 @@
 import React from "react";
 import moment from "moment";
 import Day from "../Day";
+import dayjs from "dayjs";
 
-const Month = ({ date }) => {
+const Month = ({ date, formattedData }) => {
   const year = date.year();
   const month = date.month();
+
   const generateCalendarGrid = () => {
     const startOfMonth = moment([year, month]).startOf("month");
     const endOfMonth = moment([year, month]).endOf("month");
@@ -40,17 +42,22 @@ const Month = ({ date }) => {
         </div>
         {calendarGrid.map((week, index) => (
           <div key={index} className="month-calendar-row">
-            {week.map((day) => (
-              // <div key={day.format("YYYY-MM-DD")} className="month-calendar-cell">
-              //   {day.format("D")}
-              // </div>
-              <Day
-                key={day.format("YYYY-MM-DD")}
-                dayValue={day.format("D")}
-                className={"month-calendar-cell"}
-                viewType="month"
-              />
-            ))}
+            {week.map((day) => {
+              const date = dayjs(day.toString())
+                .format("DD-MM-YYYY")
+                .toString();
+              const options = formattedData[date];
+              console.log(date, options);
+              return (
+                <Day
+                  key={day.format("YYYY-MM-DD")}
+                  dayValue={day.format("D")}
+                  className={"month-calendar-cell"}
+                  viewType="month"
+                  options={options}
+                />
+              );
+            })}
           </div>
         ))}
       </div>
