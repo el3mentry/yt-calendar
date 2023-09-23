@@ -30,13 +30,34 @@ export default function MonthDay({ dayValue, className, options = [] }) {
       >
         <div
           className="p-absolute centered-text w-100 flex flex-row justify-content-center"
-          style={{ top: "-18px" }}
+          style={{ top: "-17px" }}
         >
-          <div className="p-absolute circle">
+          <div
+            className="p-absolute"
+            style={{
+              width: "30px",
+              zIndex: 2,
+              color: "white",
+              fontSize: "11px",
+              fontFamily: "inter, monospace"
+            }}
+          >
             {dayValue.toString().length < 2
               ? "0" + dayValue.toString()
               : dayValue.toString()}
           </div>
+          <div
+            className="p-absolute"
+            style={{
+              backgroundColor: "#4285f4",
+              color: "white",
+              height: "21px",
+              width: "21px",
+              zIndex: 1,
+              top: "-4px",
+              borderRadius: "50%",
+            }}
+          ></div>
         </div>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
