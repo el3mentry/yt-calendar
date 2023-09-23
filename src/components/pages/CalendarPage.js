@@ -49,7 +49,7 @@ export default function CalendarPage({ startDate, endDate, channelId }) {
 
       <div
         className="width-full flex"
-        style={{ flexGrow: 1, marginTop: "70px" }}
+        style={{ flexGrow: 1, marginTop: "60px" }}
       >
         <YearlyCalendar
           showNumberOfMonths={calendarView}

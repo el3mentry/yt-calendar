@@ -3,7 +3,6 @@ import Popover from "@mui/material/Popover";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Media from "./Media";
-import LayeredTemplateView from "./LayeredTemplateView";
 
 const ITEM_HEIGHT = 48;
 

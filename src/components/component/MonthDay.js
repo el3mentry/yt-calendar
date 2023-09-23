@@ -21,13 +21,24 @@ export default function MonthDay({ dayValue, className, options = [] }) {
   const open = Boolean(anchorEl);
   const id = open ? "uploads-popover" : undefined;
   return (
-    <div className={`${className}`}>
+    <div className={`${className} p-relative`}>
       <div
+        className="p-relative"
         onClick={handleClick}
         style={{ cursor: "pointer", display: "flex", flexDirection: "column" }}
         aria-describedby={id}
       >
-        <p>{dayValue}</p>
+        <div
+          className="p-absolute centered-text w-100 flex flex-row justify-content-center"
+          style={{ top: "-18px" }}
+        >
+          <div className="p-absolute circle">
+            {dayValue.toString().length < 2
+              ? "0" + dayValue.toString()
+              : dayValue.toString()}
+          </div>
+        </div>
+
         <div style={{ display: "flex", justifyContent: "center" }}>
           <LayeredTemplateView
             imageLinks={options.map((element) => element.thumbnailSource.url)}

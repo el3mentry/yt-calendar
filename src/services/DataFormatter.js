@@ -27,7 +27,10 @@ export default class DataFormatter {
       let publishedDate = dayjs(obj.publishedAt)
         .format("DD-MM-YYYY")
         .toString();
-      const data = new Data(obj.thumbnails.maxres, obj.title);
+      const data = new Data(
+        obj.thumbnails.maxres ? obj.thumbnails.maxres : obj.thumbnails.default,
+        obj.title
+      );
       if (!fData[publishedDate]) {
         fData[publishedDate] = [data];
       } else {

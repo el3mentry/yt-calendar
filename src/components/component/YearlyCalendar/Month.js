@@ -40,6 +40,7 @@ const Month = ({ date, formattedData }) => {
             </div>
           ))}
         </div>
+
         {calendarGrid.map((week, index) => (
           <div key={index} className="month-calendar-row">
             {week.map((day) => {
@@ -47,7 +48,6 @@ const Month = ({ date, formattedData }) => {
                 .format("DD-MM-YYYY")
                 .toString();
               const options = formattedData[date];
-              console.log(date, options);
               return (
                 <MonthDay
                   key={day.format("YYYY-MM-DD")}

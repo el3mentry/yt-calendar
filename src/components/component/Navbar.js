@@ -41,14 +41,14 @@ export default function Navbar({
     <Box
       id="navbar-box"
       sx={{
-        height: "70px",
+        height: "60px",
         width: "100vw",
         backgroundColor: "white",
         display: "flex",
-        border: 1,
-        borderTop: "none",
-        borderBottom: "line",
-        borderColor: "#c4c4c4",
+        // border: 1,
+        // borderTop: "none",
+        // borderBottom: "line",
+        // borderColor: "#c4c4c4",
         zIndex: "3",
         position: "relative",
       }}

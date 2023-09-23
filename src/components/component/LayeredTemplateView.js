@@ -2,7 +2,7 @@ import layer from "../../assets/layer.gif";
 
 export default function LayeredTemplateView({ imageLinks = [] }) {
   return (
-    <div style={{ position: "relative", width: "100%", zIndex: "-1" }}>
+    <div style={{ position: "relative", width: "50%", zIndex: "-1" }}>
       <div style={{ position: "absolute", top: "-2px", left: "-2px" }}>
         {imageLinks.length > 1 ? (
           <div
