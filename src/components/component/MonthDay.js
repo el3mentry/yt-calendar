@@ -37,9 +37,10 @@ export default function MonthDay({ dayValue, className, options = [] }) {
             style={{
               width: "30px",
               zIndex: 2,
-              color: "white",
-              fontSize: "11px",
-              fontFamily: "inter, monospace"
+              color: "black",
+              // fontSize: "11px",
+              fontFamily: "inter, monospace",
+              fontWeight: 500
             }}
           >
             {dayValue.toString().length < 2
@@ -49,7 +50,8 @@ export default function MonthDay({ dayValue, className, options = [] }) {
           <div
             className="p-absolute"
             style={{
-              backgroundColor: "#4285f4",
+              // backgroundColor: "#4285f4",
+              backgroundColor: "white",
               color: "white",
               height: "21px",
               width: "21px",

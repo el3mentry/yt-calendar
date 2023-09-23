@@ -49,7 +49,7 @@ export default function Navbar({
         // borderTop: "none",
         // borderBottom: "line",
         // borderColor: "#c4c4c4",
-        zIndex: "3",
+        zIndex: "99",
         position: "relative",
       }}
     >
