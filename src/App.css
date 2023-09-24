@@ -174,24 +174,12 @@
   #month-resizable-div {
     width: 256px;
   }
-  /* #navbar-left-section {
-    width: 7%;
-  }
-  #navbar-right-section {
-    width: 93%;
-  } */
 }
 
 @media (max-width: 1366px) {
   #month-resizable-div {
     width: 213px;
   }
-  /* #navbar-left-section {
-    width: 10%;
-  }
-  #navbar-right-section {
-    width: 90%;
-  } */
 }
 
 .flex {
