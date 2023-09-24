@@ -34,7 +34,7 @@ export default function CalendarPage({ startDate, endDate, channelId }) {
 
   return (
     <div className="flex flex-col height-full width-full min-height-100vh max-height-100vh min-width-100vw max-width-100vw">
-      <div style={{ height: "70px", position: "fixed" }}>
+      <div style={{ height: "70px", position: "fixed", zIndex: 99 }}>
         <Navbar
           calendarView={calendarView}
           setCalendarView={setCalendarView}

@@ -164,6 +164,7 @@
   border-left: none;
   flex: 1 1 100px;
   font-size: 12px;
+  min-height: 93.167px;
 }
 
 .month-calendar-row:nth-child(even) .my-calendar-cell {
