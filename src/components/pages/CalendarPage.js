@@ -21,7 +21,7 @@ export default function CalendarPage({ startDate, endDate, channelId }) {
       await dataFetcher.initializeFetching();
 
       const dataFormatter = new DataFormatter(dataFetcher.YoutubeResponses);
-      dataFormatter.standardizeDataFormat();
+      dataFormatter.standardizeDataFormatAfter(startDate);
 
       const channelInfoProvider = new ChannelInfoProvider(channelId);
       await channelInfoProvider.fetchChannelInfo();

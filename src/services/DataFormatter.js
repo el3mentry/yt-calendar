@@ -42,6 +42,40 @@ export default class DataFormatter {
   }
 
   /**
+   * Function to standardize the data format for usage in another parts of the application.
+   * @param {string} startDate The date before which the data will be valid.
+   * @returns {undefined}
+   */
+  standardizeDataFormatAfter(startDate) {
+    let preStructuredData = this.FetchedData.map((element) => {
+      let snippets = element.items.map((item) => item.snippet);
+      return snippets;
+    });
+
+    let fData = {};
+
+    for (let obj of preStructuredData[0]) {
+      const dateObj = dayjs(obj.publishedAt);
+      if (dateObj.isAfter(startDate) || dateObj.isSame(startDate)) {
+        let publishedDate = dateObj.format("DD-MM-YYYY").toString();
+        const data = new Data(
+          obj.thumbnails.maxres
+            ? obj.thumbnails.maxres
+            : obj.thumbnails.default,
+          obj.title
+        );
+        if (!fData[publishedDate]) {
+          fData[publishedDate] = [data];
+        } else {
+          fData[publishedDate].push(data);
+        }
+      }
+    }
+
+    this.FormattedData = fData;
+  }
+
+  /**
    * @returns {object}
    * @throws {Error}
    */
