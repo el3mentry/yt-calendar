@@ -1,7 +1,7 @@
 export default class Data {
   thumbnailSource = "";
   videoTitle = "";
-  key = ""
+  key = "";
 
   constructor(imageSrc, videoTitle) {
     this.thumbnailSource = imageSrc;

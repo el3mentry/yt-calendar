@@ -84,7 +84,7 @@ export default function Navbar({
               width: "30px",
               borderRadius: "50%",
               backgroundImage: `url(${channelThumbnail})`,
-              backgroundSize: "contain"
+              backgroundSize: "contain",
             }}
           ></Box>
           <Box id="channel-title" sx={{ display: "flex", flexGrow: 1 }}>

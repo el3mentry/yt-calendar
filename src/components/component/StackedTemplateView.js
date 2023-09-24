@@ -4,7 +4,7 @@ export default function StackedTemplateView({ imageLinks = [] }) {
   const [imageWidth, setImageWidth] = useState("100%");
 
   useEffect(() => {
-    if (imageLinks.length > 1) setImageWidth("80%");  
+    if (imageLinks.length > 1) setImageWidth("80%");
     else if (imageLinks.length > 2) setImageWidth("60%");
   }, [imageLinks.length]);
 
@@ -21,7 +21,7 @@ export default function StackedTemplateView({ imageLinks = [] }) {
         style={{
           position: "absolute",
           width: "100%",
-          zIndex: 3
+          zIndex: 3,
         }}
       >
         <img
@@ -42,7 +42,7 @@ export default function StackedTemplateView({ imageLinks = [] }) {
             left: "-10px",
             top: "10px",
             width: "100%",
-            zIndex: 2
+            zIndex: 2,
           }}
         >
           <img
@@ -64,7 +64,7 @@ export default function StackedTemplateView({ imageLinks = [] }) {
             left: "-20px",
             top: "20px",
             width: "100%",
-            zIndex: 1
+            zIndex: 1,
           }}
         >
           <img

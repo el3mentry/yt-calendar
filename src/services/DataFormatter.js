@@ -29,7 +29,7 @@ export default class DataFormatter {
         .toString();
       const data = new Data(
         obj.thumbnails.maxres ? obj.thumbnails.maxres : obj.thumbnails.default,
-        obj.title
+        obj.title,
       );
       if (!fData[publishedDate]) {
         fData[publishedDate] = [data];
@@ -68,7 +68,7 @@ export default class DataFormatter {
           obj.thumbnails.maxres
             ? obj.thumbnails.maxres
             : obj.thumbnails.default,
-          obj.title
+          obj.title,
         );
         if (!fData[publishedDate]) {
           fData[publishedDate] = [data];

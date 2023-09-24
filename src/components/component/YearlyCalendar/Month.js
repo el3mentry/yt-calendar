@@ -35,10 +35,11 @@ const Month = ({ date, formattedData }) => {
       <div className="month-calendar">
         <div className="month-calendar-header">
           {moment.weekdaysShort().map((day) => (
-            <div key={day} className="month-calendar-header-cell flex justify-content-center">
-              <div className="gradient-wrapper">
-              {day.toLowerCase()}
-              </div>
+            <div
+              key={day}
+              className="month-calendar-header-cell flex justify-content-center"
+            >
+              <div className="gradient-wrapper">{day.toLowerCase()}</div>
             </div>
           ))}
         </div>

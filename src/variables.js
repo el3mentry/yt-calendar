@@ -6,4 +6,12 @@ const YEAR = 12;
 const API_ENDPOINT = "https://www.googleapis.com/youtube/v3";
 const DATE_SEPERATOR = "|";
 
-export { HOMEPAGE, CALENDARPAGE, DATERANGEPAGE, MONTH, YEAR, API_ENDPOINT, DATE_SEPERATOR };
+export {
+  HOMEPAGE,
+  CALENDARPAGE,
+  DATERANGEPAGE,
+  MONTH,
+  YEAR,
+  API_ENDPOINT,
+  DATE_SEPERATOR,
+};

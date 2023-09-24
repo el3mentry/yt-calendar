@@ -39,7 +39,7 @@ export default class DataFetcher {
         const playlistId = this.#getPlaylistIdFromChannelId();
         const urlToFetchFrom = this.#getUrlToFetchFrom(
           playlistId,
-          lastYTResponse.nextPageToken ? lastYTResponse.nextPageToken : ""
+          lastYTResponse.nextPageToken ? lastYTResponse.nextPageToken : "",
         );
         const apiResponse = await fetch(urlToFetchFrom);
         this.YoutubeResponses = await apiResponse.json(); // pushes new data to the responses list.
@@ -95,7 +95,7 @@ export default class DataFetcher {
   get YoutubeResponses() {
     if (!this.#youtubeResponses) {
       throw new EmptyResponseError(
-        "YouTube response is empty. Try executing initializeFetching() method to initialize the response body."
+        "YouTube response is empty. Try executing initializeFetching() method to initialize the response body.",
       );
     }
     return this.#youtubeResponses;
@@ -143,7 +143,7 @@ export default class DataFetcher {
   get DateRange() {
     if (!this.#startDate || !this.#endDate) {
       throw new Error(
-        "StartDate or EndDate might be having wrong formatted values."
+        "StartDate or EndDate might be having wrong formatted values.",
       );
     }
     return this.#startDate + DATE_SEPERATOR + this.#endDate;

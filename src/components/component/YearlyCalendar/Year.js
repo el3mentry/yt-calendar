@@ -11,7 +11,7 @@ const Year = ({
   date,
   showNumberOfMonths = 12,
   monthsFrom = 1,
-  formattedData = {}
+  formattedData = {},
 }) => {
   return (
     <div className="year" data-testid="year">
@@ -53,12 +53,14 @@ const Year = ({
 
                 {daysArr.map((_, pos) => {
                   const day = pos + arrOffset;
-                  const date = dayjs(_year + "-" + month + "-" + day).format("DD-MM-YYYY").toString();
+                  const date = dayjs(_year + "-" + month + "-" + day)
+                    .format("DD-MM-YYYY")
+                    .toString();
                   const options = formattedData[date];
 
                   return (
                     <div key={pos} className="day">
-                      <Day dayValue={day} options={options}/>
+                      <Day dayValue={day} options={options} />
                     </div>
                   );
                 })}
