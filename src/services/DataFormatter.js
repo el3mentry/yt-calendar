@@ -53,9 +53,11 @@ export default class DataFormatter {
     });
 
     let fData = {};
+    let flattenedData = preStructuredData.flat();
 
-    for (let obj of preStructuredData[0]) {
+    for (let obj of flattenedData) {
       const dateObj = dayjs(obj.publishedAt);
+      startDate = dayjs(startDate);
       if (dateObj.isAfter(startDate) || dateObj.isSame(startDate)) {
         let publishedDate = dateObj.format("DD-MM-YYYY").toString();
         const data = new Data(
