@@ -72,46 +72,48 @@ export default function MonthDay({ dayValue, className, options = [] }) {
           />
         </div>
       </div>
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-      >
-        <div>
-          <Menu
-            id="long-menu"
-            MenuListProps={{
-              "aria-labelledby": "long-button",
-            }}
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            slotProps={{
-              paper: {
-                style: {
-                  maxHeight: ITEM_HEIGHT * 4.5,
-                  width: "30ch",
+      {options.length > 0 ? (
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        >
+          <div>
+            <Menu
+              id="long-menu"
+              MenuListProps={{
+                "aria-labelledby": "long-button",
+              }}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              slotProps={{
+                paper: {
+                  style: {
+                    maxHeight: ITEM_HEIGHT * 4.5,
+                    width: "30ch",
+                  },
                 },
-              },
-            }}
-          >
-            {options.map((option) => (
-              <MenuItem key={option.key} onClick={handleClose}>
-                <Media
-                  thumbnail={option.thumbnailSource.url}
-                  title={option.videoTitle}
-                  key={option.key}
-                />
-              </MenuItem>
-            ))}
-          </Menu>
-        </div>
-      </Popover>
+              }}
+            >
+              {options.map((option) => (
+                <MenuItem key={option.key} onClick={handleClose}>
+                  <Media
+                    thumbnail={option.thumbnailSource.url}
+                    title={option.videoTitle}
+                    key={option.key}
+                  />
+                </MenuItem>
+              ))}
+            </Menu>
+          </div>
+        </Popover>
+      ) : null}
     </div>
   );
 }
