@@ -73,7 +73,7 @@ export default function Navbar({
             borderRadius: "4px",
             padding: "0 5px 0 5px",
             width: "12rem",
-            marginLeft: "auto",
+            marginLeft: "50px",
             marginRight: "auto",
           }}
         >
