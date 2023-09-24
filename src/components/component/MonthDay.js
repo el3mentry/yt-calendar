@@ -3,7 +3,8 @@ import Popover from "@mui/material/Popover";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Media from "./Media";
-import LayeredTemplateView from "./LayeredTemplateView";
+// import LayeredTemplateView from './LayeredTemplateView';
+import StackedTemplateView from "./StackedTemplateView";
 
 const ITEM_HEIGHT = 48;
 
@@ -40,7 +41,7 @@ export default function MonthDay({ dayValue, className, options = [] }) {
               color: "black",
               // fontSize: "11px",
               fontFamily: "inter, monospace",
-              fontWeight: 500
+              fontWeight: 500,
             }}
           >
             {dayValue.toString().length < 2
@@ -63,7 +64,10 @@ export default function MonthDay({ dayValue, className, options = [] }) {
         </div>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <LayeredTemplateView
+          {/* <LayeredTemplateView
+            imageLinks={options.map((element) => element.thumbnailSource.url)}
+          /> */}
+          <StackedTemplateView
             imageLinks={options.map((element) => element.thumbnailSource.url)}
           />
         </div>
