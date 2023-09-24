@@ -45,10 +45,7 @@ export default function Navbar({
         width: "100vw",
         backgroundColor: "white",
         display: "flex",
-        // border: 1,
-        // borderTop: "none",
-        // borderBottom: "line",
-        // borderColor: "#c4c4c4",
+        flexGrow: 1,
         zIndex: "99",
         position: "relative",
       }}

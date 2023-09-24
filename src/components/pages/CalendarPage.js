@@ -21,7 +21,7 @@ export default function CalendarPage({ startDate, endDate, channelId }) {
       await dataFetcher.initializeFetching();
 
       const dataFormatter = new DataFormatter(dataFetcher.YoutubeResponses);
-      dataFormatter.standardizeDataFormatAfter(startDate);
+      dataFormatter.standardizeDataFormatInRange(startDate, endDate);
 
       const channelInfoProvider = new ChannelInfoProvider(channelId);
       await channelInfoProvider.fetchChannelInfo();
@@ -34,7 +34,7 @@ export default function CalendarPage({ startDate, endDate, channelId }) {
 
   return (
     <div className="flex flex-col height-full width-full min-height-100vh max-height-100vh min-width-100vw max-width-100vw">
-      <div style={{ height: "70px", position: "fixed", zIndex: 99 }}>
+      <div style={{ height: "70px", position: "fixed", zIndex: 99, display: "flex", flexDirection: "column" }}>
         <Navbar
           calendarView={calendarView}
           setCalendarView={setCalendarView}
@@ -49,7 +49,7 @@ export default function CalendarPage({ startDate, endDate, channelId }) {
 
       <div
         className="width-full flex"
-        style={{ flexGrow: 1, marginTop: "60px" }}
+        style={{ flexGrow: 1, marginTop: "75px" }}
       >
         <YearlyCalendar
           showNumberOfMonths={calendarView}
