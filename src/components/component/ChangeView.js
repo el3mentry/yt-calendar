@@ -53,14 +53,18 @@ export default function ChangeView({ setPage }) {
           },
         }}
       >
-        {view.map((v) => (
-          <MenuItem
-            key={v}
-            onClick={handleChange}
-          >
-            {v}
-          </MenuItem>
-        ))}
+        {view.map((v) => {
+          if (v.toLowerCase() === "homepage") {
+            v = "Home";
+          } else if (v.toLowerCase() === "daterangepage") {
+            v = "Range";
+          }
+          return (
+            <MenuItem key={v} onClick={handleChange}>
+              {v}
+            </MenuItem>
+          );
+        })}
       </Menu>
     </div>
   );
