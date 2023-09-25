@@ -29,6 +29,7 @@ export default function Main() {
           channelId={channelId}
           startDate={startDate}
           endDate={endDate}
+          setPage={setPage}
         />
       );
     else {

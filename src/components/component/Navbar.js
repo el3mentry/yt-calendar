@@ -1,6 +1,6 @@
 import Logo from "../component/Logo";
 import YearSelection from "./YearSelection";
-import RecentSearches from "./RecentSearches";
+import ChangeView from "./ChangeView";
 import { MONTH, YEAR } from "../../variables";
 import Box from "@mui/material/Box";
 
@@ -28,6 +28,7 @@ export default function Navbar({
   setCalendarView,
   date,
   setDate,
+  setPage,
   startDate = null,
   endDate = null,
   channelName = "ChannelName",
@@ -184,7 +185,7 @@ export default function Navbar({
             sx={{ marginRight: "3%", marginLeft: "4%" }}
             id="recent-searches-wrapper"
           >
-            <RecentSearches />
+            <ChangeView setPage={setPage} />
           </Box>
         </Box>
       </Box>

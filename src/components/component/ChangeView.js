@@ -3,15 +3,15 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { DATERANGEPAGE, HOMEPAGE } from "../../variables";
 
 const ITEM_HEIGHT = 48;
 
-export default function RecentSearches({ recents }) {
-  const [search, setSearch] = React.useState("");
-  recents = ["None", "Mr Feast", "Garsh"];
+export default function ChangeView({ setPage }) {
+  const view = [HOMEPAGE, DATERANGEPAGE];
 
-  const handleChange = (event, newValue) => {
-    setSearch(newValue);
+  const handleChange = (event) => {
+    setPage(event.target.innerText);
     handleClose();
   };
 
@@ -53,13 +53,12 @@ export default function RecentSearches({ recents }) {
           },
         }}
       >
-        {recents.map((recent) => (
+        {view.map((v) => (
           <MenuItem
-            key={recent}
-            selected={recent === search}
+            key={v}
             onClick={handleChange}
           >
-            {recent}
+            {v}
           </MenuItem>
         ))}
       </Menu>
