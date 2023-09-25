@@ -1,0 +1,117 @@
+import * as React from "react";
+import Popover from "@mui/material/Popover";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Media from "./Media";
+// import LayeredTemplateView from './LayeredTemplateView';
+import StackedTemplateView from "./StackedTemplateView";
+
+const ITEM_HEIGHT = 48;
+
+export default function MonthDay({ dayValue, className, options = [] }) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "uploads-popover" : undefined;
+  return (
+    <div className={`${className} p-relative`}>
+      <div
+        className="p-relative"
+        onClick={handleClick}
+        style={{ cursor: "pointer", display: "flex", flexDirection: "column" }}
+        aria-describedby={id}
+      >
+        <div
+          className="p-absolute centered-text w-100 flex flex-row justify-content-center"
+          style={{ top: "-17px" }}
+        >
+          <div
+            className="p-absolute"
+            style={{
+              width: "30px",
+              zIndex: 2,
+              color: "black",
+              // fontSize: "11px",
+              fontFamily: "inter, monospace",
+              fontWeight: 500,
+            }}
+          >
+            {dayValue.toString().length < 2
+              ? "0" + dayValue.toString()
+              : dayValue.toString()}
+          </div>
+          <div
+            className="p-absolute"
+            style={{
+              // backgroundColor: "#4285f4",
+              backgroundColor: "white",
+              color: "white",
+              height: "21px",
+              width: "21px",
+              zIndex: 1,
+              top: "-4px",
+              borderRadius: "50%",
+            }}
+          ></div>
+        </div>
+
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <StackedTemplateView
+            imageLinks={options.map((element) => element.thumbnailSource.url)}
+          />
+        </div>
+      </div>
+      {options.length > 0 ? (
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        >
+          <div>
+            <Menu
+              id="long-menu"
+              MenuListProps={{
+                "aria-labelledby": "long-button",
+              }}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              slotProps={{
+                paper: {
+                  style: {
+                    maxHeight: ITEM_HEIGHT * 4.5,
+                    width: "30ch",
+                  },
+                },
+              }}
+            >
+              {options.map((option) => (
+                <MenuItem key={option.key} sx={{padding: 0}} onClick={handleClose}>
+                  <Media
+                    thumbnail={option.thumbnailSource.url}
+                    title={option.videoTitle}
+                    videoLink={option.videoLink}
+                    key={option.key}
+                  />
+                </MenuItem>
+              ))}
+            </Menu>
+          </div>
+        </Popover>
+      ) : null}
+    </div>
+  );
+}

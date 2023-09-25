@@ -1,51 +1,5 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-/* general */
-
 .calendar {
-  margin: 0 auto 20px;
-}
-
-.calendar .wrap {
-  padding: 0 10px;
+  margin: 0 auto 0 auto;
 }
 
 .currentYear {
@@ -93,16 +47,17 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  margin: 0 -10px;
+  padding: 0 2.7%;
 }
 
 /* months */
 
 .month {
-  width: 25%;
-  padding: 0 10px;
-  margin: 0 0 20px;
+  /* padding: 0 10px 0 10px;
+  margin: 0 20px 0 20px; */
   box-sizing: border-box;
+  flex-basis: 20.5%;
+  min-height: 266px;
 }
 
 .singleCol .month {
@@ -114,15 +69,15 @@
 }
 
 .monthName {
-  font-size: 24px;
-  line-height: 1;
-  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
   font-style: normal;
   text-transform: none;
-  text-align: center;
-  color: #000000;
-  padding: 0;
-  margin: 0 auto 20px;
+  text-align: left;
+  color: #70757a;
+  padding-left: 4.5%;
+  margin: 15px auto 7px;
 }
 
 .month .content {
@@ -134,91 +89,204 @@
 /* days */
 
 .day {
-  width: 14.166666666666667%;
+  width: 13%;
   text-align: center;
-  padding: 6px;
+  padding: 3px;
   box-sizing: border-box;
+  color: #3c4043;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 0.3rem;
 }
 
-.dayOfTheWeek .day {
-  font-weight: 800;
+.dayOfTheWeek {
+  color: #70757a;
 }
 
-.booked {
-  background-color: #000000;
-  color: #ffffff;
+.dayOfTheWeek,
+.day {
+  font-size: 13px;
 }
 
-.isLateCheckout {
-  position: relative;
-  background-color: transparent;
-  overflow: hidden;
-  color: #ffffff;
-}
-
-.isLateCheckout > span {
-  background: white;
-  color: #000000;
-  padding: 0px 3px;
-}
-
-.isLateCheckout > span::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
+#month-resizable-div {
   height: 100%;
-  background: rgba(248, 80, 50, 1);
-  background:linear-gradient(to bottom right,#000000 50%,transparent 50%);
-  z-index: -1;
+  max-width: 256px;
+  margin: auto;
 }
 
-/* key */
-
-.key {
+.month-calendar {
   display: flex;
+  flex-direction: column;
+  flex: 1 1 100px;
+  /* height: 85vh; */
+  width: 80vw;
+}
+
+.month-calendar-header {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.month-calendar-header-cell {
+  flex: 1;
+  text-align: center;
+  flex-shrink: 1;
+  /* border: 1px solid #ddd; */
+  border-bottom: none;
+  font-size: 13px;
+  border-left: none;
+}
+
+.gradient-wrapper {
+  width: 15%;
+  border-radius: 4px;
+  text-align: center;
+  background-color: #4285f4;
+  color: white;
+  font-family: inter;
+  font-weight: 500;
+  margin: 8px;
+  padding: 2px;
+}
+
+.month-calendar-row {
+  display: flex;
+  flex: 1 1 1px;
+}
+
+.month-calendar-cell {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-left: none;
+  padding: 8px;
+  text-align: center;
+  border-left: none;
+  flex: 1 1 100px;
+  font-size: 12px;
+  min-height: 93.167px;
+}
+
+.month-calendar-row:nth-child(even) .my-calendar-cell {
+  background-color: #f2f2f2;
+}
+
+@media (max-width: 1920px) {
+  #month-resizable-div {
+    width: 256px;
+  }
+}
+
+@media (max-width: 1366px) {
+  #month-resizable-div {
+    width: 213px;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-row {
   flex-direction: row;
-  margin: 0 absolute
 }
 
-.key .type {
-  margin: 0 10px 0 0;
+.flex-col {
+  flex-direction: column;
 }
 
-.key .type span {
+.height-full {
+  height: 100vh;
+}
+
+.width-full {
+  width: 100vw;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.fixed {
+  display: fixed;
+}
+
+.media:hover > input {
+  background-color: #f5f5f5;
+}
+
+.p-relative {
   position: relative;
-  display: flex;
-  line-height: 30px;
 }
 
-.key .type span::before {
-  content: '';
+.p-absolute {
+  position: absolute;
+}
+
+.left-45 {
+  left: 45%;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.border-rounded {
+  border-radius: 50%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.max-width-100vw {
+  max-width: 100vw;
+}
+
+.max-height-100vh {
+  max-height: 100vh;
+}
+
+.min-width-100vw {
+  min-width: 100vw;
+}
+
+.min-height-100vh {
+  min-height: 100vh;
+}
+
+#thumbnail-field {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#thumbnail-field:hover > input {
+  background-color: #f5f5f5;
+}
+
+#channel-title-input {
+  text-decoration: none;
+  user-select: none;
+  border: none;
+  width: 100%;
+  margin-bottom: 15px;
+  /* margin-top: 5px; */
   display: block;
-  width: 30px;
-  height: 30px;
-  margin: 0 10px 0 0;
 }
 
-.bookedType span::before {
-  background: #000000;
+#thumbnail-image-field:hover ~ input {
+  background-color: #f5f5f5;
 }
 
-.lateCheckoutType span::before {
-  background: rgba(248, 80, 50, 1);
-  background:linear-gradient(to bottom right,#000000 50%,transparent 50%);
-}
-
-/* responsive */
-
-@media (max-width: 980px) {
-  .month {
-    width: 50%;
-  }
-}
-
-@media (max-width: 768px) {
-  .month,
-  .twoCol .month {
-    width: 100%;
-  }
+#channel-title-input:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
 }

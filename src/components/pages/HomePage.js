@@ -1,7 +1,10 @@
 import { Button, TextField } from "@mui/material";
 import { DATERANGEPAGE } from "../../variables";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
+import Grid from "@mui/material/Grid";
 
 const theme = createTheme({
   palette: {
@@ -12,8 +15,30 @@ const theme = createTheme({
   },
 });
 
-export default function HomePage({ setPage }) {
+export default function HomePage({ setPage, setChannelId }) {
   const [channnelIdFieldColor, setChannelIdFieldColor] = useState("neutral");
+  const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
+
+  const handleEnterEvent = (ev) => {
+    if (ev.key === "Enter") {
+      document.getElementById("proceed-button").click();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleEnterEvent);
+    return () => {
+      window.removeEventListener("keydown", handleEnterEvent);
+    };
+  }, []);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setIsSnackbarVisible(false);
+  };
+
   return (
     <div
       style={{
@@ -32,6 +57,7 @@ export default function HomePage({ setPage }) {
           variant="outlined"
           color={channnelIdFieldColor}
           focused={true}
+          autoFocus={true}
           sx={{
             width: 1 / 4,
           }}
@@ -44,12 +70,39 @@ export default function HomePage({ setPage }) {
         />
       </ThemeProvider>
       <Button
-        onClick={() => setPage(DATERANGEPAGE)}
+        id={"proceed-button"}
+        onClick={() => {
+          let channelIdValue =
+            document.getElementById("channel-id-field").value;
+          if (channelIdValue.trim() === "") {
+            setIsSnackbarVisible(true);
+          } else {
+            setChannelId(channelIdValue);
+            setPage(DATERANGEPAGE);
+          }
+        }}
         variant="contained"
         sx={{ height: "3.4rem", ml: "1em" }}
       >
         Proceed
       </Button>
+
+      <Grid item xs={6} textAlign="right">
+        <Snackbar
+          open={isSnackbarVisible}
+          autoHideDuration={3000}
+          onClose={handleClose}
+        >
+          <Alert
+            onClose={handleClose}
+            variant="filled"
+            severity="warning"
+            sx={{ width: "100%" }}
+          >
+            Channel ID cannot be empty.
+          </Alert>
+        </Snackbar>
+      </Grid>
     </div>
   );
 }

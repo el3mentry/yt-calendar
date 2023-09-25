@@ -10,9 +10,13 @@ import dayjs from "dayjs";
 import { useState } from "react";
 import advancedFormat from "dayjs/plugin/advancedFormat.js";
 
-export default function DateRangePage({ setPage }) {
-  const [endDate, setEndDate] = useState(null);
-  const [startDate, setStartDate] = useState(null);
+export default function DateRangePage({
+  setPage,
+  startDate,
+  endDate,
+  setStartDate,
+  setEndDate,
+}) {
   const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
   const [isDateNull, setIsDateNull] = useState(false);
   dayjs.extend(advancedFormat);
