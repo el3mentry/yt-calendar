@@ -29,6 +29,7 @@ export default function CalendarPage({ startDate, endDate, channelId }) {
       setChannelName(channelInfoProvider.getChannelTitle());
       setChannelThumbnail(channelInfoProvider.getChannelThumbnail());
       setFormattedData(dataFormatter.FormattedData);
+      console.log(dataFormatter.FormattedData);
     })();
   // eslint-disable-next-line
   }, []);

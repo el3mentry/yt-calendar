@@ -277,6 +277,9 @@
   user-select: none;
   border: none;
   width: 100%;
+  margin-bottom: 15px;
+  /* margin-top: 5px; */
+  display: block;
 }
 
 #thumbnail-image-field:hover ~ input {

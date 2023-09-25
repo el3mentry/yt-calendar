@@ -103,6 +103,7 @@ export default function MonthDay({ dayValue, className, options = [] }) {
                   <Media
                     thumbnail={option.thumbnailSource.url}
                     title={option.videoTitle}
+                    videoLink={option.videoLink}
                     key={option.key}
                   />
                 </MenuItem>
