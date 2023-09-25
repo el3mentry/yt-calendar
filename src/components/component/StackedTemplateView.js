@@ -23,6 +23,11 @@ export default function StackedTemplateView({ imageLinks = [] }) {
           width: "100%",
           zIndex: 3,
         }}
+        onClick={()=> {
+          if(imageLinks.length === 1){
+            window.open(imageLinks[0], "_blank")
+          }
+        }}
       >
         <img
           style={{
