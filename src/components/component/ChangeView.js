@@ -11,7 +11,8 @@ export default function ChangeView({ setPage }) {
   const view = [HOMEPAGE, DATERANGEPAGE];
 
   const handleChange = (event) => {
-    setPage(event.target.innerText);
+    if (event.target.innerText === "Home") setPage(HOMEPAGE);
+    else setPage(DATERANGEPAGE);
     handleClose();
   };
 
