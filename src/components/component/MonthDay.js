@@ -64,9 +64,6 @@ export default function MonthDay({ dayValue, className, options = [] }) {
         </div>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
-          {/* <LayeredTemplateView
-            imageLinks={options.map((element) => element.thumbnailSource.url)}
-          /> */}
           <StackedTemplateView
             imageLinks={options.map((element) => element.thumbnailSource.url)}
           />
@@ -102,7 +99,7 @@ export default function MonthDay({ dayValue, className, options = [] }) {
               }}
             >
               {options.map((option) => (
-                <MenuItem key={option.key} onClick={handleClose}>
+                <MenuItem key={option.key} sx={{padding: 0}} onClick={handleClose}>
                   <Media
                     thumbnail={option.thumbnailSource.url}
                     title={option.videoTitle}
