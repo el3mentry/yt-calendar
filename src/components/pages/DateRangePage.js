@@ -9,6 +9,8 @@ import Grid from "@mui/material/Grid";
 import dayjs from "dayjs";
 import { useState } from "react";
 import advancedFormat from "dayjs/plugin/advancedFormat.js";
+import Box from "@mui/material/Box";
+import Logo from "../component/Logo";
 
 export default function DateRangePage({
   setPage,
@@ -35,6 +37,10 @@ export default function DateRangePage({
   }
 
   return (
+    <>
+      <Box id="yt-cal-logo" sx={{ mt: "6px", top: "0", left: "1rem" }} className="p-fixed">
+        <Logo />
+      </Box>
     <div
       style={{
         display: "flex",
@@ -170,5 +176,6 @@ export default function DateRangePage({
         </Button>
       </div>
     </div>
+    </>
   );
 }
