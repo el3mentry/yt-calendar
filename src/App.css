@@ -174,7 +174,7 @@
     width: 256px;
   }
   .month-calendar-cell {
-    height: 118.447px;
+    min-height: 118.447px;
   }
 }
 
@@ -183,7 +183,7 @@
     width: 213px;
   }
   .month-calendar-cell {
-    height: 93.167px;
+    min-height: 93.167px;
   }
 }
 
