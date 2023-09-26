@@ -164,7 +164,6 @@
   border-left: none;
   flex: 1 1 100px;
   font-size: 12px;
-  min-height: 93.167px;
 }
 
 .month-calendar-row:nth-child(even) .my-calendar-cell {
@@ -175,11 +174,17 @@
   #month-resizable-div {
     width: 256px;
   }
+  .month-calendar-cell {
+    height: 118.447px;
+  }
 }
 
 @media (max-width: 1366px) {
   #month-resizable-div {
     width: 213px;
+  }
+  .month-calendar-cell {
+    height: 93.167px;
   }
 }
 
