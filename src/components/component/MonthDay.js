@@ -22,11 +22,14 @@ export default function MonthDay({ dayValue, className, options = [] }) {
   const open = Boolean(anchorEl);
   const id = open ? "uploads-popover" : undefined;
   return (
-    <div className={`${className} p-relative`}>
+    <div
+      className={`${className} p-relative`}
+      style={{ cursor: options.length > 0 ? "pointer" : "default" }}
+      onClick={handleClick}
+    >
       <div
         className="p-relative"
-        onClick={handleClick}
-        style={{ cursor: "pointer", display: "flex", flexDirection: "column" }}
+        style={{ display: "flex", flexDirection: "column" }}
         aria-describedby={id}
       >
         <div
@@ -99,7 +102,11 @@ export default function MonthDay({ dayValue, className, options = [] }) {
               }}
             >
               {options.map((option) => (
-                <MenuItem key={option.key} sx={{padding: 0}} onClick={handleClose}>
+                <MenuItem
+                  key={option.key}
+                  sx={{ padding: 0 }}
+                  onClick={handleClose}
+                >
                   <Media
                     thumbnail={option.thumbnailSource.url}
                     title={option.videoTitle}

@@ -211,8 +211,8 @@
   text-align: center;
 }
 
-.fixed {
-  display: fixed;
+.p-fixed {
+  position: fixed;
 }
 
 .media:hover > input {
