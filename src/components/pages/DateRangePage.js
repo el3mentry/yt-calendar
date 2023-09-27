@@ -20,7 +20,7 @@ export default function DateRangePage({
   setEndDate,
 }) {
   const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
-  const [isDateNull, setIsDateNull] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
   dayjs.extend(advancedFormat);
 
   const handleClose = (event, reason) => {
@@ -28,12 +28,48 @@ export default function DateRangePage({
       return;
     }
     setIsSnackbarVisible(false);
-    setIsDateNull(false);
+  };
+
+  const handleProceed = () => {
+    const daysDifference = dayjs(endDate.format("YYYY-MM-DD")).diff(
+      dayjs(startDate.format("YYYY-MM-DD")),
+      "day"
+    );
+
+    if ((startDate && endDate) === null) {
+      setIsSnackbarVisible(true);
+      setSnackMessage("Start Date and End Date cannot be empty.");
+    } else if (
+      (startDate.isBefore(endDate) || startDate.isSame(endDate)) &&
+      daysDifference <= 1825
+    )
+      setPage(CALENDARPAGE);
+    else if (daysDifference > 1825) {
+      setIsSnackbarVisible(true);
+      const message = `Range Limit is 5 years. Exceeded by ${convertDays(
+        daysDifference - 1825
+      )} / (${daysDifference - 1825} days)`;
+      setSnackMessage(message);
+    } else {
+      setIsSnackbarVisible(true);
+      setSnackMessage("End Date cannot be before Start Date.");
+    }
   };
 
   function clearDateRange() {
     setEndDate(null);
     setStartDate(null);
+  }
+
+  function convertDays(numberToConvert) {
+    const daysInYear = 365;
+    const daysInMonth = 30;
+
+    let years = Math.floor(numberToConvert / daysInYear);
+    let months = Math.floor((numberToConvert % daysInYear) / daysInMonth);
+    let days = Math.floor((numberToConvert % daysInYear) % daysInMonth);
+
+    return `${years} years ${months} months ${days} days`;
   }
 
   return (
@@ -66,24 +102,7 @@ export default function DateRangePage({
               severity="error"
               sx={{ width: "100%" }}
             >
-              End date must be exact or after start date.
-            </Alert>
-          </Snackbar>
-        </Grid>
-
-        <Grid item xs={6} textAlign="right">
-          <Snackbar
-            open={isDateNull}
-            autoHideDuration={3000}
-            onClose={handleClose}
-          >
-            <Alert
-              onClose={handleClose}
-              variant="filled"
-              severity="error"
-              sx={{ width: "100%" }}
-            >
-              End Date & Start Date cannot be empty.
+              {snackMessage}
             </Alert>
           </Snackbar>
         </Grid>
@@ -167,15 +186,7 @@ export default function DateRangePage({
           >
             Clear Range
           </Button>
-          <Button
-            onClick={() => {
-              if ((startDate && endDate) === null) setIsDateNull(true);
-              else if (startDate.isBefore(endDate) || startDate.isSame(endDate))
-                setPage(CALENDARPAGE);
-              else setIsSnackbarVisible(true);
-            }}
-            variant="contained"
-          >
+          <Button onClick={handleProceed} variant="contained">
             Proceed
           </Button>
         </div>
