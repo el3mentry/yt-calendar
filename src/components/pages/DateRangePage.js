@@ -31,29 +31,36 @@ export default function DateRangePage({
   };
 
   const handleProceed = () => {
+    
+    if (startDate === null && endDate === null) {
+      setIsSnackbarVisible(true);
+      setSnackMessage("Start Date and End Date cannot be empty.");
+      return;
+    }
+    
     const daysDifference = dayjs(endDate.format("YYYY-MM-DD")).diff(
       dayjs(startDate.format("YYYY-MM-DD")),
       "day"
     );
-
-    if ((startDate && endDate) === null) {
-      setIsSnackbarVisible(true);
-      setSnackMessage("Start Date and End Date cannot be empty.");
-    } else if (
+    
+    if (
       (startDate.isBefore(endDate) || startDate.isSame(endDate)) &&
       daysDifference <= 1825
     )
       setPage(CALENDARPAGE);
+
     else if (daysDifference > 1825) {
       setIsSnackbarVisible(true);
       const message = `Range Limit is 5 years. Exceeded by ${convertDays(
         daysDifference - 1825
       )} / (${daysDifference - 1825} days)`;
       setSnackMessage(message);
+
     } else {
       setIsSnackbarVisible(true);
       setSnackMessage("End Date cannot be before Start Date.");
     }
+
   };
 
   function clearDateRange() {
