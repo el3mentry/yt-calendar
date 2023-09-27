@@ -78,7 +78,11 @@ export default function Day({ dayValue, className, options = [] }) {
               }}
             >
               {options.map((option) => (
-                <MenuItem key={option.key} sx={{padding: 0}} onClick={handleClose}>
+                <MenuItem
+                  key={option.key}
+                  sx={{ padding: 0 }}
+                  onClick={handleClose}
+                >
                   <Media
                     thumbnail={option.thumbnailSource.url}
                     title={option.videoTitle}

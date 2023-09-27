@@ -43,7 +43,11 @@ export default function HomePage({ setPage, setChannelId }) {
 
   return (
     <>
-      <Box id="yt-cal-logo" sx={{ mt: "6px", top: "0", left: "1rem" }} className="p-fixed">
+      <Box
+        id="yt-cal-logo"
+        sx={{ mt: "6px", top: "0", left: "1rem" }}
+        className="p-fixed"
+      >
         <Logo />
       </Box>
       <div

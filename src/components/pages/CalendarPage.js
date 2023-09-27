@@ -8,7 +8,12 @@ import DataFetcher from "../../services/DataFetcher";
 import DataFormatter from "../../services/DataFormatter";
 import ChannelInfoProvider from "../../services/ChannelInfoProvider";
 
-export default function CalendarPage({ startDate, endDate, channelId, setPage }) {
+export default function CalendarPage({
+  startDate,
+  endDate,
+  channelId,
+  setPage,
+}) {
   const [calendarView, setCalendarView] = useState(YEAR);
   const [date, setDate] = useState(dayjs());
   const [channelName, setChannelName] = useState("");
@@ -30,7 +35,7 @@ export default function CalendarPage({ startDate, endDate, channelId, setPage })
       setChannelThumbnail(channelInfoProvider.getChannelThumbnail());
       setFormattedData(dataFormatter.FormattedData);
     })();
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   return (

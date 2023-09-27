@@ -23,7 +23,7 @@ export default class DataFormatter {
 
     let fData = {};
     let flattenedData = preStructuredData.flat();
-    
+
     for (let obj of flattenedData) {
       let publishedDate = dayjs(obj.publishedAt)
         .format("DD-MM-YYYY")
@@ -31,7 +31,7 @@ export default class DataFormatter {
       const data = new Data(
         obj.thumbnails.maxres ? obj.thumbnails.maxres : obj.thumbnails.default,
         obj.title,
-        obj.resourceId.videoId
+        obj.resourceId.videoId,
       );
       if (!fData[publishedDate]) {
         fData[publishedDate] = [data];
@@ -71,7 +71,7 @@ export default class DataFormatter {
             ? obj.thumbnails.maxres
             : obj.thumbnails.default,
           obj.title,
-          obj.resourceId.videoId
+          obj.resourceId.videoId,
         );
         if (!fData[publishedDate]) {
           fData[publishedDate] = [data];

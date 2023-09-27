@@ -10,9 +10,11 @@ const ITEM_HEIGHT = 48;
 
 export default function MonthDay({ dayValue, className, options = [] }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const ID = "button-div";
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    if (event.target.id === ID) setAnchorEl(event.currentTarget);
+    else setAnchorEl(null);
   };
 
   const handleClose = () => {
@@ -23,8 +25,10 @@ export default function MonthDay({ dayValue, className, options = [] }) {
   const id = open ? "uploads-popover" : undefined;
   return (
     <div
+      role="button"
       className={`${className} p-relative`}
       style={{ cursor: options.length > 0 ? "pointer" : "default" }}
+      id={ID}
       onClick={handleClick}
     >
       <div
