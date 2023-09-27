@@ -45,10 +45,10 @@ export default class DataFormatter {
 
   /**
    * Function to standardize the data format for usage in another parts of the application.
-   * @param {string} startDate The date before which the data will be valid.
+   * @param {string} initialRange The date before which the data will be valid.
    * @returns {undefined}
    */
-  standardizeDataFormatInRange(startDate, endDate) {
+  standardizeDataFormatInRange(initialRange, finalRange) {
     let preStructuredData = this.FetchedData.map((element) => {
       let snippets = element.items.map((item) => item.snippet);
       return snippets;
@@ -58,12 +58,13 @@ export default class DataFormatter {
     let flattenedData = preStructuredData.flat();
 
     for (let obj of flattenedData) {
-      const dateObj = dayjs(obj.publishedAt);
-      startDate = dayjs(startDate);
-      endDate = dayjs(endDate);
+      // const dateObj = dayjs(obj.publishedAt);
+      const dateObj = dayjs(obj.publishedAt, "YYYY-MM-DD");
+      initialRange = dayjs(initialRange);
+      finalRange = dayjs(finalRange);
       if (
-        (dateObj.isAfter(startDate) || dateObj.isSame(startDate)) &&
-        dateObj.isBefore(endDate)
+        (dateObj.isAfter(initialRange) || dateObj.isSame(initialRange)) &&
+        (dateObj.isBefore(finalRange) || dateObj.isSame(finalRange))
       ) {
         let publishedDate = dateObj.format("DD-MM-YYYY").toString();
         const data = new Data(
