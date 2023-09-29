@@ -20,7 +20,7 @@ export default function StackedTemplateView({ imageLinks = [] }) {
     >
       <div
         style={{
-          position: "absolute",
+          position: "relative",
           width: "100%",
           zIndex: 3,
         }}
@@ -28,6 +28,7 @@ export default function StackedTemplateView({ imageLinks = [] }) {
         <img
           style={{
             borderRadius: "4px",
+            border: imageLinks[0]? "1px solid black": "",
             width: imageWidth,
             marginBottom: "5px",
           }}
@@ -50,6 +51,7 @@ export default function StackedTemplateView({ imageLinks = [] }) {
             style={{
               borderRadius: "4px",
               width: imageWidth,
+              border: "1px solid black",
               marginBottom: "5px",
             }}
             src={imageLinks[1]}
@@ -72,6 +74,7 @@ export default function StackedTemplateView({ imageLinks = [] }) {
             style={{
               borderRadius: "4px",
               width: imageWidth,
+              border: "1px solid black",
               marginBottom: "5px",
             }}
             src={imageLinks[2]}
