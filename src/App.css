@@ -163,13 +163,14 @@
   border-left: none;
   flex: 1 1 100px;
   font-size: 12px;
+  padding-bottom: 10px;
 }
 
 .month-calendar-row:nth-child(even) .my-calendar-cell {
   background-color: #f2f2f2;
 }
 
-@media (max-width: 1920px) {
+/* @media (max-width: 1920px) {
   #month-resizable-div {
     width: 256px;
   }
@@ -185,7 +186,7 @@
   .month-calendar-cell {
     min-height: 93.167px;
   }
-}
+} */
 
 .flex {
   display: flex;
