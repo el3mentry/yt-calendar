@@ -1,4 +1,4 @@
-import { CALENDARPAGE, HOMEPAGE } from "../../variables";
+import { CALENDARPAGE, HOMEPAGE, SIXYEARSINDAYS } from "../../variables";
 import { Button, TextField } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -31,36 +31,34 @@ export default function DateRangePage({
   };
 
   const handleProceed = () => {
-    
     if (startDate === null && endDate === null) {
       setIsSnackbarVisible(true);
       setSnackMessage("Start Date and End Date cannot be empty.");
       return;
     }
-    
+
     const daysDifference = dayjs(endDate.format("YYYY-MM-DD")).diff(
       dayjs(startDate.format("YYYY-MM-DD")),
-      "day"
+      "day",
     );
-    
+
     if (
       (startDate.isBefore(endDate) || startDate.isSame(endDate)) &&
-      daysDifference <= 1825
+      daysDifference <= SIXYEARSINDAYS
     )
       setPage(CALENDARPAGE);
-
-    else if (daysDifference > 1825) {
+    else if (daysDifference > SIXYEARSINDAYS) {
       setIsSnackbarVisible(true);
-      const message = `Range Limit is 5 years. Exceeded by ${convertDays(
-        daysDifference - 1825
-      )} / (${daysDifference - 1825} days)`;
+      const message = `Range Limit is ${Math.floor(
+        SIXYEARSINDAYS / 365,
+      )} years. Exceeded by ${convertDays(
+        daysDifference - SIXYEARSINDAYS,
+      )} / (${daysDifference - SIXYEARSINDAYS} days)`;
       setSnackMessage(message);
-
     } else {
       setIsSnackbarVisible(true);
       setSnackMessage("End Date cannot be before Start Date.");
     }
-
   };
 
   function clearDateRange() {

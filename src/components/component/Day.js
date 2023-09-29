@@ -1,5 +1,4 @@
 import * as React from "react";
-import Popover from "@mui/material/Popover";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Media from "./Media";
@@ -37,63 +36,52 @@ export default function Day({ dayValue, className, options = [] }) {
         <p
           style={{
             backgroundColor:
-              options.length >= 1 ? "rgb(207, 221, 255)" : "white",
+              options.length >= 1 ? "#6cabdd" : "white",
             borderRadius: "50%",
             margin: "2px",
             paddingTop: options.length >= 2 ? "0.8px" : "2.5px",
             height: "25px",
-            color: "#505050",
+            color: options.length? "white": "#505050",
           }}
         >
           {dayValue}
         </p>
       </div>
       {options.length > 0 ? (
-        <Popover
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-        >
-          <div>
-            <Menu
-              id="long-menu"
-              MenuListProps={{
-                "aria-labelledby": "long-button",
-              }}
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              slotProps={{
-                paper: {
-                  style: {
-                    maxHeight: ITEM_HEIGHT * 4.5,
-                    width: "30ch",
-                  },
+        <div>
+          <Menu
+            id="long-menu"
+            MenuListProps={{
+              "aria-labelledby": "long-button",
+            }}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            slotProps={{
+              paper: {
+                style: {
+                  maxHeight: ITEM_HEIGHT * 4.5,
+                  width: "30ch",
                 },
-              }}
-            >
-              {options.map((option) => (
-                <MenuItem
+              },
+            }}
+          >
+            {options.map((option) => (
+              <MenuItem
+                key={option.key}
+                sx={{ padding: 0 }}
+                onClick={handleClose}
+              >
+                <Media
+                  thumbnail={option.thumbnailSource.url}
+                  title={option.videoTitle}
+                  videoLink={option.videoLink}
                   key={option.key}
-                  sx={{ padding: 0 }}
-                  onClick={handleClose}
-                >
-                  <Media
-                    thumbnail={option.thumbnailSource.url}
-                    title={option.videoTitle}
-                    videoLink={option.videoLink}
-                    key={option.key}
-                  />
-                </MenuItem>
-              ))}
-            </Menu>
-          </div>
-        </Popover>
+                />
+              </MenuItem>
+            ))}
+          </Menu>
+        </div>
       ) : null}
     </div>
   );

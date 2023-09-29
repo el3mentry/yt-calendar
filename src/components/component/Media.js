@@ -7,7 +7,7 @@ export default function Media({ title, thumbnail, videoLink }) {
     >
       <img
         src={thumbnail}
-        style={{ width: "100%", borderRadius: "8px" }}
+        style={{ width: "100%", borderRadius: "8px", minHeight: "150px" }}
         alt="alternative text"
         id={"thumbnail-image-field"}
       />
