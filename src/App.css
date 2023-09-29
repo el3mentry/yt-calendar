@@ -42,6 +42,7 @@
 /* year  */
 
 .year {
+  height: 768px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -58,7 +59,7 @@
   margin: 0 20px 0 20px; */
   box-sizing: border-box;
   flex-basis: 20.5%;
-  min-height: 266px;
+  min-height: 256px;
 }
 
 .singleCol .month {
