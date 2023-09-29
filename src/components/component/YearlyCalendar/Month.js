@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import MonthDay from "../MonthDay";
 import dayjs from "dayjs";
+import { useEffect } from "react";
 
 const Month = ({ date, formattedData }) => {
   const year = date.year();
   const month = date.month();
+  const [scrollArrowVisibility, setScrollArrowVisibility] = useState("block");
+  const html = document.querySelector("body");
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      console.log(html.scrollHeight, html.clientHeight);
+      if (
+        html.scrollHeight <= html.clientHeight ||
+        html.offsetHeight + html.scrollTop + 30 >= html.scrollHeight
+      )
+        setScrollArrowVisibility("none");
+      else setScrollArrowVisibility("block");
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [date.month()]);
 
   const generateCalendarGrid = () => {
     const startOfMonth = moment([year, month]).startOf("month");
@@ -63,6 +82,10 @@ const Month = ({ date, formattedData }) => {
           </div>
         ))}
       </div>
+      <div
+        className="scroll-down"
+        style={{ display: scrollArrowVisibility }}
+      ></div>
     </div>
   );
 };

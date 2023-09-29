@@ -27,6 +27,7 @@ body {
   scrollbar-width: none; /* Firefox */
   height: 100vh;
   width: 100vw;
+  overflow: scroll;
 }
 
 #root {
