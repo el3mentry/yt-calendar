@@ -36,12 +36,12 @@ export default function Day({ dayValue, className, options = [] }) {
         <p
           style={{
             backgroundColor:
-              options.length >= 1 ? "rgba(100,150,255,0.65)" : "white",
+              options.length >= 1 ? "#6cabdd" : "white",
             borderRadius: "50%",
             margin: "2px",
             paddingTop: options.length >= 2 ? "0.8px" : "2.5px",
             height: "25px",
-            color: "#505050",
+            color: options.length? "white": "#505050",
           }}
         >
           {dayValue}
