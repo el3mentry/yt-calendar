@@ -12,7 +12,6 @@ import advancedFormat from "dayjs/plugin/advancedFormat.js";
 import Box from "@mui/material/Box";
 import Logo from "../component/Logo";
 
-
 export default function DateRangePage({
   setPage,
   startDate,
@@ -32,36 +31,34 @@ export default function DateRangePage({
   };
 
   const handleProceed = () => {
-    
     if (startDate === null && endDate === null) {
       setIsSnackbarVisible(true);
       setSnackMessage("Start Date and End Date cannot be empty.");
       return;
     }
-    
+
     const daysDifference = dayjs(endDate.format("YYYY-MM-DD")).diff(
       dayjs(startDate.format("YYYY-MM-DD")),
-      "day"
+      "day",
     );
-    
+
     if (
       (startDate.isBefore(endDate) || startDate.isSame(endDate)) &&
       daysDifference <= SIXYEARSINDAYS
     )
       setPage(CALENDARPAGE);
-
     else if (daysDifference > SIXYEARSINDAYS) {
       setIsSnackbarVisible(true);
-      const message = `Range Limit is ${Math.floor(SIXYEARSINDAYS / 365)} years. Exceeded by ${convertDays(
-        daysDifference - SIXYEARSINDAYS
+      const message = `Range Limit is ${Math.floor(
+        SIXYEARSINDAYS / 365,
+      )} years. Exceeded by ${convertDays(
+        daysDifference - SIXYEARSINDAYS,
       )} / (${daysDifference - SIXYEARSINDAYS} days)`;
       setSnackMessage(message);
-
     } else {
       setIsSnackbarVisible(true);
       setSnackMessage("End Date cannot be before Start Date.");
     }
-
   };
 
   function clearDateRange() {
