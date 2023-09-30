@@ -181,12 +181,9 @@ export default function Navbar({
               </div>
             </ColorButton>
           </Box>
-          <Box
-            sx={{ marginRight: "3%", marginLeft: "4%" }}
-            id="recent-searches-wrapper"
-          >
-            <ChangeView setPage={setPage} />
-          </Box>
+
+          <ChangeView setPage={setPage}/>
+
         </Box>
       </Box>
     </Box>
