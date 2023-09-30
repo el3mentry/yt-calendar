@@ -12,7 +12,6 @@ const Month = ({ date, formattedData }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      console.log(html.scrollHeight, html.clientHeight);
       if (
         html.scrollHeight <= html.clientHeight ||
         html.offsetHeight + html.scrollTop + 30 >= html.scrollHeight
