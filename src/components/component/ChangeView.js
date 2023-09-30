@@ -6,6 +6,21 @@ import Box from "@mui/material/Box";
 export default function ChangeView({ setPage }) {
   return (
     <Box sx={{marginRight: "1vw"}}>
+
+<img
+       src={dateRangeLogo}
+       style={{
+        width: "1.5rem",
+        height: "1.5rem",
+        border: "1px solid #c4c4c4",
+        borderRadius: "4px",
+        padding: "0.5rem",
+        marginRight: "0.6rem",
+        cursor: "pointer",
+        verticalAlign: "middle",
+       }}
+       onClick={()=> {setPage(DATERANGEPAGE)}}
+        />
       <img
        src={homeLogo}
        style={{
@@ -16,24 +31,9 @@ export default function ChangeView({ setPage }) {
         padding: "0.5rem",
         cursor: "pointer",
         verticalAlign: "middle",
-        marginRight: "0.6rem",
        }}
        onClick={()=> {setPage(HOMEPAGE)}}
        />
-       <img
-       src={dateRangeLogo}
-       style={{
-        width: "1.5rem",
-        height: "1.5rem",
-        border: "1px solid #c4c4c4",
-        borderRadius: "4px",
-        padding: "0.5rem",
-        cursor: "pointer",
-        verticalAlign: "middle",
-        opacity: "0.78",
-       }}
-       onClick={()=> {setPage(DATERANGEPAGE)}}
-        />
     </Box>
   );
 }
