@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 
 export default function ChangeView({ setPage }) {
   return (
-    <Box>
+    <Box sx={{marginRight: "1vw"}}>
       <img
        src={homeLogo}
        style={{

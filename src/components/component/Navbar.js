@@ -114,6 +114,43 @@ export default function Navbar({
         <Box
           sx={{
             display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Box
+            sx={{ marginRight: "0.6rem", borderRadius: 1 }}
+            id="year-selection-wrapper"
+          >
+            {calendarView === MONTH ? (
+              <MonthSelection date={date} setDate={setDate} />
+            ) : (
+              <YearSelection date={date} setDate={setDate} />
+            )}
+          </Box>
+          <Box id="calendar-view-toggle-wrapper">
+            <ColorButton variant="outlined" onClick={changeCalendarView}>
+              <div style={{ color: "#6d6d6d" }}>
+                {calendarView === YEAR ? "Yearly" : "Monthly"}
+              </div>
+            </ColorButton>
+          </Box>
+        </Box>
+      </Box>
+      <Box
+        id="navbar-right-section"
+        sx={{
+          display: "flex",
+          width: "33.3333%",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
@@ -143,48 +180,8 @@ export default function Navbar({
               : "Do MMM' YY - Do MMM' YY"}
           </p>
         </Box>
-      </Box>
 
-      <Box
-        id="navbar-right-section"
-        sx={{
-          display: "flex",
-          width: "33.3333%",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            marginRight: "1vw",
-            alignItems: "center",
-          }}
-        >
-          <Box
-            sx={{ marginRight: "0.6rem", borderRadius: 1 }}
-            id="year-selection-wrapper"
-          >
-            {calendarView === MONTH ? (
-              <MonthSelection date={date} setDate={setDate} />
-            ) : (
-              <YearSelection date={date} setDate={setDate} />
-            )}
-          </Box>
-          <Box id="calendar-view-toggle-wrapper" sx={{ marginRight: "4vw" }}>
-            <ColorButton variant="outlined" onClick={changeCalendarView}>
-              <div style={{ color: "#6d6d6d" }}>
-                {calendarView === YEAR ? "Yearly" : "Monthly"}
-              </div>
-            </ColorButton>
-          </Box>
-
-          <ChangeView setPage={setPage}/>
-
-        </Box>
+        <ChangeView setPage={setPage} />
       </Box>
     </Box>
   );
