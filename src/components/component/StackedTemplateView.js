@@ -15,20 +15,20 @@ export default function StackedTemplateView({ imageLinks = [] }) {
         width: "80%",
         marginTop: "5px",
         marginBottom: "10px",
-        zIndex: "-1",
+        zIndex: 2,
       }}
     >
       <div
         style={{
           position: "relative",
           width: "100%",
-          zIndex: 3,
+          zIndex: 1,
         }}
       >
         <img
           style={{
             borderRadius: "4px",
-            border: imageLinks[0]? "1px solid black": "",
+            border: imageLinks[0] ? "1px solid rgba(0, 0, 0, 0.6)" : "",
             width: imageWidth,
             marginBottom: "5px",
           }}
@@ -44,14 +44,14 @@ export default function StackedTemplateView({ imageLinks = [] }) {
             left: "-10px",
             top: "10px",
             width: "100%",
-            zIndex: 2,
+            zIndex: -1,
           }}
         >
           <img
             style={{
               borderRadius: "4px",
               width: imageWidth,
-              border: "1px solid black",
+              border: "1px solid rgba(0, 0, 0, 0.6)",
               marginBottom: "5px",
             }}
             src={imageLinks[1]}
@@ -67,14 +67,14 @@ export default function StackedTemplateView({ imageLinks = [] }) {
             left: "-20px",
             top: "20px",
             width: "100%",
-            zIndex: 1,
+            zIndex: -2,
           }}
         >
           <img
             style={{
               borderRadius: "4px",
               width: imageWidth,
-              border: "1px solid black",
+              border: "1px solid rgba(0, 0, 0, 0.6)",
               marginBottom: "5px",
             }}
             src={imageLinks[2]}

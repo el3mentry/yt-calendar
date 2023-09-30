@@ -10,11 +10,13 @@ export default function MonthDay({ dayValue, className, options = [] }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const preButtonDivTag = "button-div";
 
+  function popoverOpened() {
+    return anchorEl !== null;
+  }
+
   const handleClick = (event) => {
-    const splitted = event.target.id.split("-");
-    const buttonDiv = splitted[0] + "-" + splitted[1];
-    if (buttonDiv === preButtonDivTag) setAnchorEl(event.currentTarget);
-    else setAnchorEl(null);
+    if (popoverOpened()) setAnchorEl(null);
+    else setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
@@ -71,6 +73,7 @@ export default function MonthDay({ dayValue, className, options = [] }) {
         <div style={{ display: "flex", justifyContent: "center" }}>
           <StackedTemplateView
             imageLinks={options.map((element) => element.thumbnailSource.url)}
+            onClick={handleClick}
           />
         </div>
       </div>
