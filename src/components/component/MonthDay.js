@@ -1,18 +1,18 @@
-import * as React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Media from "./Media";
-// import LayeredTemplateView from './LayeredTemplateView';
 import StackedTemplateView from "./StackedTemplateView";
 
 const ITEM_HEIGHT = 48;
 
 export default function MonthDay({ dayValue, className, options = [] }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const ID = "button-div";
+  const preButtonDivTag = "button-div";
 
   const handleClick = (event) => {
-    if (event.target.id === ID) setAnchorEl(event.currentTarget);
+    const splitted = event.target.id.split("-");
+    const buttonDiv = splitted[0] + "-" + splitted[1];
+    if (buttonDiv === preButtonDivTag) setAnchorEl(event.currentTarget);
     else setAnchorEl(null);
   };
 
@@ -27,7 +27,7 @@ export default function MonthDay({ dayValue, className, options = [] }) {
       role="button"
       className={`${className} p-relative`}
       style={{ cursor: options.length > 0 ? "pointer" : "default" }}
-      id={ID}
+      id={`${preButtonDivTag}-${dayValue}`}
       onClick={handleClick}
     >
       <div
