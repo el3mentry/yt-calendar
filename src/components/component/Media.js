@@ -5,6 +5,7 @@ export default function Media({ title, thumbnail, videoLink }) {
       id={"thumbnail-field"}
       href={videoLink}
       target="_blank"
+      rel="noreferrer"
     >
       <img
         src={thumbnail}
