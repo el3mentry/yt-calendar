@@ -38,7 +38,6 @@ export default function TotalVids({ totalVideoCount = 0 }) {
             style={{
               width: "100%",
               height: "65%",
-              marginLeft: "0.005em",
               cursor: "pointer",
             }}
           />
