@@ -1,7 +1,7 @@
-import summation from "../../assets/summation.svg";
+import summation from "../../../assets/summation.svg";
 import IconButton from "@mui/material/IconButton";
 import Popover from "@mui/material/Popover";
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
 import { useState } from "react";
 
 export default function TotalVids({ totalVideoCount = 0 }) {
@@ -50,12 +50,12 @@ export default function TotalVids({ totalVideoCount = 0 }) {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+          vertical: "bottom",
+          horizontal: "left",
         }}
         transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
+          vertical: "top",
+          horizontal: "center",
         }}
       >
         <Typography sx={{ p: 2 }}>Total Videos = {totalVideoCount}</Typography>

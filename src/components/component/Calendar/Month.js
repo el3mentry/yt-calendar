@@ -23,6 +23,7 @@ const Month = ({ date, formattedData }) => {
     return () => {
       clearInterval(intervalId);
     };
+    // eslint-disable-next-line
   }, [date.month()]);
 
   const generateCalendarGrid = () => {

@@ -10,7 +10,7 @@ import dayjs from "dayjs";
 import { useState } from "react";
 import advancedFormat from "dayjs/plugin/advancedFormat.js";
 import Box from "@mui/material/Box";
-import Logo from "../component/Logo";
+import Logo from "../component/Navbar/Logo";
 
 export default function DateRangePage({
   setPage,

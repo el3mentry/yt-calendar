@@ -1,4 +1,4 @@
-import YearlyCalendar from "../component/YearlyCalendar";
+import Calendar from "../component/Calendar";
 import Navbar from "../component/Navbar";
 import { useState } from "react";
 import dayjs from "dayjs";
@@ -69,7 +69,7 @@ export default function CalendarPage({
         className="width-full flex"
         style={{ flexGrow: 1, marginTop: "75px" }}
       >
-        <YearlyCalendar
+        <Calendar
           showNumberOfMonths={calendarView}
           date={date}
           formattedData={formattedData}
