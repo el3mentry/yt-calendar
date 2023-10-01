@@ -1,4 +1,4 @@
-import YearlyCalendar from "../component/YearlyCalendar";
+import Calendar from "../component/Calendar";
 import Navbar from "../component/Navbar";
 import { useState } from "react";
 import dayjs from "dayjs";
@@ -19,6 +19,7 @@ export default function CalendarPage({
   const [channelName, setChannelName] = useState("");
   const [channelThumbnail, setChannelThumbnail] = useState("");
   const [formattedData, setFormattedData] = useState({});
+  const [totalVideoCount, setTotalVideoCount] = useState(0);
 
   React.useEffect(() => {
     (async () => {
@@ -34,6 +35,7 @@ export default function CalendarPage({
       setChannelName(channelInfoProvider.getChannelTitle());
       setChannelThumbnail(channelInfoProvider.getChannelThumbnail());
       setFormattedData(dataFormatter.FormattedData);
+      setTotalVideoCount(dataFormatter.TotalVideoCount);
     })();
     // eslint-disable-next-line
   }, []);
@@ -59,6 +61,7 @@ export default function CalendarPage({
           channelName={channelName}
           channelThumbnail={channelThumbnail}
           setPage={setPage}
+          totalVideoCount={totalVideoCount}
         />
       </div>
 
@@ -66,7 +69,7 @@ export default function CalendarPage({
         className="width-full flex"
         style={{ flexGrow: 1, marginTop: "75px" }}
       >
-        <YearlyCalendar
+        <Calendar
           showNumberOfMonths={calendarView}
           date={date}
           formattedData={formattedData}

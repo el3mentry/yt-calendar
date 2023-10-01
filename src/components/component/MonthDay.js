@@ -1,19 +1,22 @@
-import * as React from "react";
+import { useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Media from "./Media";
-// import LayeredTemplateView from './LayeredTemplateView';
 import StackedTemplateView from "./StackedTemplateView";
 
 const ITEM_HEIGHT = 48;
 
 export default function MonthDay({ dayValue, className, options = [] }) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const ID = "button-div";
+  const [anchorEl, setAnchorEl] = useState(null);
+  const preButtonDivTag = "button-div";
+
+  function popoverOpened() {
+    return anchorEl !== null;
+  }
 
   const handleClick = (event) => {
-    if (event.target.id === ID) setAnchorEl(event.currentTarget);
-    else setAnchorEl(null);
+    if (popoverOpened()) setAnchorEl(null);
+    else setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
@@ -27,7 +30,7 @@ export default function MonthDay({ dayValue, className, options = [] }) {
       role="button"
       className={`${className} p-relative`}
       style={{ cursor: options.length > 0 ? "pointer" : "default" }}
-      id={ID}
+      id={`${preButtonDivTag}-${dayValue}`}
       onClick={handleClick}
     >
       <div
@@ -45,7 +48,6 @@ export default function MonthDay({ dayValue, className, options = [] }) {
               width: "30px",
               zIndex: 2,
               color: "black",
-              // fontSize: "11px",
               fontFamily: "inter, monospace",
               fontWeight: 500,
             }}
@@ -57,7 +59,6 @@ export default function MonthDay({ dayValue, className, options = [] }) {
           <div
             className="p-absolute"
             style={{
-              // backgroundColor: "#4285f4",
               backgroundColor: "white",
               color: "white",
               height: "21px",
@@ -72,6 +73,7 @@ export default function MonthDay({ dayValue, className, options = [] }) {
         <div style={{ display: "flex", justifyContent: "center" }}>
           <StackedTemplateView
             imageLinks={options.map((element) => element.thumbnailSource.url)}
+            onClick={handleClick}
           />
         </div>
       </div>

@@ -6,7 +6,7 @@ import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Logo from "../component/Logo";
+import Logo from "../component/Navbar/Logo";
 
 const theme = createTheme({
   palette: {

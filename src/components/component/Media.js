@@ -1,9 +1,10 @@
 export default function Media({ title, thumbnail, videoLink }) {
   return (
-    <div
-      style={{ width: "100%" }}
+    <a
+      style={{ width: "100%", textDecoration: "none" }}
       id={"thumbnail-field"}
-      onClick={() => window.open(videoLink, "_blank")}
+      href={videoLink}
+      target="_blank"
     >
       <img
         src={thumbnail}
@@ -12,6 +13,6 @@ export default function Media({ title, thumbnail, videoLink }) {
         id={"thumbnail-image-field"}
       />
       <input id={"channel-title-input"} readOnly={true} value={title} />
-    </div>
+    </a>
   );
 }
