@@ -10,6 +10,7 @@ import { grey } from "@mui/material/colors";
 import MonthSelection from "./MonthSelection";
 import React from "react";
 import switchIcon from "../../assets/switch-icon.svg";
+import TotalVids from "./TotalVids";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(grey[400]),
@@ -30,6 +31,7 @@ export default function Navbar({
   date,
   setDate,
   setPage,
+  totalVideoCount = 0,
   startDate = null,
   endDate = null,
   channelName = "ChannelName",
@@ -173,6 +175,7 @@ export default function Navbar({
           </Box>
         </Box>
       </Box>
+
       <Box
         id="navbar-right-section"
         sx={{
@@ -186,8 +189,8 @@ export default function Navbar({
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            flexDirection: "row",
+            justifyContent: "space-around",
             alignItems: "center",
             height: "40px",
             border: 1,
@@ -199,12 +202,12 @@ export default function Navbar({
             marginRight: "0.65rem",
           }}
         >
+          <TotalVids totalVideoCount={totalVideoCount} />
           <p
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              flexGrow: 1,
             }}
           >
             {startDate !== null && endDate !== null

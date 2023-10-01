@@ -19,6 +19,7 @@ export default function CalendarPage({
   const [channelName, setChannelName] = useState("");
   const [channelThumbnail, setChannelThumbnail] = useState("");
   const [formattedData, setFormattedData] = useState({});
+  const [totalVideoCount, setTotalVideoCount] = useState(0);
 
   React.useEffect(() => {
     (async () => {
@@ -34,6 +35,7 @@ export default function CalendarPage({
       setChannelName(channelInfoProvider.getChannelTitle());
       setChannelThumbnail(channelInfoProvider.getChannelThumbnail());
       setFormattedData(dataFormatter.FormattedData);
+      setTotalVideoCount(dataFormatter.TotalVideoCount);
     })();
     // eslint-disable-next-line
   }, []);
@@ -59,6 +61,7 @@ export default function CalendarPage({
           channelName={channelName}
           channelThumbnail={channelThumbnail}
           setPage={setPage}
+          totalVideoCount={totalVideoCount}
         />
       </div>
 

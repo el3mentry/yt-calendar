@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 export default class DataFormatter {
   #fetchedData = null;
   #formattedData = null;
+  #totalVideoCount = 0;
 
   constructor(fetchedData) {
     this.FetchedData = fetchedData;
@@ -31,7 +32,7 @@ export default class DataFormatter {
       const data = new Data(
         obj.thumbnails.maxres ? obj.thumbnails.maxres : obj.thumbnails.default,
         obj.title,
-        obj.resourceId.videoId,
+        obj.resourceId.videoId
       );
       if (!fData[publishedDate]) {
         fData[publishedDate] = [data];
@@ -66,13 +67,14 @@ export default class DataFormatter {
         (dateObj.isAfter(initialRange) || dateObj.isSame(initialRange)) &&
         (dateObj.isBefore(finalRange) || dateObj.isSame(finalRange))
       ) {
+        this.TotalVideoCount = this.TotalVideoCount + 1;
         let publishedDate = dateObj.format("DD-MM-YYYY").toString();
         const data = new Data(
           obj.thumbnails.maxres
             ? obj.thumbnails.maxres
             : obj.thumbnails.default,
           obj.title,
-          obj.resourceId.videoId,
+          obj.resourceId.videoId
         );
         if (!fData[publishedDate]) {
           fData[publishedDate] = [data];
@@ -81,7 +83,6 @@ export default class DataFormatter {
         }
       }
     }
-
     this.FormattedData = fData;
   }
 
@@ -131,7 +132,31 @@ export default class DataFormatter {
     this.#fetchedData = value;
   }
 
-  getMonthlyData(month) {
-    // loop over the json and provide the data of the provided month.
+  /**
+   * Property to access the total video count in a selected range provided through the dataformatter constructor.
+   * @returns {number}
+   * @throws {Error}
+   */
+  get TotalVideoCount() {
+    if (this.#totalVideoCount !== 0 && !this.#totalVideoCount)
+      throw new Error(
+        "inappropriate value stored. Total Video Count = " +
+          this.#totalVideoCount
+      );
+    return this.#totalVideoCount;
+  }
+
+  /**
+   * Property to set the total video count in a selected range provided through the dataformatter constructor.
+   * @return {undefined}
+   * @param {number} value
+   * @throws {Error}
+   */
+  set TotalVideoCount(value) {
+    if (value !== 0 && !value)
+      throw new Error(
+        "Can not set value to TotalVideoCount prop. Value received: " + value
+      );
+    this.#totalVideoCount = value;
   }
 }
