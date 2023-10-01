@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import { grey } from "@mui/material/colors";
 import MonthSelection from "./MonthSelection";
 import React from "react";
-import switchIcon from "../../assets/switch-icon.svg"
+import switchIcon from "../../assets/switch-icon.svg";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(grey[400]),
@@ -89,10 +89,18 @@ export default function Navbar({
               backgroundSize: "contain",
             }}
           ></Box>
-          <Box id="channel-title" sx={{ display: "flex", flexGrow: 1, marginLeft: "7px", marginRight: "5px" }}>
+          <Box
+            id="channel-title"
+            sx={{
+              display: "flex",
+              flexGrow: 1,
+              marginLeft: "7px",
+              marginRight: "5px",
+            }}
+          >
             <Box
               title={channelName}
-              sx={{ flexGrow: 1, textAlign: "center", color: "#0f0f0f",}}
+              sx={{ flexGrow: 1, textAlign: "center", color: "#0f0f0f" }}
             >
               {channelName.length > 18
                 ? channelName.substring(0, 15) + "..."
@@ -131,20 +139,34 @@ export default function Navbar({
             )}
           </Box>
           <Box id="calendar-view-toggle-wrapper">
-            <ColorButton variant="outlined" onClick={changeCalendarView} sx={{fontWeight: "unset"}}>
+            <ColorButton
+              variant="outlined"
+              onClick={changeCalendarView}
+              sx={{ fontWeight: "unset" }}
+            >
               <div style={{ color: "#6d6d6d" }}>
                 {calendarView === YEAR ? (
-                <span className="flex flex-row">
-                  <p className="" style={{ fontSize: "16px"}}>Yearly</p>
-                  <img src={switchIcon} style={{width: "1rem", marginLeft: "0.4rem"}} 
-                  />
-                </span>
+                  <span className="flex flex-row">
+                    <p className="" style={{ fontSize: "16px" }}>
+                      Yearly
+                    </p>
+                    <img
+                      src={switchIcon}
+                      style={{ width: "1rem", marginLeft: "0.4rem" }}
+                      alt={"switch-icon"}
+                    />
+                  </span>
                 ) : (
                   <span className="flex flex-row">
-                  <p className="" style={{ fontSize: "16px"}}>Monthly</p>
-                  <img src={switchIcon} style={{width: "1rem", marginLeft: "0.4rem"}} 
-                  />
-                </span>
+                    <p className="" style={{ fontSize: "16px" }}>
+                      Monthly
+                    </p>
+                    <img
+                      src={switchIcon}
+                      style={{ width: "1rem", marginLeft: "0.4rem" }}
+                      alt={"switch-icon"}
+                    />
+                  </span>
                 )}
               </div>
             </ColorButton>
@@ -173,9 +195,8 @@ export default function Navbar({
             borderRadius: "4px",
             padding: "0 5px 0 5px",
             width: "14rem",
-            marginRight: "auto",
             color: "#6d6d6d",
-            marginRight: "0.65rem"
+            marginRight: "0.65rem",
           }}
         >
           <p
