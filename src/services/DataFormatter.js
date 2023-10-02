@@ -32,7 +32,7 @@ export default class DataFormatter {
       const data = new Data(
         obj.thumbnails.maxres ? obj.thumbnails.maxres : obj.thumbnails.default,
         obj.title,
-        obj.resourceId.videoId
+        obj.resourceId.videoId,
       );
       if (!fData[publishedDate]) {
         fData[publishedDate] = [data];
@@ -74,7 +74,7 @@ export default class DataFormatter {
             ? obj.thumbnails.maxres
             : obj.thumbnails.default,
           obj.title,
-          obj.resourceId.videoId
+          obj.resourceId.videoId,
         );
         if (!fData[publishedDate]) {
           fData[publishedDate] = [data];
@@ -141,7 +141,7 @@ export default class DataFormatter {
     if (this.#totalVideoCount !== 0 && !this.#totalVideoCount)
       throw new Error(
         "inappropriate value stored. Total Video Count = " +
-          this.#totalVideoCount
+          this.#totalVideoCount,
       );
     return this.#totalVideoCount;
   }
@@ -155,7 +155,7 @@ export default class DataFormatter {
   set TotalVideoCount(value) {
     if (value !== 0 && !value)
       throw new Error(
-        "Can not set value to TotalVideoCount prop. Value received: " + value
+        "Can not set value to TotalVideoCount prop. Value received: " + value,
       );
     this.#totalVideoCount = value;
   }

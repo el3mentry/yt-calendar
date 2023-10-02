@@ -15,7 +15,7 @@ export default function RightNavbarSection({
   calendarView,
 }) {
   const NORMAL_TEXT_FILL = "#6d6d6d";
-  const ERROR_TEXT_FILL = "#ff6e4a";
+  const ERROR_TEXT_FILL = "#ff5a5a";
 
   const [startDateFill, setStartDateFill] = useState(NORMAL_TEXT_FILL);
   const [endDateFill, setEndDateFill] = useState(NORMAL_TEXT_FILL);
@@ -31,23 +31,24 @@ export default function RightNavbarSection({
 
     if (calendarView === YEAR) {
       setStartDateFill(
-        currentYear < initialRangeYear ? ERROR_TEXT_FILL : NORMAL_TEXT_FILL
+        currentYear < initialRangeYear ? ERROR_TEXT_FILL : NORMAL_TEXT_FILL,
       );
       setEndDateFill(
-        currentYear > finalRangeYear ? ERROR_TEXT_FILL : NORMAL_TEXT_FILL
+        currentYear > finalRangeYear ? ERROR_TEXT_FILL : NORMAL_TEXT_FILL,
       );
     } else {
       setStartDateFill(
         currentMonthAndYear.isBefore(initialMonthAndYear)
           ? ERROR_TEXT_FILL
-          : NORMAL_TEXT_FILL
+          : NORMAL_TEXT_FILL,
       );
       setEndDateFill(
         currentMonthAndYear.isAfter(finalMonthAndYear)
           ? ERROR_TEXT_FILL
-          : NORMAL_TEXT_FILL
+          : NORMAL_TEXT_FILL,
       );
     }
+    // eslint-disable-next-line
   }, [date]);
 
   return (
@@ -88,11 +89,28 @@ export default function RightNavbarSection({
         >
           {startDate !== null && endDate !== null ? (
             <>
-              <div style={{ color: startDateFill }}>
+              <div
+                style={{
+                  color: startDateFill,
+                  fontWeight: startDateFill === ERROR_TEXT_FILL ? 600 : 400,
+                }}
+              >
                 {startDate.format("Do MMM 'YY")}
               </div>
-              <div style={{ width: "25px", textAlign: "center" }}>-</div>
-              <div style={{ color: endDateFill }}>
+              <div
+                style={{
+                  width: "25px",
+                  textAlign: "center",
+                }}
+              >
+                -
+              </div>
+              <div
+                style={{
+                  color: endDateFill,
+                  fontWeight: endDateFill === ERROR_TEXT_FILL ? 600 : 400,
+                }}
+              >
                 {endDate.format("Do MMM 'YY")}
               </div>
             </>

@@ -48,7 +48,7 @@ export default function MiddleNavbarSection({
         }}
       >
         <Box
-          sx={{ marginRight: "0.6rem", borderRadius: 1 }}
+          sx={{ marginRight: "10.4px", borderRadius: 1 }}
           id="year-selection-wrapper"
         >
           {calendarView === MONTH ? (
@@ -61,7 +61,7 @@ export default function MiddleNavbarSection({
           <ColorButton
             variant="outlined"
             onClick={changeCalendarView}
-            sx={{ fontWeight: "unset" }}
+            sx={{ fontWeight: "unset", width: "10rem" }}
           >
             <div style={{ color: "#6d6d6d" }}>
               {calendarView === YEAR ? (

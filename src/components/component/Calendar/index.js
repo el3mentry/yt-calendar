@@ -8,7 +8,13 @@ import Month from "./Month";
 
 dayjs.extend(isBetween);
 
-const Calendar = ({ showNumberOfMonths, date, formattedData }) => {
+const Calendar = ({
+  showNumberOfMonths,
+  date,
+  formattedData,
+  setDate,
+  endDate,
+}) => {
   const year = date.year();
   const totalCalendarMonths = 12;
   const _showNumberOfMonths = isValidMonthsOption(showNumberOfMonths)
@@ -38,7 +44,12 @@ const Calendar = ({ showNumberOfMonths, date, formattedData }) => {
         {showNumberOfMonths === YEAR ? (
           <Year {...configYear} formattedData={formattedData} />
         ) : (
-          <Month date={date} formattedData={formattedData} />
+          <Month
+            date={date}
+            formattedData={formattedData}
+            endDate={endDate}
+            setDate={setDate}
+          />
         )}
       </div>
     </section>

@@ -1,7 +1,6 @@
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-import { IconButton } from "@mui/material";
 import Box from "@mui/material/Box";
 import dayjs from "dayjs";
+import arrowLogo from "../../../assets/arrow.svg";
 
 export default function YearSelection({ date, setDate }) {
   function changeToPreviousYear() {
@@ -20,11 +19,7 @@ export default function YearSelection({ date, setDate }) {
     <div>
       <Box
         sx={{
-          border: 1,
-          borderColor: "#c4c4c4",
-          borderRadius: "4px",
           textAlign: "center",
-          paddingRight: 1.3,
           paddingLeft: 1.3,
           display: "flex",
           flexDirection: "row",
@@ -32,13 +27,39 @@ export default function YearSelection({ date, setDate }) {
           height: "40px",
         }}
       >
-        <IconButton onClick={changeToPreviousYear} edge={"start"}>
-          <BiChevronLeft size={20} />
-        </IconButton>
-        <IconButton onClick={changeToNextYear} edge={"start"}>
-          <BiChevronRight size={20} />
-        </IconButton>
-        <div style={{ color: "#6d6d6d" }}>{date.year()}</div>
+        <div className="flex" style={{ marginRight: "24px" }}>
+          <img
+            className="arrow-logo-icon"
+            src={arrowLogo}
+            style={{
+              transform: "rotate(90deg)",
+            }}
+            onClick={changeToPreviousYear}
+            alt="arrow-logo-icon-left"
+          />
+          <img
+            className="arrow-logo-icon"
+            src={arrowLogo}
+            style={{
+              transform: "rotate(270deg)",
+            }}
+            onClick={changeToNextYear}
+            alt="arrow-logo-icon-right"
+          />
+        </div>
+        <div
+          className="flex flex-row justify-content-center align-items-center"
+          style={{
+            color: "#6d6d6d",
+            border: "1px solid #c4c4c4",
+            borderRadius: "4px",
+            height: "40px",
+            padding: "0 10.4px",
+            width: "5rem",
+          }}
+        >
+          {date.year()}
+        </div>
       </Box>
     </div>
   );

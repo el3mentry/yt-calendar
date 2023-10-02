@@ -73,6 +73,8 @@ export default function CalendarPage({
           showNumberOfMonths={calendarView}
           date={date}
           formattedData={formattedData}
+          endDate={endDate}
+          setDate={setDate}
         />
       </div>
     </div>

@@ -4,7 +4,7 @@ import MonthDay from "./MonthDay";
 import dayjs from "dayjs";
 import { useEffect } from "react";
 
-const Month = ({ date, formattedData }) => {
+const Month = ({ date, formattedData, endDate, setDate }) => {
   const year = date.year();
   const month = date.month();
   const [scrollArrowVisibility, setScrollArrowVisibility] = useState("block");
@@ -25,6 +25,14 @@ const Month = ({ date, formattedData }) => {
     };
     // eslint-disable-next-line
   }, [date.month()]);
+
+  useEffect(
+    () => {
+      if (endDate.isBefore(date)) setDate(endDate);
+    },
+    // eslint-disable-next-line
+    []
+  );
 
   const generateCalendarGrid = () => {
     const startOfMonth = moment([year, month]).startOf("month");

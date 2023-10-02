@@ -95,6 +95,14 @@ export default function MonthDay({ dayValue, className, options = [] }) {
                 },
               },
             }}
+            anchorOrigin={{
+              vertical: "center",
+              horizontal: "center",
+            }}
+            transformOrigin={{
+              vertical: "center",
+              horizontal: "center",
+            }}
           >
             {options.map((option) => (
               <MenuItem
