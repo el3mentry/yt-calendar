@@ -14,6 +14,10 @@ const Calendar = ({
   formattedData,
   setDate,
   endDate,
+  changeToNextMonth,
+  changeToPreviousMonth,
+  changeToNextYear,
+  changeToPreviousYear,
 }) => {
   const year = date.year();
   const totalCalendarMonths = 12;
@@ -42,13 +46,20 @@ const Calendar = ({
     >
       <div className="wrap flex width-full" style={{ flexGrow: 1 }}>
         {showNumberOfMonths === YEAR ? (
-          <Year {...configYear} formattedData={formattedData} />
+          <Year
+            {...configYear}
+            formattedData={formattedData}
+            changeToNextYear={changeToNextYear}
+            changeToPreviousYear={changeToPreviousYear}
+          />
         ) : (
           <Month
             date={date}
             formattedData={formattedData}
             endDate={endDate}
             setDate={setDate}
+            changeToNextMonth={changeToNextMonth}
+            changeToPreviousMonth={changeToPreviousMonth}
           />
         )}
       </div>

@@ -4,11 +4,30 @@ import MonthDay from "./MonthDay";
 import dayjs from "dayjs";
 import { useEffect } from "react";
 
-const Month = ({ date, formattedData, endDate, setDate }) => {
+const Month = ({
+  date,
+  formattedData,
+  endDate,
+  setDate,
+  changeToNextMonth,
+  changeToPreviousMonth,
+}) => {
   const year = date.year();
   const month = date.month();
   const [scrollArrowVisibility, setScrollArrowVisibility] = useState("block");
   const html = document.querySelector("body");
+
+  function handleArrowKeys(event) {
+    if (event.key === "ArrowLeft") changeToPreviousMonth();
+    if (event.key === "ArrowRight") changeToNextMonth();
+  }
+  useEffect(() => {
+    window.addEventListener("keydown", handleArrowKeys);
+    return () => {
+      window.removeEventListener("keydown", handleArrowKeys);
+    };
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -31,7 +50,7 @@ const Month = ({ date, formattedData, endDate, setDate }) => {
       if (endDate.isBefore(date)) setDate(endDate);
     },
     // eslint-disable-next-line
-    []
+    [],
   );
 
   const generateCalendarGrid = () => {

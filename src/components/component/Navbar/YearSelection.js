@@ -1,20 +1,12 @@
 import Box from "@mui/material/Box";
-import dayjs from "dayjs";
 import arrowLogo from "../../../assets/arrow.svg";
+import IconButton from "@mui/material/IconButton";
 
-export default function YearSelection({ date, setDate }) {
-  function changeToPreviousYear() {
-    setDate((prev) => {
-      return prev.year() === 2006 ? prev : prev.subtract(1, "y");
-    });
-  }
-
-  function changeToNextYear() {
-    setDate((prev) => {
-      return prev.year() === dayjs().year() ? prev : prev.add(1, "y");
-    });
-  }
-
+export default function YearSelection({
+  date,
+  changeToPreviousYear,
+  changeToNextYear,
+}) {
   return (
     <div>
       <Box
@@ -28,24 +20,26 @@ export default function YearSelection({ date, setDate }) {
         }}
       >
         <div className="flex" style={{ marginRight: "24px" }}>
-          <img
-            className="arrow-logo-icon"
-            src={arrowLogo}
-            style={{
-              transform: "rotate(90deg)",
-            }}
-            onClick={changeToPreviousYear}
-            alt="arrow-logo-icon-left"
-          />
-          <img
-            className="arrow-logo-icon"
-            src={arrowLogo}
-            style={{
-              transform: "rotate(270deg)",
-            }}
-            onClick={changeToNextYear}
-            alt="arrow-logo-icon-right"
-          />
+          <IconButton onClick={changeToPreviousYear}>
+            <img
+              className="arrow-logo-icon"
+              src={arrowLogo}
+              style={{
+                transform: "rotate(90deg)",
+              }}
+              alt="arrow-logo-icon-left"
+            />
+          </IconButton>
+          <IconButton onClick={changeToNextYear}>
+            <img
+              className="arrow-logo-icon"
+              src={arrowLogo}
+              style={{
+                transform: "rotate(270deg)",
+              }}
+              alt="arrow-logo-icon-right"
+            />
+          </IconButton>
         </div>
         <div
           className="flex flex-row justify-content-center align-items-center"

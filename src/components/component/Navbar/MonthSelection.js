@@ -3,28 +3,18 @@ import { getMonthName } from "../Calendar/Common/Utils";
 import dayjs from "dayjs";
 import React from "react";
 import arrowLogo from "../../../assets/arrow.svg";
+import IconButton from "@mui/material/IconButton";
 
-export default function MonthSelection({ date, setDate }) {
+export default function MonthSelection({
+  date,
+  setDate,
+  changeToPreviousMonth,
+  changeToNextMonth,
+}) {
   React.useEffect(() => {
     if (date.month() <= 4 && date.year() === 2006)
       setDate(() => dayjs("2006-05-01"));
   });
-
-  function changeToPreviousMonth() {
-    setDate((prev) => {
-      return prev.year() === 2006 && prev.month() === 4
-        ? prev
-        : prev.subtract(1, "M");
-    });
-  }
-
-  function changeToNextMonth() {
-    setDate((prev) => {
-      return prev.year() === dayjs().year() && prev.month() === dayjs().month()
-        ? prev
-        : prev.add(1, "M");
-    });
-  }
 
   return (
     <div>
@@ -39,24 +29,26 @@ export default function MonthSelection({ date, setDate }) {
         }}
       >
         <div style={{ marginRight: "24px" }}>
-          <img
-            alt="arrow-logo-icon-left"
-            className="arrow-logo-icon"
-            src={arrowLogo}
-            style={{
-              transform: "rotate(90deg)",
-            }}
-            onClick={changeToPreviousMonth}
-          />
-          <img
-            alt="arrow-logo-icon-right"
-            className="arrow-logo-icon"
-            src={arrowLogo}
-            style={{
-              transform: "rotate(270deg)",
-            }}
-            onClick={changeToNextMonth}
-          />
+          <IconButton onClick={changeToPreviousMonth}>
+            <img
+              alt="arrow-logo-icon-left"
+              className="arrow-logo-icon"
+              src={arrowLogo}
+              style={{
+                transform: "rotate(90deg)",
+              }}
+            />
+          </IconButton>
+          <IconButton onClick={changeToNextMonth}>
+            <img
+              alt="arrow-logo-icon-right"
+              className="arrow-logo-icon"
+              src={arrowLogo}
+              style={{
+                transform: "rotate(270deg)",
+              }}
+            />
+          </IconButton>
         </div>
         <div
           className="flex flex-row justify-content-center align-items-center"

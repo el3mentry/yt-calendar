@@ -21,6 +21,34 @@ export default function CalendarPage({
   const [formattedData, setFormattedData] = useState({});
   const [totalVideoCount, setTotalVideoCount] = useState(0);
 
+  function changeToPreviousYear() {
+    setDate((prev) => {
+      return prev.year() === 2006 ? prev : prev.subtract(1, "y");
+    });
+  }
+
+  function changeToNextYear() {
+    setDate((prev) => {
+      return prev.year() === dayjs().year() ? prev : prev.add(1, "y");
+    });
+  }
+
+  function changeToPreviousMonth() {
+    setDate((prev) => {
+      return prev.year() === 2006 && prev.month() === 4
+        ? prev
+        : prev.subtract(1, "M");
+    });
+  }
+
+  function changeToNextMonth() {
+    setDate((prev) => {
+      return prev.year() === dayjs().year() && prev.month() === dayjs().month()
+        ? prev
+        : prev.add(1, "M");
+    });
+  }
+
   React.useEffect(() => {
     (async () => {
       const dataFetcher = new DataFetcher(channelId, startDate, endDate);
@@ -62,6 +90,10 @@ export default function CalendarPage({
           channelThumbnail={channelThumbnail}
           setPage={setPage}
           totalVideoCount={totalVideoCount}
+          changeToPreviousYear={changeToPreviousYear}
+          changeToNextYear={changeToNextYear}
+          changeToPreviousMonth={changeToPreviousMonth}
+          changeToNextMonth={changeToNextMonth}
         />
       </div>
 
@@ -75,6 +107,10 @@ export default function CalendarPage({
           formattedData={formattedData}
           endDate={endDate}
           setDate={setDate}
+          changeToPreviousYear={changeToPreviousYear}
+          changeToNextYear={changeToNextYear}
+          changeToPreviousMonth={changeToPreviousMonth}
+          changeToNextMonth={changeToNextMonth}
         />
       </div>
     </div>

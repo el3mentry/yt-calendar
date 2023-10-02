@@ -15,6 +15,10 @@ export default function Navbar({
   endDate = null,
   channelName = "ChannelName",
   channelThumbnail = "",
+  changeToNextMonth,
+  changeToPreviousMonth,
+  changeToNextYear,
+  changeToPreviousYear,
 }) {
   function changeCalendarView() {
     if (calendarView === MONTH) setCalendarView(YEAR);
@@ -42,6 +46,10 @@ export default function Navbar({
         changeCalendarView={changeCalendarView}
         date={date}
         setDate={setDate}
+        changeToNextMonth={changeToNextMonth}
+        changeToPreviousMonth={changeToPreviousMonth}
+        changeToNextYear={changeToNextYear}
+        changeToPreviousYear={changeToPreviousYear}
       />
       <RightNavbarSection
         startDate={startDate}

@@ -29,8 +29,9 @@ export default function StackedTemplateView({ imageLinks = [] }) {
           style={{
             borderRadius: "4px",
             border: imageLinks[0] ? "1px solid rgba(0, 0, 0, 0.6)" : "",
-            width: imageWidth,
+            width: imageLinks[0] ? imageWidth : 0,
             marginBottom: "5px",
+            aspectRatio: "16 / 9",
           }}
           src={imageLinks[0]}
           alt={""}
@@ -50,9 +51,10 @@ export default function StackedTemplateView({ imageLinks = [] }) {
           <img
             style={{
               borderRadius: "4px",
-              width: imageWidth,
-              border: "1px solid rgba(0, 0, 0, 0.6)",
+              width: imageLinks[1] ? imageWidth : 0,
+              border: imageLinks[1] ? "1px solid rgba(0, 0, 0, 0.6)" : "",
               marginBottom: "5px",
+              aspectRatio: "16 / 9",
             }}
             src={imageLinks[1]}
             alt={""}
@@ -73,9 +75,10 @@ export default function StackedTemplateView({ imageLinks = [] }) {
           <img
             style={{
               borderRadius: "4px",
-              width: imageWidth,
-              border: "1px solid rgba(0, 0, 0, 0.6)",
+              width: imageLinks[2] ? imageWidth : 0,
+              border: imageLinks[2] ? "1px solid rgba(0, 0, 0, 0.6)" : "",
               marginBottom: "5px",
+              aspectRatio: "16 / 9",
             }}
             src={imageLinks[2]}
             alt={""}

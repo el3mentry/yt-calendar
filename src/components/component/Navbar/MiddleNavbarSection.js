@@ -27,6 +27,10 @@ export default function MiddleNavbarSection({
   changeCalendarView,
   date,
   setDate,
+  changeToNextMonth,
+  changeToPreviousMonth,
+  changeToNextYear,
+  changeToPreviousYear,
 }) {
   return (
     <Box
@@ -52,9 +56,19 @@ export default function MiddleNavbarSection({
           id="year-selection-wrapper"
         >
           {calendarView === MONTH ? (
-            <MonthSelection date={date} setDate={setDate} />
+            <MonthSelection
+              date={date}
+              setDate={setDate}
+              changeToNextMonth={changeToNextMonth}
+              changeToPreviousMonth={changeToPreviousMonth}
+            />
           ) : (
-            <YearSelection date={date} setDate={setDate} />
+            <YearSelection
+              date={date}
+              setDate={setDate}
+              changeToPreviousYear={changeToPreviousYear}
+              changeToNextYear={changeToNextYear}
+            />
           )}
         </Box>
         <Box id="calendar-view-toggle-wrapper">

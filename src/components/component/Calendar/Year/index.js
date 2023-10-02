@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import {
@@ -16,7 +16,21 @@ const Year = ({
   showNumberOfMonths = 12,
   monthsFrom = 1,
   formattedData = {},
+  changeToNextYear,
+  changeToPreviousYear,
 }) => {
+  function handleArrowKeys(event) {
+    if (event.key === "ArrowLeft") changeToPreviousYear();
+    if (event.key === "ArrowRight") changeToNextYear();
+  }
+  useEffect(() => {
+    window.addEventListener("keydown", handleArrowKeys);
+    return () => {
+      window.removeEventListener("keydown", handleArrowKeys);
+    };
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="year" data-testid="year">
       {new Array(showNumberOfMonths).fill("").map((_, pos) => {

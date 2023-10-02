@@ -68,7 +68,7 @@ export default function Day({ dayValue, className, options = [] }) {
             {options.map((option) => (
               <MenuItem
                 key={option.key}
-                sx={{ padding: 0 }}
+                sx={{ padding: 0, whiteSpace: "normal" }}
                 onClick={handleClose}
               >
                 <Media
