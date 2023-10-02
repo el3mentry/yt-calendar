@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import moment from "moment";
-import MonthDay from "../MonthDay";
+import MonthDay from "./MonthDay";
 import dayjs from "dayjs";
 import { useEffect } from "react";
 

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Media from "./Media";
-import StackedTemplateView from "./StackedTemplateView";
+import Media from "../Common/Media";
+import StackedTemplateView from "../Common/StackedTemplateView";
 
 const ITEM_HEIGHT = 48;
 

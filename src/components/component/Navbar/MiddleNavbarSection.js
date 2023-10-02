@@ -1,11 +1,11 @@
-import YearSelection from "../YearSelection";
+import YearSelection from "./YearSelection";
 import { MONTH, YEAR } from "../../../variables";
 import Box from "@mui/material/Box";
 
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { grey } from "@mui/material/colors";
-import MonthSelection from "../MonthSelection";
+import MonthSelection from "./MonthSelection";
 import React from "react";
 import switchIcon from "../../../assets/switch-icon.svg";
 

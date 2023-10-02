@@ -1,7 +1,7 @@
 import * as React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Media from "./Media";
+import Media from "../Common/Media";
 
 const ITEM_HEIGHT = 48;
 

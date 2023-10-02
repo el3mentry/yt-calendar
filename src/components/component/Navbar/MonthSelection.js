@@ -1,7 +1,7 @@
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { IconButton } from "@mui/material";
 import Box from "@mui/material/Box";
-import { getMonthName } from "./Calendar/Utils";
+import { getMonthName } from "../Calendar/Common/Utils";
 import dayjs from "dayjs";
 import React from "react";
 
