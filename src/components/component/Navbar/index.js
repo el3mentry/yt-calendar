@@ -48,6 +48,8 @@ export default function Navbar({
         endDate={endDate}
         setPage={setPage}
         totalVideoCount={totalVideoCount}
+        date={date}
+        calendarView={calendarView}
       />
     </Box>
   );

@@ -20,7 +20,12 @@ export default function TotalVids({ totalVideoCount = 0 }) {
 
   return (
     <>
-      <IconButton aria-label="delete" size="small" onClick={handleClick}>
+      <IconButton
+        aria-label="delete"
+        size="small"
+        onClick={handleClick}
+        sx={{ marginLeft: "10px", marginRight: "10px" }}
+      >
         <div
           style={{
             borderRadius: "50%",
