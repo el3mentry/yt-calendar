@@ -31,21 +31,21 @@ export default function RightNavbarSection({
 
     if (calendarView === YEAR) {
       setStartDateFill(
-        currentYear < initialRangeYear ? ERROR_TEXT_FILL : NORMAL_TEXT_FILL,
+        currentYear < initialRangeYear ? ERROR_TEXT_FILL : NORMAL_TEXT_FILL
       );
       setEndDateFill(
-        currentYear > finalRangeYear ? ERROR_TEXT_FILL : NORMAL_TEXT_FILL,
+        currentYear > finalRangeYear ? ERROR_TEXT_FILL : NORMAL_TEXT_FILL
       );
     } else {
       setStartDateFill(
         currentMonthAndYear.isBefore(initialMonthAndYear)
           ? ERROR_TEXT_FILL
-          : NORMAL_TEXT_FILL,
+          : NORMAL_TEXT_FILL
       );
       setEndDateFill(
         currentMonthAndYear.isAfter(finalMonthAndYear)
           ? ERROR_TEXT_FILL
-          : NORMAL_TEXT_FILL,
+          : NORMAL_TEXT_FILL
       );
     }
     // eslint-disable-next-line
@@ -56,7 +56,8 @@ export default function RightNavbarSection({
       id="navbar-right-section"
       sx={{
         display: "flex",
-        width: "33.3333%",
+        flexGrow: 1,
+        flexShrink: 1,
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",
@@ -72,8 +73,8 @@ export default function RightNavbarSection({
           border: 1,
           borderColor: "#c4c4c4",
           borderRadius: "4px",
-          padding: "0 5px 0 5px",
-          minWidth: "12rem",
+          // padding: "0 5px 0 5px",
+          minWidth: "8rem",
           color: "#6d6d6d",
           marginRight: "0.65rem",
         }}
@@ -84,7 +85,7 @@ export default function RightNavbarSection({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginRight: "15px",
+            marginRight: "0.5rem",
           }}
         >
           {startDate !== null && endDate !== null ? (
@@ -93,6 +94,7 @@ export default function RightNavbarSection({
                 style={{
                   color: startDateFill,
                   fontWeight: startDateFill === ERROR_TEXT_FILL ? 600 : 400,
+                  fontSize: "0.8rem",
                 }}
               >
                 {startDate.format("Do MMM 'YY")}
@@ -101,6 +103,7 @@ export default function RightNavbarSection({
                 style={{
                   width: "25px",
                   textAlign: "center",
+                  fontSize: "0.8rem",
                 }}
               >
                 -
@@ -109,6 +112,7 @@ export default function RightNavbarSection({
                 style={{
                   color: endDateFill,
                   fontWeight: endDateFill === ERROR_TEXT_FILL ? 600 : 400,
+                  fontSize: "0.8rem",
                 }}
               >
                 {endDate.format("Do MMM 'YY")}

@@ -24,7 +24,7 @@ export default function TotalVids({ totalVideoCount = 0 }) {
         aria-label="delete"
         size="small"
         onClick={handleClick}
-        sx={{ marginLeft: "10px", marginRight: "10px" }}
+        sx={{ marginLeft: "0.2rem", marginRight: "0.2rem" }}
       >
         <div
           style={{
