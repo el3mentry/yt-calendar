@@ -1,5 +1,4 @@
 import Calendar from "../component/Calendar";
-import Navbar from "../component/Navbar";
 import { useState } from "react";
 import dayjs from "dayjs";
 import { YEAR } from "../../variables";
@@ -7,6 +6,7 @@ import React from "react";
 import DataFetcher from "../../services/DataFetcher";
 import DataFormatter from "../../services/DataFormatter";
 import ChannelInfoProvider from "../../services/ChannelInfoProvider";
+import DrawerAppBar from "../component/DrawerAppBar";
 
 export default function CalendarPage({
   startDate,
@@ -79,7 +79,8 @@ export default function CalendarPage({
           flexDirection: "column",
         }}
       >
-        <Navbar
+
+        <DrawerAppBar
           calendarView={calendarView}
           setCalendarView={setCalendarView}
           date={date}

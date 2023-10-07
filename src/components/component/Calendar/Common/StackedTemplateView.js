@@ -23,15 +23,17 @@ export default function StackedTemplateView({ imageLinks = [] }) {
           position: "relative",
           width: "100%",
           zIndex: 1,
+          aspectRatio: "16 / 9",
         }}
       >
         <img
           style={{
             borderRadius: "4px",
-            border: imageLinks[0] ? "1px solid rgba(0, 0, 0, 0.6)" : "1px solid white",
+            border: imageLinks[0]
+              ? "1px solid rgba(0, 0, 0, 0.6)"
+              : "1px solid white",
             width: imageWidth,
             marginBottom: "5px",
-            aspectRatio: "16 / 9",
           }}
           src={imageLinks[0]}
           alt={""}
@@ -46,15 +48,17 @@ export default function StackedTemplateView({ imageLinks = [] }) {
             top: "10px",
             width: "100%",
             zIndex: -1,
+            aspectRatio: "16 / 9",
           }}
         >
           <img
             style={{
               borderRadius: "4px",
               width: imageWidth,
-              border: imageLinks[1] ? "1px solid rgba(0, 0, 0, 0.6)" : "1px solid white",
+              border: imageLinks[1]
+                ? "1px solid rgba(0, 0, 0, 0.6)"
+                : "1px solid white",
               marginBottom: "5px",
-              aspectRatio: "16 / 9",
             }}
             src={imageLinks[1]}
             alt={""}
@@ -70,15 +74,17 @@ export default function StackedTemplateView({ imageLinks = [] }) {
             top: "20px",
             width: "100%",
             zIndex: -2,
+            aspectRatio: "16 / 9",
           }}
         >
           <img
             style={{
               borderRadius: "4px",
               width: imageWidth,
-              border: imageLinks[2] ? "1px solid rgba(0, 0, 0, 0.6)" : "1px solid white",
+              border: imageLinks[2]
+                ? "1px solid rgba(0, 0, 0, 0.6)"
+                : "1px solid white",
               marginBottom: "5px",
-              aspectRatio: "16 / 9",
             }}
             src={imageLinks[2]}
             alt={""}

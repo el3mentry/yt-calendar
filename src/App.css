@@ -2,18 +2,6 @@
   margin: 0 auto 0 auto;
 }
 
-.currentYear {
-  font-size: 32px;
-  line-height: 1;
-  font-weight: 400;
-  font-style: normal;
-  text-transform: none;
-  text-align: center;
-  color: #000000;
-  padding: 0;
-  margin: 0 auto 50px;
-}
-
 /* controls  */
 
 .controls {
@@ -139,7 +127,7 @@
 }
 
 .gradient-wrapper {
-  width: 15%;
+  min-width: 20%;
   border-radius: 4px;
   text-align: center;
   background-color: #4285f4;
@@ -163,7 +151,9 @@
   padding: 8px;
   text-align: center;
   border-left: none;
-  flex: 1 1 100px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 150px;
   font-size: 12px;
   padding-bottom: 10px;
   min-height: 80px;
@@ -176,7 +166,7 @@
 /* Navbar */
 
 .arrow-logo-icon {
-  width: 1.7rem;
+  width: 0.9rem;
   border-radius: 50%;
 }
 

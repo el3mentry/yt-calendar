@@ -8,12 +8,13 @@ export default function LeftNavbarSection({ channelThumbnail, channelName }) {
       id="navbar-left-section"
       sx={{
         display: "flex",
-        width: "33.333%",
+        flexGrow: 0.8,
+        flexShrink: 1.2,
         justifyContent: "flex-start",
         alignItems: "center",
       }}
     >
-      <Box id="yt-cal-logo" sx={{ mt: "6px", ml: "2vw" }}>
+      <Box id="yt-cal-logo" sx={{ mt: "6px" }}>
         <Logo />
       </Box>
 
@@ -26,8 +27,7 @@ export default function LeftNavbarSection({ channelThumbnail, channelName }) {
           borderColor: "#c4c4c4",
           borderRadius: "4px",
           padding: "0 5px 0 5px",
-          marginLeft: "50px",
-          marginRight: "auto",
+          marginLeft: "2.6vw",
         }}
       >
         <Box
@@ -51,7 +51,7 @@ export default function LeftNavbarSection({ channelThumbnail, channelName }) {
         >
           <Box
             title={channelName}
-            sx={{ flexGrow: 1, textAlign: "center", color: "#0f0f0f" }}
+            sx={{ flexGrow: 1, textAlign: "center", color: "#0f0f0f", opacity: "0.85" }}
           >
             {channelName.length > 18
               ? channelName.substring(0, 15) + "..."

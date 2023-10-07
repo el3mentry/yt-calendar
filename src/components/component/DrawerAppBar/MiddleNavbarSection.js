@@ -14,7 +14,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
   padding: "auto",
   borderColor: grey[400],
   borderRadius: "4px",
-  height: "42px",
+  height: "40px",
   fontFamily: '"Open Sans", "sans-serif"',
   "&:hover": {
     backgroundColor: grey[200],
@@ -37,7 +37,8 @@ export default function MiddleNavbarSection({
       id="navbar-middle-section"
       sx={{
         display: "flex",
-        width: "33.3333%",
+        flexGrow: 1.2,
+        flexShrink: 0.8,
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
@@ -75,12 +76,12 @@ export default function MiddleNavbarSection({
           <ColorButton
             variant="outlined"
             onClick={changeCalendarView}
-            sx={{ fontWeight: "unset", width: "10rem" }}
+            sx={{ fontWeight: "unset", width: "6.5rem" }}
           >
             <div style={{ color: "#6d6d6d" }}>
               {calendarView === YEAR ? (
                 <span className="flex flex-row">
-                  <p className="" style={{ fontSize: "16px" }}>
+                  <p className="" style={{ fontSize: "0.8rem" }}>
                     Yearly
                   </p>
                   <img
@@ -91,7 +92,7 @@ export default function MiddleNavbarSection({
                 </span>
               ) : (
                 <span className="flex flex-row">
-                  <p className="" style={{ fontSize: "16px" }}>
+                  <p className="" style={{ fontSize: "0.8rem" }}>
                     Monthly
                   </p>
                   <img
