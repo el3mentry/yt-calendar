@@ -24,7 +24,6 @@ const theme = createTheme({
 });
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
 
 export default function DrawerAppBar(props) {
   const {
@@ -57,13 +56,35 @@ export default function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{
+        textAlign: "center",
+        flexGrow: 1,
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Typography variant="h6" sx={{ my: 2 }}>
         <Logo />
       </Typography>
       <Divider />
-      <List>
-        <DrawerElements setPage={setPage} />
+      <List
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          flexGrow: 1,
+          justifyContent: "space-around",
+        }}
+      >
+        <DrawerElements
+          setPage={setPage}
+          changeCalendarView={changeCalendarView}
+          calendarView={calendarView}
+          startDate={startDate}
+          endDate={endDate}
+          date={date}
+        />
       </List>
     </Box>
   );

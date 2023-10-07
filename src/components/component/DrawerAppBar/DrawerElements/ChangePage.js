@@ -2,23 +2,21 @@ import { DATERANGEPAGE, HOMEPAGE } from "../../../../variables";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import HomeIcon from "@mui/icons-material/Home";
 import Box from "@mui/material/Box";
-import { grey } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import { ButtonBase, Typography } from "@mui/material";
 
 const ColorButton = styled(ButtonBase)(({ theme }) => ({
-  color: theme.palette.getContrastText(grey[400]),
   borderRadius: "25px",
   fontFamily: '"Open Sans", "sans-serif"',
   color: "white",
-  backgroundColor: "#3365e7",
+  backgroundColor: "#1976D2",
   height: "40px",
   minWidth: "40px",
   paddingLeft: "0.9rem",
   paddingRight: "0.9rem",
 }));
 
-export default function DrawerChangeView({ setPage }) {
+export default function ChangePage({ setPage }) {
   return (
     <Box
       sx={{
@@ -34,7 +32,10 @@ export default function DrawerChangeView({ setPage }) {
         }}
       >
         <HomeIcon />
-        <Typography variant="subtitle1" sx={{ marginLeft: "0.4rem" }}>
+        <Typography
+          variant="subtitle1"
+          sx={{ marginLeft: "0.4rem", fontFamily: "inter, sans-serif", fontWeight: "500" }}
+        >
           Home
         </Typography>
       </ColorButton>
@@ -45,7 +46,10 @@ export default function DrawerChangeView({ setPage }) {
         }}
       >
         <CalendarMonthIcon />
-        <Typography variant="subtitle1" sx={{ marginLeft: "0.4rem" }}>
+        <Typography
+          variant="subtitle1"
+          sx={{ marginLeft: "0.4rem", fontFamily: "inter, sans-serif", fontWeight: "500" }}
+        >
           Range
         </Typography>
       </ColorButton>

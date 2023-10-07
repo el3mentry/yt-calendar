@@ -1,4 +1,4 @@
-import ChangeView from "./ChangeView";
+import ChangeView from "./ChangePage";
 import Box from "@mui/material/Box";
 import React from "react";
 import TotalVids from "./TotalVids";
