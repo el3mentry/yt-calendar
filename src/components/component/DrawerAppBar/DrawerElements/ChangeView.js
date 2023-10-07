@@ -31,7 +31,7 @@ export default function ChangeView({ changeCalendarView, calendarView }) {
                 variant="subtitle1"
                 sx={{
                   margin: "auto",
-                  fontWeight: "500",
+                  fontWeight: "400",
                   fontFamily: '"inter", "sans-serif"',
                   marginBottom: "0.1rem",
                 }}
