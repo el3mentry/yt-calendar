@@ -9,6 +9,7 @@ const ColorButton = styled(ButtonBase)(() => ({
   backgroundColor: "#6cabdd",
   height: "30px",
   minWidth: "30%",
+  color: "white",
   paddingLeft: "0.9rem",
   paddingRight: "0.9rem",
   fontSize: "0.9rem",
