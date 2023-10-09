@@ -84,6 +84,7 @@ export default function DrawerAppBar(props) {
           startDate={startDate}
           endDate={endDate}
           date={date}
+          totalVideoCount={totalVideoCount}
         />
       </List>
     </Box>

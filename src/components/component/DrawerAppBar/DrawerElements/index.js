@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import ChangePage from "./ChangePage";
 import ChangeView from "./ChangeView";
 import DateRange from "./DateRange";
+import TotalVids from "./TotalVids";
 
 export default function DrawerElements({
   setPage,
@@ -10,6 +11,7 @@ export default function DrawerElements({
   startDate,
   endDate,
   date,
+  totalVideoCount,
 }) {
   return (
     <Box
@@ -32,6 +34,7 @@ export default function DrawerElements({
         date={date}
         calendarView={calendarView}
       />
+      <TotalVids totalVideoCount={totalVideoCount} />
     </Box>
   );
 }
