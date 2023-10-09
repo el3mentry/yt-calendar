@@ -40,11 +40,7 @@
   /* padding-bottom: 60px; */
 }
 
-/* months */
-
 .month {
-  /* padding: 0 10px 0 10px;
-  margin: 0 20px 0 20px; */
   box-sizing: border-box;
   flex-basis: 20.5%;
   min-height: 256px;
@@ -167,7 +163,7 @@
 /* Navbar */
 
 .arrow-logo-icon {
-  width: 0.9rem;
+  width: 0.5rem;
   border-radius: 50%;
 }
 

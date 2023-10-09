@@ -80,8 +80,8 @@ export default function DateRange({ startDate, endDate, date, calendarView }) {
               textAlign: "center",
               fontSize: "0.8rem",
               borderBottom: "2px solid black",
-              height: "2rem",
-              marginBottom: "1.9rem"
+              height: "1rem",
+              marginBottom: "0.9rem"
             }}
           >
           </Box>
