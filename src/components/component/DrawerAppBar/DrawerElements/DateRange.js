@@ -14,7 +14,7 @@ export default function DateRange({ startDate, endDate, date, calendarView }) {
   const ColorButton = styled(ButtonBase)(() => ({
     borderRadius: "25px",
     fontFamily: '"inter" , "Open Sans", "sans-serif"',
-    backgroundColor: "#1976D2",
+    backgroundColor: "#3365E7",
     height: "40px",
     minWidth: "90%",
     paddingLeft: "0.9rem",
