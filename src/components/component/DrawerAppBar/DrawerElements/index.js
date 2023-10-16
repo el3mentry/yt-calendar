@@ -1,6 +1,5 @@
 import { Box } from "@mui/material";
 import ChangePage from "./ChangePage";
-import ChangeView from "./ChangeView";
 import DateRange from "./DateRange";
 import TotalVids from "./TotalVids";
 
@@ -18,22 +17,41 @@ export default function DrawerElements({
       sx={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-evenly",
+        justifyContent: "flex-start",
         flexGrow: 1,
         flexShrink: 1,
       }}
     >
-      <ChangePage setPage={setPage} />
-      <ChangeView
-        changeCalendarView={changeCalendarView}
-        calendarView={calendarView}
-      />
-      <DateRange
-        startDate={startDate}
-        endDate={endDate}
-        date={date}
-        calendarView={calendarView}
-      />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-evenly",
+          flexBasis: "200px",
+          marginBottom: "3rem",
+        }}
+      >
+        <ChangePage
+          setPage={setPage}
+          changeCalendarView={changeCalendarView}
+          calendarView={calendarView}
+        />
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-evenly",
+          marginBottom: "3rem",
+        }}
+      >
+        <DateRange
+          startDate={startDate}
+          endDate={endDate}
+          date={date}
+          calendarView={calendarView}
+        />
+      </Box>
       <TotalVids totalVideoCount={totalVideoCount} />
     </Box>
   );

@@ -1,28 +1,40 @@
 import { DATERANGEPAGE, HOMEPAGE } from "../../../../variables";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import HomeIcon from "@mui/icons-material/Home";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import { ButtonBase, Typography } from "@mui/material";
+import { grey } from "@mui/material/colors";
+import HomeIcon from "../../../../assets/drawerHome.svg";
+import ChangeView from "./ChangeView";
+import DateRangeIcon from "../../../../assets/drawerDateRange.svg";
 
 const ColorButton = styled(ButtonBase)(({ theme }) => ({
-  borderRadius: "25px",
   fontFamily: '"Open Sans", "sans-serif"',
-  color: "white",
-  backgroundColor: "#1976D2",
-  height: "40px",
-  minWidth: "40px",
+  color: "#000",
+  backgroundColor: "#fff",
+  height: "50px",
+  minWidth: "100%",
   paddingLeft: "0.9rem",
   paddingRight: "0.9rem",
+  display: "flex",
+  justifyContent: "flex-start",
+  "&:hover": {
+    backgroundColor: grey[200],
+  },
 }));
 
-export default function ChangePage({ setPage }) {
+export default function ChangePage({
+  setPage,
+  changeCalendarView,
+  calendarView,
+}) {
   return (
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-evenly",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        gap: "20px",
       }}
     >
       <ColorButton
@@ -31,28 +43,43 @@ export default function ChangePage({ setPage }) {
           setPage(HOMEPAGE);
         }}
       >
-        <HomeIcon />
+        <img src={HomeIcon} height={30} width={30} alt={"Home icon"} />
         <Typography
           variant="subtitle1"
-          sx={{ marginLeft: "0.4rem", fontFamily: "inter, sans-serif", fontWeight: "500" }}
+          sx={{
+            marginLeft: "1.3rem",
+            fontFamily: "inter, sans-serif",
+            fontWeight: "400",
+            fontSize: "1.2rem",
+          }}
         >
           Home
         </Typography>
       </ColorButton>
+
       <ColorButton
         variant="outlined"
         onClick={() => {
           setPage(DATERANGEPAGE);
         }}
       >
-        <CalendarMonthIcon />
+        <img src={DateRangeIcon} alt="date range icon" height={30} width={30} />
         <Typography
           variant="subtitle1"
-          sx={{ marginLeft: "0.4rem", fontFamily: "inter, sans-serif", fontWeight: "500" }}
+          sx={{
+            marginLeft: "1.3rem",
+            fontFamily: "inter, sans-serif",
+            fontWeight: "400",
+            fontSize: "1.2rem",
+          }}
         >
           Range
         </Typography>
       </ColorButton>
+      <ChangeView
+        changeCalendarView={changeCalendarView}
+        calendarView={calendarView}
+      />
     </Box>
   );
 }
