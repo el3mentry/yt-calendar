@@ -21,9 +21,11 @@ export default function ChangeView({ changeCalendarView, calendarView }) {
       id="calendar-view-toggle-wrapper"
       sx={{
         display: "flex",
-        flexDirection: "center",
+        flexDirection: "row",
         alignItems: "center",
+        alignSelf: "stretch",
         height: "50px",
+        cursor: "pointer"
       }}
       onClick={changeCalendarView}
     >
@@ -75,7 +77,6 @@ export default function ChangeView({ changeCalendarView, calendarView }) {
           )}
         </Box>
       </ColorButton>
-     
     </Box>
   );
 }
