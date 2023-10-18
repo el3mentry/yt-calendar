@@ -272,8 +272,7 @@
   text-decoration: none;
   user-select: none;
   border: none;
-  width: 100%;
-  margin-bottom: 15px;
+  width: 70%;
   /* margin-top: 5px; */
   display: block;
 }

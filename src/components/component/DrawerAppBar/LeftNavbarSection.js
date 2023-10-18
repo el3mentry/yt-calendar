@@ -8,8 +8,7 @@ export default function LeftNavbarSection({ channelThumbnail, channelName }) {
       id="navbar-left-section"
       sx={{
         display: "flex",
-        flexGrow: 0.8,
-        flexShrink: 1.2,
+        flex: "1 1 100px",
         justifyContent: "flex-start",
         alignItems: "center",
       }}
@@ -24,10 +23,12 @@ export default function LeftNavbarSection({ channelThumbnail, channelName }) {
           alignItems: "center",
           height: "40px",
           border: 1,
+          flexShrink: 1,
           borderColor: "#c4c4c4",
           borderRadius: "4px",
           padding: "0 5px 0 5px",
           marginLeft: "2.6vw",
+          flexBasis: "150px"
         }}
       >
         <Box
@@ -40,24 +41,19 @@ export default function LeftNavbarSection({ channelThumbnail, channelName }) {
             backgroundSize: "contain",
           }}
         ></Box>
-        <Box
-          id="channel-title"
-          sx={{
-            display: "flex",
-            flexGrow: 1,
+
+        <input
+          role="anchor"
+          readOnly={true}
+          id="channel-title-input"
+          style={{
             marginLeft: "7px",
             marginRight: "5px",
+            outline: "none"
           }}
-        >
-          <Box
-            title={channelName}
-            sx={{ flexGrow: 1, textAlign: "center", color: "#0f0f0f", opacity: "0.85" }}
-          >
-            {channelName.length > 18
-              ? channelName.substring(0, 15) + "..."
-              : channelName}
-          </Box>
-        </Box>
+          type="text"
+          value={channelName}
+        />
       </Box>
     </Box>
   );

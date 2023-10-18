@@ -56,8 +56,7 @@ export default function RightNavbarSection({
       id="navbar-right-section"
       sx={{
         display: "flex",
-        flexGrow: 1,
-        flexShrink: 1,
+        flex: "1 1 100px",
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",

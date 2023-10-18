@@ -99,14 +99,21 @@ export default function DrawerAppBar(props) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <AppBar component="nav" color="main" sx={{ boxShadow: "none" }}>
-          <Toolbar sx={{ justifyContent: "space-between" }}>
+        <AppBar
+          component="nav"
+          color="main"
+          sx={{ boxShadow: "none" }}
+          id="fetcher"
+        >
+          <Toolbar
+            sx={{ justifyContent: "space-between", padding: "0 !important" }}
+          >
             <IconButton
               color="inherit"
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ display: { md: "none" } }}
+              sx={{ display: { md: "none" }, marginLeft: "16px" }}
             >
               <MenuIcon />
             </IconButton>
@@ -138,7 +145,8 @@ export default function DrawerAppBar(props) {
                 borderRadius: "50%",
                 backgroundImage: `url(${channelThumbnail})`,
                 backgroundSize: "contain",
-                display: { md: "none" }
+                display: { md: "none" },
+                marginRight: "16px",
               }}
             ></Box>
             <Box sx={{ display: { xs: "none", md: "block" } }}>
@@ -152,6 +160,8 @@ export default function DrawerAppBar(props) {
                   flexGrow: 1,
                   zIndex: "99",
                   position: "relative",
+                  paddingLeft: "16px",
+                  paddingRight: "16px",
                 }}
               >
                 <LeftNavbarSection
