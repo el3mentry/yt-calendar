@@ -38,7 +38,7 @@ export default function Day({ dayValue, className, options = [] }) {
             backgroundColor: options.length >= 1 ? "#6cabdd" : "white",
             borderRadius: "50%",
             margin: "2px",
-            paddingTop: options.length >= 2 ? "0px" : "1.8px",
+            paddingTop: options.length >= 2 ? "1px" : "1.8px",
             height: options.length > 1 ? "19px" : "25px",
             color: options.length ? "white" : "#505050",
           }}
