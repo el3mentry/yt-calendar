@@ -26,10 +26,10 @@ export default function Day({ dayValue, className, options = [] }) {
           cursor: "pointer",
           display: "flex",
           flexDirection: "column",
-          border: options.length >= 2 ? "1px solid rgb(79, 96, 184)" : "white",
+          border: options.length > 1 ? "1px solid rgb(79, 96, 184)" : "white",
           borderRadius: "50%",
-          height: options.length >= 2 ? "22px" : "25px",
-          width: options.length >= 2 ? "22px" : "25px",
+          height: "25px",
+          width: "25px",
         }}
         aria-describedby={id}
       >
@@ -38,8 +38,8 @@ export default function Day({ dayValue, className, options = [] }) {
             backgroundColor: options.length >= 1 ? "#6cabdd" : "white",
             borderRadius: "50%",
             margin: "2px",
-            paddingTop: options.length >= 2 ? "0.8px" : "2.5px",
-            height: "25px",
+            paddingTop: options.length >= 2 ? "0px" : "1.8px",
+            height: options.length > 1 ? "19px" : "25px",
             color: options.length ? "white" : "#505050",
           }}
         >
