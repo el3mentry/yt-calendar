@@ -33,6 +33,14 @@ export default class ChannelInfoProvider {
   }
 
   /**
+   * @description Returns the specified channel's username.
+   * @returns {Promise<string>}
+   */
+  getChannelUsername() {
+    return this.#channelInfo.items[0].snippet.customUrl;
+  }
+
+  /**
    * @description Returns the specified channel's profile picture.(uses 'default' as default).
    * @returns {Promise<string>}
    */

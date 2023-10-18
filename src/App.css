@@ -272,9 +272,8 @@
   text-decoration: none;
   user-select: none;
   border: none;
-  width: 70%;
-  /* margin-top: 5px; */
   display: block;
+  width: "70%";
 }
 
 #thumbnail-image-field:hover ~ input {

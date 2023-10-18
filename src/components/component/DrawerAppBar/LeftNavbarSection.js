@@ -2,7 +2,7 @@ import Logo from "./Logo";
 import Box from "@mui/material/Box";
 import React from "react";
 
-export default function LeftNavbarSection({ channelThumbnail, channelName }) {
+export default function LeftNavbarSection({ channelThumbnail, channelName, channelUsername }) {
   return (
     <Box
       id="navbar-left-section"
@@ -23,12 +23,12 @@ export default function LeftNavbarSection({ channelThumbnail, channelName }) {
           alignItems: "center",
           height: "40px",
           border: 1,
-          flexShrink: 1,
+          flex: "1 1 100px",
           borderColor: "#c4c4c4",
           borderRadius: "4px",
           padding: "0 5px 0 5px",
           marginLeft: "2.6vw",
-          flexBasis: "150px"
+          minWidth: "10%"
         }}
       >
         <Box
@@ -42,18 +42,22 @@ export default function LeftNavbarSection({ channelThumbnail, channelName }) {
           }}
         ></Box>
 
-        <input
+        <textarea
+          onClick={()=> window.open("https://youtube.com/" + channelUsername, "_blank")}
           role="anchor"
           readOnly={true}
           id="channel-title-input"
           style={{
             marginLeft: "7px",
             marginRight: "5px",
-            outline: "none"
+            outline: "none",
+            resize: "none",
+            overflow: "hidden"
           }}
           type="text"
+          rows={1}
           value={channelName}
-        />
+        ></textarea>
       </Box>
     </Box>
   );

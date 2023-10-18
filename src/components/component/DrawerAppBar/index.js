@@ -39,6 +39,7 @@ export default function DrawerAppBar(props) {
     startDate = null,
     endDate = null,
     channelName = "ChannelName",
+    channelUsername = "",
     channelThumbnail = "",
     changeToNextMonth,
     changeToPreviousMonth,
@@ -148,6 +149,9 @@ export default function DrawerAppBar(props) {
                 display: { md: "none" },
                 marginRight: "16px",
               }}
+              onClick={() =>
+                window.open("https://youtube.com/" + channelUsername, "_blank")
+              }
             ></Box>
             <Box sx={{ display: { xs: "none", md: "block" } }}>
               <Box
@@ -167,6 +171,7 @@ export default function DrawerAppBar(props) {
                 <LeftNavbarSection
                   channelName={channelName}
                   channelThumbnail={channelThumbnail}
+                  channelUsername={channelUsername}
                 />
                 <MiddleNavbarSection
                   calendarView={calendarView}
