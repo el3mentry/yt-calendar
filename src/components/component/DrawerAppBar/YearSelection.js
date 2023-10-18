@@ -26,7 +26,6 @@ export default function YearSelection({
     <Box
       sx={{
         textAlign: "center",
-        paddingLeft: 1.3,
         display: "flex",
         flexDirection: "row",
         alignItems: "center",

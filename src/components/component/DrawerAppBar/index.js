@@ -16,6 +16,8 @@ import LeftNavbarSection from "./LeftNavbarSection";
 import MiddleNavbarSection from "./MiddleNavbarSection";
 import RightNavbarSection from "./RightNavbarSection";
 import DrawerElements from "./DrawerElements";
+import YearSelection from "./YearSelection";
+import MonthSelection from "./MonthSelection";
 
 const theme = createTheme({
   palette: {
@@ -98,16 +100,47 @@ export default function DrawerAppBar(props) {
       <CssBaseline />
       <ThemeProvider theme={theme}>
         <AppBar component="nav" color="main" sx={{ boxShadow: "none" }}>
-          <Toolbar>
+          <Toolbar sx={{ justifyContent: "space-between" }}>
             <IconButton
               color="inherit"
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { md: "none" } }}
+              sx={{ display: { md: "none" } }}
             >
               <MenuIcon />
             </IconButton>
+            <Box
+              sx={{ borderRadius: 1, display: { md: "none" } }}
+              id="year-selection-wrapper"
+            >
+              {calendarView === MONTH ? (
+                <MonthSelection
+                  date={date}
+                  setDate={setDate}
+                  changeToNextMonth={changeToNextMonth}
+                  changeToPreviousMonth={changeToPreviousMonth}
+                />
+              ) : (
+                <YearSelection
+                  date={date}
+                  setDate={setDate}
+                  changeToPreviousYear={changeToPreviousYear}
+                  changeToNextYear={changeToNextYear}
+                />
+              )}
+            </Box>
+            <Box
+              id="channel-logo"
+              sx={{
+                height: "30px",
+                width: "30px",
+                borderRadius: "50%",
+                backgroundImage: `url(${channelThumbnail})`,
+                backgroundSize: "contain",
+                display: { md: "none" }
+              }}
+            ></Box>
             <Box sx={{ display: { xs: "none", md: "block" } }}>
               <Box
                 id="navbar-box"
