@@ -2,12 +2,26 @@ import { Box } from "@mui/material";
 import { useState, useEffect } from "react";
 import { YEAR } from "../../../../variables";
 import dayjs from "dayjs";
+import { styled } from "@mui/material/styles";
+import { ButtonBase } from "@mui/material";
 
 export default function DateRange({ startDate, endDate, date, calendarView }) {
-  const NORMAL_TEXT_FILL = "#6d6d6d";
+  const NORMAL_TEXT_FILL = "#fff";
   const ERROR_TEXT_FILL = "#ff5a5a";
   const [startDateFill, setStartDateFill] = useState(NORMAL_TEXT_FILL);
   const [endDateFill, setEndDateFill] = useState(NORMAL_TEXT_FILL);
+
+  const ColorButton = styled(ButtonBase)(() => ({
+    borderRadius: "25px",
+    fontFamily: '"inter" , "Open Sans", "sans-serif"',
+    backgroundColor: "#3365E7",
+    height: "40px",
+    minWidth: "90%",
+    paddingLeft: "0.9rem",
+    paddingRight: "0.9rem",
+    fontSize: "0.9rem",
+    cursor: "default"
+  }));
 
   useEffect(() => {
     const currentYear = parseInt(date.year());
@@ -43,6 +57,7 @@ export default function DateRange({ startDate, endDate, date, calendarView }) {
     <Box
       style={{
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         marginRight: "0.5rem",
@@ -50,33 +65,35 @@ export default function DateRange({ startDate, endDate, date, calendarView }) {
     >
       {startDate !== null && endDate !== null ? (
         <>
-          <Box
-            style={{
+          <ColorButton
+            sx={{
               color: startDateFill,
-              fontWeight: startDateFill === ERROR_TEXT_FILL ? 600 : 400,
-              fontSize: "0.8rem",
+              fontWeight: startDateFill === ERROR_TEXT_FILL ? 600 : 500,
             }}
+            onClick={null}
           >
             {startDate.format("Do MMM 'YY")}
-          </Box>
+          </ColorButton>
           <Box
             style={{
-              width: "25px",
+              width: "2rem",
               textAlign: "center",
               fontSize: "0.8rem",
+              borderBottom: "2px solid black",
+              height: "1rem",
+              marginBottom: "0.9rem"
             }}
           >
-            -
           </Box>
-          <Box
-            style={{
+          <ColorButton
+            sx={{
               color: endDateFill,
-              fontWeight: endDateFill === ERROR_TEXT_FILL ? 600 : 400,
-              fontSize: "0.8rem",
+              fontWeight: endDateFill === ERROR_TEXT_FILL ? 600 : 500,
             }}
+            onClick={null}
           >
             {endDate.format("Do MMM 'YY")}
-          </Box>
+          </ColorButton>
         </>
       ) : (
         "Do MMM' YY - Do MMM' YY"

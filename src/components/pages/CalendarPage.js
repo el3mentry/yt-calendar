@@ -20,6 +20,7 @@ export default function CalendarPage({
   const [channelThumbnail, setChannelThumbnail] = useState("");
   const [formattedData, setFormattedData] = useState({});
   const [totalVideoCount, setTotalVideoCount] = useState(0);
+  const [channelUsername, setChannelUsername] = useState("");
 
   function changeToPreviousYear() {
     setDate((prev) => {
@@ -62,6 +63,7 @@ export default function CalendarPage({
 
       setChannelName(channelInfoProvider.getChannelTitle());
       setChannelThumbnail(channelInfoProvider.getChannelThumbnail());
+      setChannelUsername(channelInfoProvider.getChannelUsername());
       setFormattedData(dataFormatter.FormattedData);
       setTotalVideoCount(dataFormatter.TotalVideoCount);
     })();
@@ -89,6 +91,7 @@ export default function CalendarPage({
           endDate={endDate}
           channelName={channelName}
           channelThumbnail={channelThumbnail}
+          channelUsername={channelUsername}
           setPage={setPage}
           totalVideoCount={totalVideoCount}
           changeToPreviousYear={changeToPreviousYear}
