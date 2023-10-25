@@ -2,7 +2,8 @@ import Box from "@mui/material/Box";
 import { getMonthName } from "../Calendar/Common/Utils";
 import dayjs from "dayjs";
 import React from "react";
-import arrowLogo from "../../../assets/arrow.svg";
+import arrowLeft from "../../../assets/arrow-left.svg";
+import arrowRight from "../../../assets/arrow-right.svg";
 import { grey } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import { ButtonBase } from "@mui/material";
@@ -16,6 +17,7 @@ const ColorButton = styled(ButtonBase)(({ theme }) => ({
     borderColor: grey[300],
   },
   height: "38px",
+  width: "15px",
 }));
 
 export default function MonthSelection({
@@ -34,7 +36,6 @@ export default function MonthSelection({
       <Box
         sx={{
           textAlign: "center",
-          paddingLeft: 1.3,
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
@@ -65,10 +66,7 @@ export default function MonthSelection({
             <img
               alt="arrow-logo-icon-left"
               className="arrow-logo-icon"
-              src={arrowLogo}
-              style={{
-                transform: "rotate(90deg)",
-              }}
+              src={arrowLeft}
             />
           </ColorButton>
           {getMonthName(date.month() + 1).substring(0, 3)} {date.year()}
@@ -84,10 +82,7 @@ export default function MonthSelection({
             <img
               alt="arrow-logo-icon-right"
               className="arrow-logo-icon"
-              src={arrowLogo}
-              style={{
-                transform: "rotate(270deg)",
-              }}
+              src={arrowRight}
             />
           </ColorButton>
         </div>

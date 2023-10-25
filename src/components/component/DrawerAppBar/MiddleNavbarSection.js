@@ -37,8 +37,7 @@ export default function MiddleNavbarSection({
       id="navbar-middle-section"
       sx={{
         display: "flex",
-        flexGrow: 1.2,
-        flexShrink: 0.8,
+        flex: "1 1 100px",
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",

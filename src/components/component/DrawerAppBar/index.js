@@ -16,6 +16,8 @@ import LeftNavbarSection from "./LeftNavbarSection";
 import MiddleNavbarSection from "./MiddleNavbarSection";
 import RightNavbarSection from "./RightNavbarSection";
 import DrawerElements from "./DrawerElements";
+import YearSelection from "./YearSelection";
+import MonthSelection from "./MonthSelection";
 
 const theme = createTheme({
   palette: {
@@ -37,6 +39,7 @@ export default function DrawerAppBar(props) {
     startDate = null,
     endDate = null,
     channelName = "ChannelName",
+    channelUsername = "",
     channelThumbnail = "",
     changeToNextMonth,
     changeToPreviousMonth,
@@ -84,6 +87,7 @@ export default function DrawerAppBar(props) {
           startDate={startDate}
           endDate={endDate}
           date={date}
+          totalVideoCount={totalVideoCount}
         />
       </List>
     </Box>
@@ -96,17 +100,59 @@ export default function DrawerAppBar(props) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <AppBar component="nav" color="main" sx={{ boxShadow: "none" }}>
-          <Toolbar>
+        <AppBar
+          component="nav"
+          color="main"
+          sx={{ boxShadow: "none" }}
+          id="fetcher"
+        >
+          <Toolbar
+            sx={{ justifyContent: "space-between", padding: "0 !important" }}
+          >
             <IconButton
               color="inherit"
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { md: "none" } }}
+              sx={{ display: { md: "none" }, marginLeft: "16px" }}
             >
               <MenuIcon />
             </IconButton>
+            <Box
+              sx={{ borderRadius: 1, display: { md: "none" } }}
+              id="year-selection-wrapper"
+            >
+              {calendarView === MONTH ? (
+                <MonthSelection
+                  date={date}
+                  setDate={setDate}
+                  changeToNextMonth={changeToNextMonth}
+                  changeToPreviousMonth={changeToPreviousMonth}
+                />
+              ) : (
+                <YearSelection
+                  date={date}
+                  setDate={setDate}
+                  changeToPreviousYear={changeToPreviousYear}
+                  changeToNextYear={changeToNextYear}
+                />
+              )}
+            </Box>
+            <Box
+              id="channel-logo"
+              sx={{
+                height: "30px",
+                width: "30px",
+                borderRadius: "50%",
+                backgroundImage: `url(${channelThumbnail})`,
+                backgroundSize: "contain",
+                display: { md: "none" },
+                marginRight: "16px",
+              }}
+              onClick={() =>
+                window.open("https://youtube.com/" + channelUsername, "_blank")
+              }
+            ></Box>
             <Box sx={{ display: { xs: "none", md: "block" } }}>
               <Box
                 id="navbar-box"
@@ -118,11 +164,14 @@ export default function DrawerAppBar(props) {
                   flexGrow: 1,
                   zIndex: "99",
                   position: "relative",
+                  paddingLeft: "16px",
+                  paddingRight: "16px",
                 }}
               >
                 <LeftNavbarSection
                   channelName={channelName}
                   channelThumbnail={channelThumbnail}
+                  channelUsername={channelUsername}
                 />
                 <MiddleNavbarSection
                   calendarView={calendarView}

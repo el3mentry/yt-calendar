@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
-import arrowLogo from "../../../assets/arrow.svg";
+import arrowLeft from "../../../assets/arrow-left.svg";
+import arrowRight from "../../../assets/arrow-right.svg";
 import { grey } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import { ButtonBase } from "@mui/material";
@@ -13,6 +14,7 @@ const ColorButton = styled(ButtonBase)(({ theme }) => ({
     borderColor: grey[300],
   },
   height: "38px",
+  width: "15px",
 }));
 
 export default function YearSelection({
@@ -24,7 +26,6 @@ export default function YearSelection({
     <Box
       sx={{
         textAlign: "center",
-        paddingLeft: 1.3,
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
@@ -54,10 +55,7 @@ export default function YearSelection({
         >
           <img
             className="arrow-logo-icon"
-            src={arrowLogo}
-            style={{
-              transform: "rotate(90deg)",
-            }}
+            src={arrowLeft}
             alt="arrow-logo-icon-left"
           />
         </ColorButton>
@@ -75,10 +73,7 @@ export default function YearSelection({
         >
           <img
             className="arrow-logo-icon"
-            src={arrowLogo}
-            style={{
-              transform: "rotate(270deg)",
-            }}
+            src={arrowRight}
             alt="arrow-logo-icon-right"
           />
         </ColorButton>
