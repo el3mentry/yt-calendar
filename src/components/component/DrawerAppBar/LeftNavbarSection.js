@@ -2,7 +2,11 @@ import Logo from "./Logo";
 import Box from "@mui/material/Box";
 import React from "react";
 
-export default function LeftNavbarSection({ channelThumbnail, channelName, channelUsername }) {
+export default function LeftNavbarSection({
+  channelThumbnail,
+  channelName,
+  channelUsername,
+}) {
   return (
     <Box
       id="navbar-left-section"
@@ -11,7 +15,7 @@ export default function LeftNavbarSection({ channelThumbnail, channelName, chann
         flex: "1 1 100px",
         justifyContent: "flex-start",
         alignItems: "center",
-        maxWidth: "33.33%"
+        maxWidth: "33.33%",
       }}
     >
       <Box id="yt-cal-logo" sx={{ mt: "6px" }}>
@@ -28,7 +32,12 @@ export default function LeftNavbarSection({ channelThumbnail, channelName, chann
           borderRadius: "4px",
           padding: "0 5px 0 5px",
           marginLeft: "2.6vw",
+          cursor: "pointer",
         }}
+        id={"channel-name-div"}
+        onClick={() =>
+          window.open("https://youtube.com/" + channelUsername, "_blank")
+        }
       >
         <Box
           id="channel-logo"
@@ -43,7 +52,6 @@ export default function LeftNavbarSection({ channelThumbnail, channelName, chann
         ></Box>
 
         <span
-          onClick={()=> window.open("https://youtube.com/" + channelUsername, "_blank")}
           id="channel-title-input"
           style={{
             marginLeft: "7px",
@@ -51,9 +59,11 @@ export default function LeftNavbarSection({ channelThumbnail, channelName, chann
             outline: "none",
             resize: "none",
             overflow: "hidden",
-            whiteSpace: "nowrap"
+            whiteSpace: "nowrap",
           }}
-        >{channelName}</span>
+        >
+          {channelName}
+        </span>
       </span>
     </Box>
   );
