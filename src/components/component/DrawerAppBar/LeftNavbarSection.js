@@ -11,24 +11,23 @@ export default function LeftNavbarSection({ channelThumbnail, channelName, chann
         flex: "1 1 100px",
         justifyContent: "flex-start",
         alignItems: "center",
+        maxWidth: "33.33%"
       }}
     >
       <Box id="yt-cal-logo" sx={{ mt: "6px" }}>
         <Logo />
       </Box>
 
-      <Box
-        sx={{
+      <span
+        style={{
           display: "flex",
           alignItems: "center",
           height: "40px",
-          border: 1,
-          flex: "1 1 100px",
-          borderColor: "#c4c4c4",
+          border: "1px solid #c4c4c4",
+          maxWidth: "59%",
           borderRadius: "4px",
           padding: "0 5px 0 5px",
           marginLeft: "2.6vw",
-          minWidth: "10%"
         }}
       >
         <Box
@@ -36,29 +35,26 @@ export default function LeftNavbarSection({ channelThumbnail, channelName, chann
           sx={{
             height: "30px",
             width: "30px",
+            minWidth: "30px",
             borderRadius: "50%",
             backgroundImage: `url(${channelThumbnail})`,
             backgroundSize: "contain",
           }}
         ></Box>
 
-        <textarea
+        <span
           onClick={()=> window.open("https://youtube.com/" + channelUsername, "_blank")}
-          role="anchor"
-          readOnly={true}
           id="channel-title-input"
           style={{
             marginLeft: "7px",
             marginRight: "5px",
             outline: "none",
             resize: "none",
-            overflow: "hidden"
+            overflow: "hidden",
+            whiteSpace: "nowrap"
           }}
-          type="text"
-          rows={1}
-          value={channelName}
-        ></textarea>
-      </Box>
+        >{channelName}</span>
+      </span>
     </Box>
   );
 }
