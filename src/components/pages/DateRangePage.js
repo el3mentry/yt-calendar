@@ -117,6 +117,15 @@ export default function DateRangePage({
           endDate={endDate}
           setStartDate={setStartDate}
           setEndDate={setEndDate}
+          sx={{ display: { xs: "none", sm: "flex" } }}
+        />
+
+        <DateRangeStepper
+          startDate={startDate}
+          endDate={endDate}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          sx={{ display: { xs: "flex", sm: "none" } }}
         />
 
         <PageNavigator

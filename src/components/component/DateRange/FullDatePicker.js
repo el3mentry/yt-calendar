@@ -1,14 +1,21 @@
-import { TextField } from "@mui/material";
+import TextField from "@mui/material/TextField";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import dayjs from "dayjs";
+import Box from "@mui/material/Box";
 
-export default function FullDatePicker({startDate, setStartDate, endDate, setEndDate}) {
+export default function FullDatePicker({
+  startDate,
+  setStartDate,
+  endDate,
+  setEndDate,
+  sx,
+}) {
   return (
-    <div style={{ display: "flex", flexDirection: "row" }}>
-      <div
-        style={{
+    <Box sx={{ display: "flex", flexDirection: "row", ...sx }}>
+      <Box
+        sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -36,9 +43,9 @@ export default function FullDatePicker({startDate, setStartDate, endDate, setEnd
             }}
           />
         </LocalizationProvider>
-      </div>
-      <div
-        style={{
+      </Box>
+      <Box
+        sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -66,7 +73,7 @@ export default function FullDatePicker({startDate, setStartDate, endDate, setEnd
             }}
           />
         </LocalizationProvider>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
