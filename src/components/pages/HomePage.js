@@ -50,70 +50,98 @@ export default function HomePage({ setPage, setChannelId }) {
       >
         <Logo />
       </Box>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          height: "100vh",
-          width: "100vw",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+      <Grid
+        container
+        height="100vh"
+        width="100vw"
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
       >
-        <ThemeProvider theme={theme}>
-          <TextField
-            id="channel-id-field"
-            label="channel-id"
-            variant="outlined"
-            color={channnelIdFieldColor}
-            focused={true}
-            autoFocus={true}
-            sx={{
-              width: 1 / 4,
-            }}
-            onClick={() => {
-              setChannelIdFieldColor("primary");
-            }}
-            onBlur={() => {
-              setChannelIdFieldColor("neutral");
-            }}
-          />
-        </ThemeProvider>
-        <Button
-          id={"proceed-button"}
-          onClick={() => {
-            let channelIdValue =
-              document.getElementById("channel-id-field").value;
-            if (channelIdValue.trim() === "") {
-              setIsSnackbarVisible(true);
-            } else {
-              setChannelId(channelIdValue);
-              setPage(DATERANGEPAGE);
-            }
-          }}
-          variant="contained"
-          sx={{ height: "3.4rem", ml: "1em" }}
+        <Grid
+          container
+          item
+          xs={12}
+          sm={8}
+          md={8}
+          lg={6}
+          direction={"row"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          spacing={2}
+          m={"1rem"}
         >
-          Proceed
-        </Button>
-
-        <Grid item xs={6} textAlign="right">
-          <Snackbar
-            open={isSnackbarVisible}
-            autoHideDuration={3000}
-            onClose={handleClose}
+          <Grid
+            container
+            item
+            xs={12}
+            sm={8}
+            md={6}
+            justifyContent={"center"}
           >
-            <Alert
-              onClose={handleClose}
-              variant="filled"
-              severity="warning"
-              sx={{ width: "100%" }}
+            <ThemeProvider theme={theme}>
+              <TextField
+                id="channel-id-field"
+                label="channel-id"
+                variant="outlined"
+                color={channnelIdFieldColor}
+                focused={true}
+                autoFocus={true}
+                onClick={() => {
+                  setChannelIdFieldColor("primary");
+                }}
+                style={{ width: "100%" }}
+                onBlur={() => {
+                  setChannelIdFieldColor("neutral");
+                }}
+              />
+            </ThemeProvider>
+          </Grid>
+          <Grid
+            container
+            item
+            xs={12}
+            sm={8}
+            md={2}
+            justifyContent={"center"}
+          >
+            <Button
+              id={"proceed-button"}
+              onClick={() => {
+                let channelIdValue =
+                  document.getElementById("channel-id-field").value;
+                if (channelIdValue.trim() === "") {
+                  setIsSnackbarVisible(true);
+                } else {
+                  setChannelId(channelIdValue);
+                  setPage(DATERANGEPAGE);
+                }
+              }}
+              variant="contained"
+              sx={{ height: "3.4rem" }}
             >
-              Channel ID cannot be empty.
-            </Alert>
-          </Snackbar>
+              Proceed
+            </Button>
+          </Grid>
         </Grid>
-      </div>
+      </Grid>
+
+      <Grid item xs={6} textAlign="right">
+        <Snackbar
+          open={isSnackbarVisible}
+          autoHideDuration={3000}
+          onClose={handleClose}
+        >
+          <Alert
+            onClose={handleClose}
+            variant="filled"
+            severity="warning"
+            sx={{ width: "100%" }}
+          >
+            Channel ID cannot be empty.
+          </Alert>
+        </Snackbar>
+      </Grid>
     </>
   );
 }

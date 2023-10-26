@@ -1,8 +1,4 @@
 import { CALENDARPAGE, HOMEPAGE, SIXYEARSINDAYS } from "../../variables";
-import { Button, TextField } from "@mui/material";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import Grid from "@mui/material/Grid";
@@ -11,6 +7,9 @@ import { useState } from "react";
 import advancedFormat from "dayjs/plugin/advancedFormat.js";
 import Box from "@mui/material/Box";
 import Logo from "../component/DrawerAppBar/Logo";
+import DateRangeStepper from "../component/DateRange/DateRangeStepper";
+import FullDatePicker from "../component/DateRange/FullDatePicker";
+import PageNavigator from "../component/DateRange/PageNavigator";
 
 export default function DateRangePage({
   setPage,
@@ -39,7 +38,7 @@ export default function DateRangePage({
 
     const daysDifference = dayjs(endDate.format("YYYY-MM-DD")).diff(
       dayjs(startDate.format("YYYY-MM-DD")),
-      "day",
+      "day"
     );
 
     if (
@@ -50,9 +49,9 @@ export default function DateRangePage({
     else if (daysDifference > SIXYEARSINDAYS) {
       setIsSnackbarVisible(true);
       const message = `Range Limit is ${Math.floor(
-        SIXYEARSINDAYS / 365,
+        SIXYEARSINDAYS / 365
       )} years. Exceeded by ${convertDays(
-        daysDifference - SIXYEARSINDAYS,
+        daysDifference - SIXYEARSINDAYS
       )} / (${daysDifference - SIXYEARSINDAYS} days)`;
       setSnackMessage(message);
     } else {
@@ -86,6 +85,7 @@ export default function DateRangePage({
       >
         <Logo />
       </Box>
+
       <div
         style={{
           display: "flex",
@@ -112,89 +112,27 @@ export default function DateRangePage({
           </Snackbar>
         </Grid>
 
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <TextField
-              id="outlined-basic"
-              label="Start"
-              variant="outlined"
-              InputProps={{ readOnly: true }}
-              focused={false}
-              value={startDate ? startDate.format("Do MMMM, YYYY") : "-"}
-              sx={{ width: 3 / 4 }}
-            />
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DateCalendar
-                views={["year", "month", "day"]}
-                disableFuture={true}
-                value={startDate}
-                minDate={dayjs("2006-01-01")}
-                maxDate={dayjs()}
-                disableHighlightToday={true}
-                onChange={(value) => {
-                  setStartDate(value);
-                }}
-              />
-            </LocalizationProvider>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <TextField
-              id="outlined-basic"
-              label="End"
-              variant="outlined"
-              InputProps={{ readOnly: true }}
-              focused={false}
-              value={endDate ? endDate.format("Do MMMM, YYYY") : "-"}
-              sx={{ width: 3 / 4 }}
-            />
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DateCalendar
-                views={["year", "month", "day"]}
-                disableFuture={true}
-                value={endDate}
-                disableHighlightToday={true}
-                minDate={dayjs("2006-01-01")}
-                maxDate={dayjs(new Date())}
-                onChange={(value) => {
-                  setEndDate(value);
-                }}
-              />
-            </LocalizationProvider>
-          </div>
-        </div>
-        <div
-          style={{ display: "flex", flexDirection: "row", marginTop: "1.5rem" }}
-        >
-          <Button
-            sx={{ mr: "1rem" }}
-            onClick={() => setPage(HOMEPAGE)}
-            variant="outlined"
-          >
-            Back
-          </Button>
-          <Button
-            onClick={clearDateRange}
-            sx={{ mr: "1rem", color: "gray", borderColor: "gray" }}
-            variant="outlined"
-          >
-            Clear Range
-          </Button>
-          <Button onClick={handleProceed} variant="contained">
-            Proceed
-          </Button>
-        </div>
+        <FullDatePicker
+          startDate={startDate}
+          endDate={endDate}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          sx={{ display: { xs: "none", sm: "flex" } }}
+        />
+
+        <DateRangeStepper
+          startDate={startDate}
+          endDate={endDate}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          sx={{ display: { xs: "flex", sm: "none" } }}
+        />
+
+        <PageNavigator
+          setPage={setPage}
+          clearDateRange={clearDateRange}
+          handleProceed={handleProceed}
+        />
       </div>
     </>
   );
