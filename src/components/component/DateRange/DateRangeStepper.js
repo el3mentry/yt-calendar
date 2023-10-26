@@ -40,6 +40,7 @@ export default function DateRangeStepper({
         border: "1px solid #c4c4c4",
         borderRadius: "16px",
         paddingTop: "10px",
+        ...sx,
       }}
     >
       <Box
@@ -47,7 +48,6 @@ export default function DateRangeStepper({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          ...sx,
         }}
       >
         {activeStep === 0 ? (

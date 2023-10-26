@@ -30,9 +30,9 @@ export default function DateRangePage({
   };
 
   const handleProceed = () => {
-    if (startDate === null && endDate === null) {
+    if (startDate === null || endDate === null) {
       setIsSnackbarVisible(true);
-      setSnackMessage("Start Date and End Date cannot be empty.");
+      setSnackMessage("Start Date or End Date cannot be empty.");
       return;
     }
 
