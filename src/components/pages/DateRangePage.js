@@ -1,4 +1,4 @@
-import { CALENDARPAGE, HOMEPAGE, SIXYEARSINDAYS } from "../../variables";
+import { CALENDARPAGE, SIXYEARSINDAYS } from "../../variables";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import Grid from "@mui/material/Grid";

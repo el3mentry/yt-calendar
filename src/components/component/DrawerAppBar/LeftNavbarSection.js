@@ -1,11 +1,13 @@
 import Logo from "./Logo";
 import Box from "@mui/material/Box";
 import React from "react";
+import ChangePage from "./ChangePage";
 
 export default function LeftNavbarSection({
   channelThumbnail,
   channelName,
   channelUsername,
+  setPage,
 }) {
   return (
     <Box
@@ -48,6 +50,7 @@ export default function LeftNavbarSection({
             borderRadius: "50%",
             backgroundImage: `url(${channelThumbnail})`,
             backgroundSize: "contain",
+            position: "relative"
           }}
         ></Box>
 
@@ -65,6 +68,11 @@ export default function LeftNavbarSection({
           {channelName}
         </span>
       </span>
+      <ChangePage
+        setPage={setPage}
+        direction={"column"}
+        style={{ position: "absolute", top: "65px" }}
+      />
     </Box>
   );
 }
