@@ -1,4 +1,3 @@
-import ChangeView from "./ChangePage";
 import Box from "@mui/material/Box";
 import React from "react";
 import TotalVids from "./TotalVids";
@@ -9,7 +8,6 @@ import dayjs from "dayjs";
 export default function RightNavbarSection({
   startDate,
   endDate,
-  setPage,
   totalVideoCount,
   date,
   calendarView,
@@ -122,8 +120,6 @@ export default function RightNavbarSection({
           )}
         </div>
       </Box>
-
-      <ChangeView setPage={setPage} />
     </Box>
   );
 }

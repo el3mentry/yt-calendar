@@ -171,6 +171,7 @@ export default function DrawerAppBar(props) {
                   channelName={channelName}
                   channelThumbnail={channelThumbnail}
                   channelUsername={channelUsername}
+                  setPage={setPage}
                 />
                 <MiddleNavbarSection
                   calendarView={calendarView}
