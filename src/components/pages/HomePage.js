@@ -93,24 +93,8 @@ export default function HomePage({ setPage, setChannelId }) {
             </ThemeProvider>
           </Grid>
           <Grid container item xs={12} sm={8} md={1} justifyContent={"center"}>
-            {/* <Button
-              id={"proceed-button"}
-              onClick={() => {
-                let channelIdValue =
-                  document.getElementById("channel-id-field").value;
-                if (channelIdValue.trim() === "") {
-                  setIsSnackbarVisible(true);
-                } else {
-                  setChannelId(channelIdValue);
-                  setPage(DATERANGEPAGE);
-                }
-              }}
-              variant="contained"
-              sx={{ height: "3.4rem", borderRadius: "10px" }}
-            >
-              Proceed
-            </Button> */}
             <IconButton
+              id={"proceed-button"}
               aria-label="delete"
               size="large"
               onClick={() => {
