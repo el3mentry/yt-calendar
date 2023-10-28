@@ -9,6 +9,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Logo from "../component/DrawerAppBar/Logo";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import InputAdornment from "@mui/material/InputAdornment";
 
 const theme = createTheme({
   palette: {
@@ -88,6 +89,14 @@ export default function HomePage({ setPage, setChannelId }) {
                 sx={{ width: "100%", borderRadius: "20px" }}
                 onBlur={() => {
                   setChannelIdFieldColor("neutral");
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <IconButton size="small">@</IconButton>
+                    </InputAdornment>
+                  ),
+                  sx: { borderRadius: "20px" },
                 }}
               />
             </ThemeProvider>
