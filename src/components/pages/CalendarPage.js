@@ -21,6 +21,7 @@ export default function CalendarPage({
   const [formattedData, setFormattedData] = useState({});
   const [totalVideoCount, setTotalVideoCount] = useState(0);
   const [channelUsername, setChannelUsername] = useState("");
+  const [errorState, setErrorState] = useState(null);
 
   function changeToPreviousYear() {
     setDate((prev) => {
@@ -51,21 +52,29 @@ export default function CalendarPage({
   }
 
   React.useEffect(() => {
+    if (errorState !== null) throw new Error(errorState);
+  }, [errorState]);
+
+  React.useEffect(() => {
     (async () => {
-      const dataFetcher = new DataFetcher(channelId, startDate, endDate);
-      await dataFetcher.initializeFetching();
+      try {
+        const dataFetcher = new DataFetcher(channelId, startDate, endDate);
+        await dataFetcher.initializeFetching();
 
-      const dataFormatter = new DataFormatter(dataFetcher.YoutubeResponses);
-      dataFormatter.standardizeDataFormatInRange(startDate, endDate);
+        const dataFormatter = new DataFormatter(dataFetcher.YoutubeResponses);
+        dataFormatter.standardizeDataFormatInRange(startDate, endDate);
 
-      const channelInfoProvider = new ChannelInfoProvider(channelId);
-      await channelInfoProvider.fetchChannelInfo();
+        const channelInfoProvider = new ChannelInfoProvider(channelId);
+        await channelInfoProvider.fetchChannelInfo();
 
-      setChannelName(channelInfoProvider.getChannelTitle());
-      setChannelThumbnail(channelInfoProvider.getChannelThumbnail());
-      setChannelUsername(channelInfoProvider.getChannelUsername());
-      setFormattedData(dataFormatter.FormattedData);
-      setTotalVideoCount(dataFormatter.TotalVideoCount);
+        setChannelName(channelInfoProvider.getChannelTitle());
+        setChannelThumbnail(channelInfoProvider.getChannelThumbnail());
+        setChannelUsername(channelInfoProvider.getChannelUsername());
+        setFormattedData(dataFormatter.FormattedData);
+        setTotalVideoCount(dataFormatter.TotalVideoCount);
+      } catch (error) {
+        setErrorState(error);
+      }
     })();
     // eslint-disable-next-line
   }, []);
@@ -81,7 +90,6 @@ export default function CalendarPage({
           flexDirection: "column",
         }}
       >
-
         <DrawerAppBar
           calendarView={calendarView}
           setCalendarView={setCalendarView}

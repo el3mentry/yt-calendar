@@ -1,6 +1,6 @@
 import MobileStepper from "@mui/material/MobileStepper";
 import { useState } from "react";
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 import { Button } from "@mui/material";
 import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -8,9 +8,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import dayjs from "dayjs";
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
 export default function DateRangeStepper({
   startDate,
@@ -119,7 +118,7 @@ export default function DateRangeStepper({
         steps={2}
         position="static"
         activeStep={activeStep}
-        sx={{ maxWidth: 400, flexGrow: 1 }}
+        sx={{ maxWidth: 400, flexGrow: 1, backgroundColor: "#f6f6f6" }}
         nextButton={
           <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
             {theme.direction === "rtl" ? (

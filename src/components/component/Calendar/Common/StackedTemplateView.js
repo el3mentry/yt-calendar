@@ -29,9 +29,6 @@ export default function StackedTemplateView({ imageLinks = [] }) {
         <img
           style={{
             borderRadius: "4px",
-            border: imageLinks[0]
-              ? "1px solid rgba(0, 0, 0, 0.6)"
-              : "1px solid white",
             width: imageWidth,
             marginBottom: "5px",
           }}

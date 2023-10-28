@@ -29,7 +29,6 @@ const drawerWidth = 240;
 
 export default function DrawerAppBar(props) {
   const {
-    window,
     calendarView,
     setCalendarView,
     date,
@@ -94,7 +93,7 @@ export default function DrawerAppBar(props) {
   );
 
   const container =
-    window !== undefined ? () => window().document.body : undefined;
+    window !== undefined ? () => window.document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -172,6 +171,7 @@ export default function DrawerAppBar(props) {
                   channelName={channelName}
                   channelThumbnail={channelThumbnail}
                   channelUsername={channelUsername}
+                  setPage={setPage}
                 />
                 <MiddleNavbarSection
                   calendarView={calendarView}

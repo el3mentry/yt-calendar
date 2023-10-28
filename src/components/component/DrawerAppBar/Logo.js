@@ -1,5 +1,5 @@
 import logo from "../../../assets/yt-cal.png";
 
 export default function Logo() {
-  return <img src={logo} alt="yt-cal-logo" style={{ width: "9rem" }} />;
+  return <img src={logo} alt="yt-cal-logo" style={{ width: "3rem" }} />;
 }
