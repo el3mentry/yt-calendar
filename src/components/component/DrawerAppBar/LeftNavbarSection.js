@@ -31,7 +31,7 @@ export default function LeftNavbarSection({
           maxWidth: "59%",
           borderRadius: "4px",
           padding: "0 5px 0 5px",
-          marginLeft: "2.6vw",
+          margin: "auto",
           cursor: "pointer",
         }}
         id={"channel-name-div"}
