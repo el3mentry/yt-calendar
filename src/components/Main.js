@@ -3,6 +3,7 @@ import CalendarPage from "./pages/CalendarPage";
 import HomePage from "./pages/HomePage";
 import DateRangePage from "./pages/DateRangePage";
 import { HOMEPAGE, CALENDARPAGE, DATERANGEPAGE } from "../variables";
+import ErrorBoundary from "./ErrorBoundary";
 
 export default function Main() {
   const [page, setPage] = useState(HOMEPAGE);
@@ -36,6 +37,5 @@ export default function Main() {
       return <HomePage setPage={setPage} setChannelId={setChannelId} />;
     }
   }
-
-  return <>{getPageType()}</>;
+  return <ErrorBoundary>{getPageType()}</ErrorBoundary>;
 }
