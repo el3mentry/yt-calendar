@@ -1,4 +1,5 @@
-import { Button, TextField } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import { TextField } from "@mui/material";
 import { DATERANGEPAGE } from "../../variables";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState, useEffect } from "react";
@@ -7,6 +8,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Logo from "../component/DrawerAppBar/Logo";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const theme = createTheme({
   palette: {
@@ -71,14 +73,7 @@ export default function HomePage({ setPage, setChannelId }) {
           spacing={2}
           m={"1rem"}
         >
-          <Grid
-            container
-            item
-            xs={12}
-            sm={8}
-            md={6}
-            justifyContent={"center"}
-          >
+          <Grid container item xs={12} sm={8} md={6} justifyContent={"center"}>
             <ThemeProvider theme={theme}>
               <TextField
                 id="channel-id-field"
@@ -90,22 +85,15 @@ export default function HomePage({ setPage, setChannelId }) {
                 onClick={() => {
                   setChannelIdFieldColor("primary");
                 }}
-                style={{ width: "100%" }}
+                sx={{ width: "100%", borderRadius: "20px" }}
                 onBlur={() => {
                   setChannelIdFieldColor("neutral");
                 }}
               />
             </ThemeProvider>
           </Grid>
-          <Grid
-            container
-            item
-            xs={12}
-            sm={8}
-            md={2}
-            justifyContent={"center"}
-          >
-            <Button
+          <Grid container item xs={12} sm={8} md={1} justifyContent={"center"}>
+            {/* <Button
               id={"proceed-button"}
               onClick={() => {
                 let channelIdValue =
@@ -118,10 +106,26 @@ export default function HomePage({ setPage, setChannelId }) {
                 }
               }}
               variant="contained"
-              sx={{ height: "3.4rem" }}
+              sx={{ height: "3.4rem", borderRadius: "10px" }}
             >
               Proceed
-            </Button>
+            </Button> */}
+            <IconButton
+              aria-label="delete"
+              size="large"
+              onClick={() => {
+                let channelIdValue =
+                  document.getElementById("channel-id-field").value;
+                if (channelIdValue.trim() === "") {
+                  setIsSnackbarVisible(true);
+                } else {
+                  setChannelId(channelIdValue);
+                  setPage(DATERANGEPAGE);
+                }
+              }}
+            >
+              <ArrowForwardIcon sx={{ height: "30px", width: "30px" }} />
+            </IconButton>
           </Grid>
         </Grid>
       </Grid>
