@@ -93,7 +93,7 @@ export default function HomePage({ setPage, setChannelId }) {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <IconButton size="small">@</IconButton>
+                      <IconButton size="small">id: </IconButton>
                     </InputAdornment>
                   ),
                   sx: { borderRadius: "20px" },

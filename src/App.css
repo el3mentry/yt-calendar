@@ -167,6 +167,10 @@
   border-radius: 50%;
 }
 
+#fade-menu > .MuiMenu-paper{
+  box-shadow: none;
+}
+
 @media (max-width: 1920px) {
   #month-resizable-div {
     width: 256px;
