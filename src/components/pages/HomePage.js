@@ -77,8 +77,8 @@ export default function HomePage({ setPage, setChannelId }) {
           <Grid container item xs={12} sm={8} md={6} justifyContent={"center"}>
             <ThemeProvider theme={theme}>
               <TextField
-                id="username-field"
-                label="Username"
+                id="channel-id-field"
+                label="channel-id"
                 variant="outlined"
                 color={channnelIdFieldColor}
                 focused={true}
@@ -93,7 +93,7 @@ export default function HomePage({ setPage, setChannelId }) {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <IconButton size="small">@</IconButton>
+                      <IconButton size="small">id: </IconButton>
                     </InputAdornment>
                   ),
                   sx: { borderRadius: "20px" },
@@ -108,7 +108,7 @@ export default function HomePage({ setPage, setChannelId }) {
               size="large"
               onClick={() => {
                 let channelIdValue =
-                  document.getElementById("username-field").value;
+                  document.getElementById("channel-id-field").value;
                 if (channelIdValue.trim() === "") {
                   setIsSnackbarVisible(true);
                 } else {
@@ -135,7 +135,7 @@ export default function HomePage({ setPage, setChannelId }) {
             severity="warning"
             sx={{ width: "100%" }}
           >
-            Username cannot be empty.
+            Channel ID cannot be empty.
           </Alert>
         </Snackbar>
       </Grid>
