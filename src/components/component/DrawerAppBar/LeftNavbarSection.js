@@ -71,7 +71,7 @@ export default function LeftNavbarSection({
       <ChangePage
         setPage={setPage}
         direction={"column"}
-        style={{ position: "absolute", top: "65px" }}
+        style={{ position: "absolute", top: "65px", display: { xs: "none", md: "flex" } }}
       />
     </Box>
   );
