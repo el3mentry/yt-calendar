@@ -77,8 +77,8 @@ export default function HomePage({ setPage, setChannelId }) {
           <Grid container item xs={12} sm={8} md={6} justifyContent={"center"}>
             <ThemeProvider theme={theme}>
               <TextField
-                id="channel-id-field"
-                label="channel-id"
+                id="username-field"
+                label="Username"
                 variant="outlined"
                 color={channnelIdFieldColor}
                 focused={true}
@@ -108,7 +108,7 @@ export default function HomePage({ setPage, setChannelId }) {
               size="large"
               onClick={() => {
                 let channelIdValue =
-                  document.getElementById("channel-id-field").value;
+                  document.getElementById("username-field").value;
                 if (channelIdValue.trim() === "") {
                   setIsSnackbarVisible(true);
                 } else {
@@ -135,7 +135,7 @@ export default function HomePage({ setPage, setChannelId }) {
             severity="warning"
             sx={{ width: "100%" }}
           >
-            Channel ID cannot be empty.
+            Username cannot be empty.
           </Alert>
         </Snackbar>
       </Grid>
