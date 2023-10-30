@@ -19,7 +19,7 @@ export default function TotalVids({ totalVideoCount = 0 }) {
             border: "1px solid #6cabdd",
             fontFamily: '"inter" , "Open Sans", "sans-serif"',
             height: "40px",
-            minWidth: "50%",
+            minWidth: "30%",
             fontSize: "0.9rem",
             cursor: "default",
             display: "flex",
@@ -47,7 +47,7 @@ export default function TotalVids({ totalVideoCount = 0 }) {
               }}
             />
           </Box>
-          Total: {totalVideoCount}
+          {totalVideoCount}
         </Box>
       </Box>
     </>
