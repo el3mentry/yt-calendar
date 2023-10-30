@@ -70,7 +70,7 @@ export default function DrawerAppBar(props) {
       <Typography variant="h6" sx={{ my: 2 }}>
         <Logo />
       </Typography>
-      <Divider />
+      <Divider sx={{ margin: "auto", width: "100px" }} />
       <List
         sx={{
           display: "flex",
@@ -102,11 +102,15 @@ export default function DrawerAppBar(props) {
         <AppBar
           component="nav"
           color="main"
-          sx={{ boxShadow: "none" }}
+          sx={{ boxShadow: "none", height: { xs: "65px", md: "60px" } }}
           id="fetcher"
         >
           <Toolbar
-            sx={{ justifyContent: "space-between", padding: "0 !important" }}
+            sx={{
+              justifyContent: "space-between",
+              padding: "0 !important",
+              height: { xs: "65px", md: "60px" },
+            }}
           >
             <IconButton
               color="inherit"

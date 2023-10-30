@@ -14,6 +14,7 @@ export default function ChangeView({ changeCalendarView, calendarView }) {
     minWidth: "3rem",
     paddingLeft: "0.9rem",
     paddingRight: "0.9rem",
+    
   }));
 
   return (
@@ -35,40 +36,42 @@ export default function ChangeView({ changeCalendarView, calendarView }) {
           fontWeight: "unset",
           backgroundColor: "white",
           color: "black",
+          marginLeft: "15px",
         }}
         onClick={changeCalendarView}
       >
-        <img height={30} width={30} src={SwitchIcon} alt="switch-icon" />
+        <img height={20} width={20} src={SwitchIcon} alt="switch-icon" />
       </ColorButton>
 
       <ColorButton
         variant="outlined"
         onClick={changeCalendarView}
-        sx={{ fontWeight: "unset" }}
+        sx={{ fontWeight: "unset", marginLeft: "7px" }}
       >
         <Box sx={{ width: "100%" }}>
           {calendarView === YEAR ? (
-            <Box className="flex flex-row">
+            <Box className="flex flex-row justify-content-center">
               <Typography
                 variant="subtitle1"
                 sx={{
-                  margin: "auto",
+                  // margin: "auto",
                   fontWeight: "400",
                   fontFamily: '"inter", "sans-serif"',
+                  alignSelf: "center"
                 }}
               >
                 YEARLY
               </Typography>
             </Box>
           ) : (
-            <Box className="flex flex-row">
+            <Box className="flex flex-row justify-content-center">
               <Typography
                 variant="subtitle1"
                 sx={{
                   margin: "auto",
                   fontWeight: "400",
                   fontFamily: '"inter", "sans-serif"',
-                  marginBottom: "0.1rem",
+                  alignSelf: "center"
                 }}
               >
                 MONTHLY

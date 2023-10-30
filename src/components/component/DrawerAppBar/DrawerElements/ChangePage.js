@@ -15,6 +15,7 @@ const ColorButton = styled(ButtonBase)(({ theme }) => ({
   minWidth: "100%",
   paddingLeft: "0.9rem",
   paddingRight: "0.9rem",
+  marginLeft: "15px",
   display: "flex",
   justifyContent: "flex-start",
   "&:hover": {
@@ -43,17 +44,17 @@ export default function ChangePage({
           setPage(HOMEPAGE);
         }}
       >
-        <img src={HomeIcon} height={30} width={30} alt={"Home icon"} />
+        <img src={HomeIcon} height={20} width={20} alt={"Home icon"} />
         <Typography
           variant="subtitle1"
           sx={{
-            marginLeft: "1.3rem",
+            marginLeft: "2.2rem",
             fontFamily: "inter, sans-serif",
             fontWeight: "400",
-            fontSize: "1.2rem",
+            fontSize: "1rem",
           }}
         >
-          Home
+          HOME
         </Typography>
       </ColorButton>
 
@@ -63,17 +64,17 @@ export default function ChangePage({
           setPage(DATERANGEPAGE);
         }}
       >
-        <img src={DateRangeIcon} alt="date range icon" height={30} width={30} />
+        <img src={DateRangeIcon} alt="date range icon" height={20} width={20} />
         <Typography
           variant="subtitle1"
           sx={{
-            marginLeft: "1.3rem",
+            marginLeft: "2.2rem",
             fontFamily: "inter, sans-serif",
             fontWeight: "400",
-            fontSize: "1.2rem",
+            fontSize: "1rem",
           }}
         >
-          Range
+          RANGE
         </Typography>
       </ColorButton>
       <ChangeView

@@ -12,13 +12,13 @@ export default function DateRange({ startDate, endDate, date, calendarView }) {
   const [endDateFill, setEndDateFill] = useState(NORMAL_TEXT_FILL);
 
   const ColorButton = styled(ButtonBase)(() => ({
-    borderRadius: "25px",
+    borderRadius: "10px",
     fontFamily: '"inter" , "Open Sans", "sans-serif"',
     backgroundColor: "#3365E7",
-    height: "40px",
-    minWidth: "90%",
-    paddingLeft: "0.9rem",
-    paddingRight: "0.9rem",
+    height: "30px",
+    minWidth: "50%",
+    paddingLeft: "0.6rem",
+    paddingRight: "0.6rem",
     fontSize: "0.9rem",
     cursor: "default"
   }));
@@ -60,7 +60,6 @@ export default function DateRange({ startDate, endDate, date, calendarView }) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        marginRight: "0.5rem",
       }}
     >
       {startDate !== null && endDate !== null ? (
@@ -76,10 +75,10 @@ export default function DateRange({ startDate, endDate, date, calendarView }) {
           </ColorButton>
           <Box
             style={{
-              width: "2rem",
+              width: "1rem",
               textAlign: "center",
               fontSize: "0.8rem",
-              borderBottom: "2px solid black",
+              borderBottom: "1px solid grey",
               height: "1rem",
               marginBottom: "0.9rem"
             }}
