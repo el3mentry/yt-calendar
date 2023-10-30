@@ -70,7 +70,7 @@ export default function DrawerAppBar(props) {
       <Typography variant="h6" sx={{ my: 2 }}>
         <Logo />
       </Typography>
-      <Divider />
+      <Divider sx={{ margin: "auto", width: "100px" }} />
       <List
         sx={{
           display: "flex",
