@@ -12,13 +12,13 @@ export default function DateRange({ startDate, endDate, date, calendarView }) {
   const [endDateFill, setEndDateFill] = useState(NORMAL_TEXT_FILL);
 
   const ColorButton = styled(ButtonBase)(() => ({
-    borderRadius: "25px",
+    borderRadius: "10px",
     fontFamily: '"inter" , "Open Sans", "sans-serif"',
     backgroundColor: "#3365E7",
-    height: "40px",
-    minWidth: "90%",
-    paddingLeft: "0.9rem",
-    paddingRight: "0.9rem",
+    height: "30px",
+    minWidth: "50%",
+    paddingLeft: "0.6rem",
+    paddingRight: "0.6rem",
     fontSize: "0.9rem",
     cursor: "default"
   }));
