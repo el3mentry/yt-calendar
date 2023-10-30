@@ -60,7 +60,6 @@ export default function DateRange({ startDate, endDate, date, calendarView }) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        marginRight: "0.5rem",
       }}
     >
       {startDate !== null && endDate !== null ? (

@@ -8,8 +8,6 @@ export default function TotalVids({ totalVideoCount = 0 }) {
         aria-label="delete"
         size="small"
         sx={{
-          marginLeft: "0.2rem",
-          marginRight: "0.2rem",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
