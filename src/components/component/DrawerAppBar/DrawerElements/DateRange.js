@@ -76,10 +76,10 @@ export default function DateRange({ startDate, endDate, date, calendarView }) {
           </ColorButton>
           <Box
             style={{
-              width: "2rem",
+              width: "1rem",
               textAlign: "center",
               fontSize: "0.8rem",
-              borderBottom: "2px solid black",
+              borderBottom: "1px solid grey",
               height: "1rem",
               marginBottom: "0.9rem"
             }}
