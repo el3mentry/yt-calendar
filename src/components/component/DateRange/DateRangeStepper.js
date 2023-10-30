@@ -22,11 +22,7 @@ export default function DateRangeStepper({
   const theme = useTheme();
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setActiveStep((prevActiveStep) => (prevActiveStep + 1) % 2);
   };
 
   return (
@@ -120,7 +116,7 @@ export default function DateRangeStepper({
         activeStep={activeStep}
         sx={{ maxWidth: 400, flexGrow: 1, backgroundColor: "#f6f6f6" }}
         nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
+          <Button size="small" onClick={handleNext} disabled={activeStep === 1}>
             {theme.direction === "rtl" ? (
               <KeyboardArrowLeft />
             ) : (
@@ -129,7 +125,7 @@ export default function DateRangeStepper({
           </Button>
         }
         backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+          <Button size="small" onClick={handleNext} disabled={activeStep === 0}>
             {theme.direction === "rtl" ? (
               <KeyboardArrowRight />
             ) : (
