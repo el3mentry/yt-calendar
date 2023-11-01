@@ -1,73 +1,121 @@
 import { DATERANGEPAGE, HOMEPAGE } from "../../../variables";
 import Box from "@mui/material/Box";
-import HomeIcon from "@mui/icons-material/Home";
-import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import IconButton from "@mui/material/IconButton";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import Menu from "@mui/material/Menu";
-import Fade from "@mui/material/Fade";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Grow from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import MenuItem from "@mui/material/MenuItem";
+import MenuList from "@mui/material/MenuList";
+import EditCalendarOutlinedIcon from "@mui/icons-material/EditCalendarOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 export default function ChangePage({ setPage, direction = "row", style = {} }) {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false);
   };
+
+  function handleListKeyDown(event) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === "Escape") {
+      setOpen(false);
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = useRef(open);
+  useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
+
   return (
     <Box sx={{ display: "flex", flexDirection: direction, ...style }}>
       <IconButton
-        id="fade-button"
         className={`${open ? "halfspin" : ""}`}
-        aria-controls={open ? "fade-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
         sx={{ marginLeft: "3px" }}
+        ref={anchorRef}
+        id="composition-button"
+        aria-controls={open ? "composition-menu" : undefined}
+        aria-expanded={open ? "true" : undefined}
+        aria-haspopup="true"
+        onClick={handleToggle}
       >
-        <KeyboardArrowDownIcon color="info" />
+        <KeyboardArrowDownIcon sx={{ cursor: "pointer" }} color="info" />
       </IconButton>
-      <Menu
-        id="fade-menu"
-        MenuListProps={{
-          "aria-labelledby": "fade-button",
-        }}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        TransitionComponent={Fade}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginLeft: "3px",
-          }}
-        >
-          <IconButton
-            size="small"
-            sx={{ marginBottom: "8px" }}
-            onClick={() => {
-              setPage(HOMEPAGE);
-            }}
-          >
-            <HomeIcon sx={{ color: "#3365e7" }} />
-          </IconButton>
 
-          <IconButton
-            size="small"
-            onClick={() => {
-              setPage(DATERANGEPAGE);
+      <Popper
+        open={open}
+        anchorEl={anchorRef.current}
+        role={undefined}
+        placement="bottom-start"
+        transition
+        disablePortal
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin:
+                placement === "bottom-start" ? "left top" : "left bottom",
             }}
           >
-            <EditCalendarIcon sx={{ color: "#3365e7" }} />
-          </IconButton>
-        </Box>
-      </Menu>
+            <Paper sx={{ opacity: 0, marginLeft: "3px", boxShadow: "none" }}>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList
+                  autoFocusItem={open}
+                  id="composition-menu"
+                  aria-labelledby="composition-button"
+                  onKeyDown={handleListKeyDown}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <IconButton
+                    size="small"
+                    sx={{ marginBottom: "8px" }}
+                    onClick={() => {
+                      setPage(HOMEPAGE);
+                    }}
+                  >
+                    <HomeOutlinedIcon
+                      sx={{ color: "#3365e7"  }}
+                    />
+                  </IconButton>
+                  <IconButton
+                    size="small"
+                    onClick={() => {
+                      setPage(DATERANGEPAGE);
+                    }}
+                  >
+                    <EditCalendarOutlinedIcon sx={{ color: "#3365e7" }} />
+                  </IconButton>
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
     </Box>
   );
 }
