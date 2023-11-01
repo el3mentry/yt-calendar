@@ -5,7 +5,7 @@ export default function Media({ title, thumbnail, videoLink }) {
         width: "100%",
         textDecoration: "none",
         maxWidth: "100%",
-        marginBottom: "10px",
+        marginBottom: "30px",
       }}
       id={"thumbnail-field"}
       href={videoLink}
@@ -22,7 +22,7 @@ export default function Media({ title, thumbnail, videoLink }) {
         alt="alternative text"
         id={"thumbnail-image-field"}
       />
-      <p style={{ fontSize: "0.8rem" }}>
+      <p style={{ fontSize: "0.8rem", color: "#000" }}>
         {title.length > 60 ? title.substring(0, 57) + "..." : title}
       </p>
     </a>

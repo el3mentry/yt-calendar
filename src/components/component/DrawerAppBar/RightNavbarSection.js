@@ -54,7 +54,7 @@ export default function RightNavbarSection({
       id="navbar-right-section"
       sx={{
         display: "flex",
-        flex: "1 1 100px",
+        flex: "1 0 100px",
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",
@@ -64,16 +64,14 @@ export default function RightNavbarSection({
         sx={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-around",
+          justifyContent: "flex-start",
           alignItems: "center",
           height: "40px",
           border: 1,
           borderColor: "#c4c4c4",
           borderRadius: "4px",
           // padding: "0 5px 0 5px",
-          minWidth: "8rem",
           color: "#6d6d6d",
-          marginRight: "0.65rem",
         }}
       >
         <TotalVids totalVideoCount={totalVideoCount} />
@@ -81,39 +79,43 @@ export default function RightNavbarSection({
           style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            marginRight: "0.5rem",
+            justifyContent: "flex-start",
           }}
         >
           {startDate !== null && endDate !== null ? (
             <>
-              <div
+              <p
                 style={{
                   color: startDateFill,
                   fontWeight: startDateFill === ERROR_TEXT_FILL ? 600 : 400,
                   fontSize: "0.8rem",
+                  marginLeft: "8px",
+                  marginRight: "8px",
+                  textAlign: "center",
                 }}
               >
                 {startDate.format("Do MMM 'YY")}
-              </div>
-              <div
+              </p>
+              <p
                 style={{
-                  width: "25px",
                   textAlign: "center",
                   fontSize: "0.8rem",
                 }}
               >
                 -
-              </div>
-              <div
+              </p>
+              <p
                 style={{
                   color: endDateFill,
                   fontWeight: endDateFill === ERROR_TEXT_FILL ? 600 : 400,
                   fontSize: "0.8rem",
+                  marginLeft: "8px",
+                  marginRight: "8px",
+                  textAlign: "center",
                 }}
               >
                 {endDate.format("Do MMM 'YY")}
-              </div>
+              </p>
             </>
           ) : (
             "Do MMM' YY - Do MMM' YY"

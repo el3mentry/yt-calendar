@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ButtonBase } from "@mui/material";
 import { YEAR } from "../../../../variables";
-import SwitchIcon from "../../../../assets/switch-icon.svg";
+import SwitchIcon from "../../../../assets/switch-icon-drawer.svg";
 
 export default function ChangeView({ changeCalendarView, calendarView }) {
   const ColorButton = styled(ButtonBase)(() => ({
