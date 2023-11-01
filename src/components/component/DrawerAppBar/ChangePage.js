@@ -54,8 +54,8 @@ export default function ChangePage({ setPage, direction = "row", style = {} }) {
         ref={anchorRef}
         id="composition-button"
         aria-controls={open ? "composition-menu" : undefined}
-        aria-expanded={open ? "true" : undefined}
-        aria-haspopup="true"
+        aria-expanded={open ? true : undefined}
+        aria-haspopup={true}
         onClick={handleToggle}
       >
         <KeyboardArrowDownIcon sx={{ cursor: "pointer" }} color="info" />
@@ -98,9 +98,7 @@ export default function ChangePage({ setPage, direction = "row", style = {} }) {
                       setPage(HOMEPAGE);
                     }}
                   >
-                    <HomeOutlinedIcon
-                      sx={{ color: "#3365e7"  }}
-                    />
+                    <HomeOutlinedIcon sx={{ color: "#3365e7" }} />
                   </IconButton>
                   <IconButton
                     size="small"
