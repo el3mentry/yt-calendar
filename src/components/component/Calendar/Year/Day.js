@@ -84,6 +84,7 @@ export default function Day({ dayValue, className, options = [] }) {
                   title={option.videoTitle}
                   videoLink={option.videoLink}
                   key={option.key}
+                  totalVideos={options.length}
                 />
               </MenuItem>
             ))}

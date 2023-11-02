@@ -115,6 +115,7 @@ export default function MonthDay({ dayValue, className, options = [] }) {
                   title={option.videoTitle}
                   videoLink={option.videoLink}
                   key={option.key}
+                  totalVideos={options.length}
                 />
               </MenuItem>
             ))}
