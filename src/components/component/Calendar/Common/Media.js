@@ -1,11 +1,12 @@
-export default function Media({ title, thumbnail, videoLink }) {
+export default function Media({ title, thumbnail, videoLink, totalVideos }) {
+  console.log(totalVideos);
   return (
     <a
       style={{
         width: "100%",
         textDecoration: "none",
         maxWidth: "100%",
-        marginBottom: "30px",
+        marginBottom: totalVideos > 1 ? "30px": "10px",
       }}
       id={"thumbnail-field"}
       href={videoLink}
