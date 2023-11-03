@@ -7,7 +7,6 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
-import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import EditCalendarOutlinedIcon from "@mui/icons-material/EditCalendarOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -98,7 +97,7 @@ export default function ChangePage({ setPage, direction = "row", style = {} }) {
                       setPage(HOMEPAGE);
                     }}
                   >
-                    <HomeOutlinedIcon sx={{ color: "#3365e7" }} />
+                    <HomeOutlinedIcon sx={{ color: "rgba(50, 50, 50 ,0.75)" }} />
                   </IconButton>
                   <IconButton
                     size="small"
@@ -106,7 +105,7 @@ export default function ChangePage({ setPage, direction = "row", style = {} }) {
                       setPage(DATERANGEPAGE);
                     }}
                   >
-                    <EditCalendarOutlinedIcon sx={{ color: "#3365e7" }} />
+                    <EditCalendarOutlinedIcon sx={{ color: "rgba(50, 50, 50 ,0.75)" }} />
                   </IconButton>
                 </MenuList>
               </ClickAwayListener>
