@@ -19,13 +19,14 @@ export default function RightNavbarSection({
   const [endDateFill, setEndDateFill] = useState(NORMAL_TEXT_FILL);
 
   useEffect(() => {
+    
     const currentYear = parseInt(date.year());
     const initialRangeYear = parseInt(startDate.year());
     const finalRangeYear = parseInt(endDate.year());
 
-    const currentMonthAndYear = dayjs(`${currentYear}-${date.month()}-01`);
-    const initialMonthAndYear = dayjs(`${currentYear}-${startDate.month()}-01`);
-    const finalMonthAndYear = dayjs(`${currentYear}-${endDate.month()}-01`);
+    const currentMonth = date.month();
+    const initialRangeMonth = parseInt(startDate.month());
+    const finalRangeMonth = parseInt(endDate.month());
 
     if (calendarView === YEAR) {
       setStartDateFill(
@@ -36,15 +37,22 @@ export default function RightNavbarSection({
       );
     } else {
       setStartDateFill(
-        currentMonthAndYear.isBefore(initialMonthAndYear)
+        (currentYear < initialRangeYear && currentMonth < initialRangeMonth) || 
+        (currentYear === initialRangeYear && currentMonth < initialRangeMonth) || 
+        (currentYear < initialRangeYear && currentMonth === initialRangeMonth) ||
+        (currentYear < initialRangeYear && currentMonth > initialRangeMonth)
           ? ERROR_TEXT_FILL
           : NORMAL_TEXT_FILL
       );
       setEndDateFill(
-        currentMonthAndYear.isAfter(finalMonthAndYear)
+        (currentYear > finalRangeYear && currentMonth > finalRangeMonth) ||
+        (currentYear === finalRangeYear && currentMonth > finalRangeMonth) ||
+        (currentYear > finalRangeYear && currentMonth === finalRangeMonth) ||
+        (currentYear > finalRangeYear && currentMonth < finalRangeMonth)
           ? ERROR_TEXT_FILL
           : NORMAL_TEXT_FILL
       );
+      debugger;
     }
     // eslint-disable-next-line
   }, [date]);
