@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 import { isValidMonthsOption } from "./Common/Utils";
@@ -19,7 +19,10 @@ const Calendar = ({
   changeToNextYear,
   changeToPreviousYear,
 }) => {
-  const year = date.year();
+  useEffect(() => {
+    setDate(endDate.isBefore(date)? endDate : date);
+  }, []);
+
   const totalCalendarMonths = 12;
   const _showNumberOfMonths = isValidMonthsOption(showNumberOfMonths)
     ? showNumberOfMonths
@@ -27,7 +30,7 @@ const Calendar = ({
 
   const configYear = {
     showNumberOfMonths: _showNumberOfMonths,
-    activeYear: year,
+    activeYear: date.year(),
     monthsFrom: showNumberOfMonths === YEAR ? 1 : date.month() + 1,
   };
 
