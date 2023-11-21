@@ -3,7 +3,6 @@ import React from "react";
 import TotalVids from "./TotalVids";
 import { useEffect, useState } from "react";
 import { YEAR } from "../../../variables";
-import dayjs from "dayjs";
 
 export default function RightNavbarSection({
   startDate,
