@@ -57,7 +57,7 @@ export default function ChangePage({ setPage, direction = "row", style = {} }) {
         aria-haspopup={true}
         onClick={handleToggle}
       >
-        <KeyboardArrowDownIcon sx={{ cursor: "pointer" }} color="info" />
+        <KeyboardArrowDownIcon sx={{ cursor: "pointer", color: "rgba(50, 50, 50, 0.75)" }} />
       </IconButton>
 
       <Popper
