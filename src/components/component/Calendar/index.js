@@ -21,6 +21,7 @@ const Calendar = ({
 }) => {
   useEffect(() => {
     setDate(endDate.isBefore(date)? endDate : date);
+    // eslint-disable-next-line
   }, []);
 
   const totalCalendarMonths = 12;
